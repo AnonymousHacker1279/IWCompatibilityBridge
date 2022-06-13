@@ -18,6 +18,8 @@ The IWCB mod adds support for various mods. Those are:
 
 <sup>1 - WTHIT is a Waila fork; the plugin *may* work with other forks.</sup>
 
+[Interested in the development of this project, or just want to hang out? Join the Official Discord server](https://discord.gg/WNMCTg7TsT)
+
 ### Just Enough Items
 
 JEI support consists of a recipe handler for the Tesla Synthesizer.
@@ -39,12 +41,22 @@ join. There is also a lorebook item which can be found in certain structures aro
 
 ### Project MMO
 
-PMMO support consists of EXP-granting events for crafting objects. Currently, it is only implemented for the small parts
-table. It will be expanded on in the future.
+PMMO support consists of EXP-granting events for crafting objects with the Small Parts Table or Tesla Synthesizer.
+
+PMMO requires a second step to set up properly. You must define the XP value triggers in your `xp_value_trigger.json`
+configuration. For example, setting up the Small Parts Table would require the following:
+
+```json
+{
+	"immersiveweapons.small_parts_table.craft": {
+		"crafting": 10
+	}
+}
+```
+
+The key for the Tesla Synthesizer is `immersiveweapons.tesla_synthesizer.craft`.
 
 #### Disabling: Set the `enable_pmmo` key to `false` in the configuration.
-
-[Interested in the development of this project, or just want to hang out? Join the Official Discord server](https://discord.gg/WNMCTg7TsT)
 
 ## Version Support
 

@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.immersiveweapons.api.IWPlugin;
 import tech.anonymoushacker1279.immersiveweapons.api.events.SmallPartsTableCraftEvent;
+import tech.anonymoushacker1279.immersiveweapons.api.events.TeslaSynthesizerCraftEvent;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 
@@ -26,8 +27,20 @@ public class PMMOPlugin implements IWPlugin {
 		}
 	}
 
+	@SubscribeEvent
+	public static void teslaSynthesizerCraftEvent(TeslaSynthesizerCraftEvent event) {
+		if (CommonConfig.ENABLE_PMMO_PLUGIN.get() && !event.getPlayer().level.isClientSide) {
+			awardTeslaSynthesizerCraftXP((ServerPlayer) event.getPlayer());
+		}
+	}
+
 	public static void awardSmallPartsTableCraftXP(ServerPlayer player) {
 		APIUtils.awardXpTrigger(player.getUUID(), ImmersiveWeapons.MOD_ID + ".small_parts_table.craft",
+				null, true, false);
+	}
+
+	public static void awardTeslaSynthesizerCraftXP(ServerPlayer player) {
+		APIUtils.awardXpTrigger(player.getUUID(), ImmersiveWeapons.MOD_ID + ".tesla_synthesizer.craft",
 				null, true, false);
 	}
 }
