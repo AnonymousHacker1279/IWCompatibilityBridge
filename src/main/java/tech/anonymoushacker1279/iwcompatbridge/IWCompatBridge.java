@@ -10,6 +10,7 @@ import tech.anonymoushacker1279.immersiveweapons.api.PluginHandler;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.patchouli.PatchouliPlugin;
+import tech.anonymoushacker1279.iwcompatbridge.plugin.pmmo.PMMOPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.wthit.WTHITPlugin;
 
 @Mod(IWCompatBridge.MOD_ID)
@@ -35,5 +36,6 @@ public class IWCompatBridge {
 		PluginHandler.registerPlugin(new JEIPlugin());
 		PluginHandler.registerPlugin(new WTHITPlugin());
 		PluginHandler.registerPlugin(new PatchouliPlugin());
+		PluginHandler.registerPlugin(new PMMOPlugin());
 	}
 }
