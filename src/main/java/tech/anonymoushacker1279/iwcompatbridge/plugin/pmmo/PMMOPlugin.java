@@ -3,6 +3,7 @@ package tech.anonymoushacker1279.iwcompatbridge.plugin.pmmo;
 import harmonised.pmmo.api.APIUtils;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
@@ -18,6 +19,11 @@ public class PMMOPlugin implements IWPlugin {
 	@Override
 	public String getPluginName() {
 		return IWCompatBridge.MOD_ID + ":pmmo_plugin";
+	}
+
+	@Override
+	public boolean areLoadingRequirementsMet() {
+		return ModList.get().isLoaded("pmmo");
 	}
 
 	@SubscribeEvent
