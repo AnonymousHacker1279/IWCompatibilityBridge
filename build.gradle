@@ -64,7 +64,7 @@ minecraft {
 			jvmArgs '-Xmx4G', '-XX:+UseShenandoahGC'
 
 			mods {
-				iwgamesplugin {
+				iwcompatbridge {
 					source sourceSets.main
 				}
 			}
@@ -84,7 +84,7 @@ minecraft {
 			jvmArgs '-Xmx4G', '-XX:+UseShenandoahGC'
 
 			mods {
-				iwgamesplugin {
+				iwcompatbridge {
 					source sourceSets.main
 				}
 			}
@@ -101,12 +101,12 @@ minecraft {
 			property 'mixin.env.remapRefMap', 'true'
 			property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
-			args '--mod', 'iwgamesplugin', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+			args '--mod', 'iwcompatbridge', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
 			jvmArgs '-Xmx4G', '-XX:+UseShenandoahGC'
 
 			mods {
-				iwgamesplugin {
+				iwcompatbridge {
 					source sourceSets.main
 				}
 			}
@@ -129,6 +129,40 @@ dependencies {
 
 	// Include JEI
 	implementation fg.deobf("mezz.jei:jei-${jei_version}")
+	// Include WTHIT and badpackets
+	compileOnly fg.deobf("mcp.mobius.waila:wthit-api:forge-${wthit_version}")
+	runtimeOnly fg.deobf("mcp.mobius.waila:wthit:forge-${wthit_version}")
+	implementation fg.deobf("lol.bai:badpackets:forge-${badpackets_version}")
+	// Include Patchouli
+	compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+	runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+}
+
+// This block of code expands all the gradle properties in the specified resource targets.
+// It copies them into the targets and expands all the defined properties.
+def resourceTargets = ['data/iwcompatbridge/patchouli_books/encyclopedia/book.json',
+                       'data/iwcompatbridge/patchouli_books/lorebook/book.json']
+def intoTargets = ["$rootDir/out/production/resources/", "$rootDir/out/production/${project.name}.main/", "$rootDir/bin/main/"]
+def replaceProperties = [build_version: version]
+processResources {
+	inputs.properties replaceProperties
+	replaceProperties.put 'project', project
+
+	filesMatching(resourceTargets) {
+		expand replaceProperties
+	}
+
+	intoTargets.each { target ->
+		if (file(target).exists()) {
+			copy {
+				from(sourceSets.main.resources) {
+					include resourceTargets
+					expand replaceProperties
+				}
+				into target
+			}
+		}
+	}
 }
 
 // Add properties to JAR manifest

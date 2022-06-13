@@ -38,3 +38,10 @@ mandatory = true
 versionRange = "[1.18.2-1.17.0-indev,)"
 ordering = "NONE"
 side = "BOTH"
+
+[[dependencies.iwcompatbridge]]
+modId = "patchouli"
+mandatory = false
+versionRange = "[1.18.2-66,)"
+ordering = "NONE"
+side = "BOTH"
