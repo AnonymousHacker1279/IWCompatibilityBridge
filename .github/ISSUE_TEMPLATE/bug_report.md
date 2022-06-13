@@ -1,5 +1,6 @@
 ---
-name: Bug report about: Create a report to help improve Immersive Weapons title: "[BUG] Short line describing the issue"
+name: Bug report about: Create a report to help improve Immersive Weapons Compatibility Bridge title: "[BUG] Short line
+describing the issue"
 labels: ''
 assignees: ''
 
@@ -21,6 +22,7 @@ If applicable, add screenshots to help explain your problem.
 
 - Forge Version
 - Immersive Weapons Version
+- Immersive Weapons Compatibility Bridge Version
 - Other installed mods
 - Debug and latest logs (saves/logs folder in your `.minecraft` directory)
 
