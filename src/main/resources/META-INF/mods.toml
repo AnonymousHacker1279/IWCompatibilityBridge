@@ -1,21 +1,19 @@
 modLoader = "javafml" #mandatory
 loaderVersion = "[40,)" #mandatory
 license = "MIT"
-issueTrackerURL = "https://github.com/AnonymousHacker1279/ImmersiveWeapons/issues" #optional
-
-# TODO: Replace displayURL, updateJSONURL, logoFile with proper values
+issueTrackerURL = "https://github.com/AnonymousHacker1279/IWCompatibilityBridge/issues" #optional
 
 [[mods]] #mandatory
 modId = "iwcompatbridge" #mandatory
 version = "${file.jarVersion}" #mandatory
-displayName = "Immersive Weapons Compatability Bridge" #mandatory
+displayName = "Immersive Weapons Compatibility Bridge" #mandatory
 displayURL = "https://www.curseforge.com/minecraft/mc-mods/immersive-weapons" #optional
-updateJSONURL = "https://raw.githubusercontent.com/AnonymousHacker1279/ImmersiveWeapons/master/update.json"
+updateJSONURL = "https://raw.githubusercontent.com/AnonymousHacker1279/IWCompatibilityBridge/master/update.json"
 logoFile = "logo.png" #optional
 credits = "Written by AnonymousHacker1279" #optional
 authors = "AnonymousHacker1279" #optional
 description = '''
-The Immersive Weapons Compatability Bridge adds compatability to several mods like JEI, WTHIT, and Patchouli.
+The Immersive Weapons Compatibility Bridge adds compatibility to several mods.
 '''
 
 [[dependencies.iwcompatbridge]] #optional
