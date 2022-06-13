@@ -33,7 +33,7 @@ side = "BOTH"
 [[dependencies.iwcompatbridge]]
 modId = "immersiveweapons"
 mandatory = true
-versionRange = "[1.18.2-1.17.0-indev,)"
+versionRange = "[1.18.2-1.17.0,)"
 ordering = "NONE"
 side = "BOTH"
 

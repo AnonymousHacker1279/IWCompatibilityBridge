@@ -8,7 +8,7 @@ plugins {
 repositories {
 	maven {
 		name "AnonymousHacker1279"
-		url "https://maven.anonymoushacker1279.tech/snapshots"
+		url "https://maven.anonymoushacker1279.tech/releases"
 	}
 	maven {
 		name "Progwml6 Maven"
@@ -193,7 +193,7 @@ publishing {
 	repositories {
 		maven {
 			name "AnonymousHacker1279"
-			url "https://maven.anonymoushacker1279.tech/snapshots"
+			url "https://maven.anonymoushacker1279.tech/releases"
 			credentials(PasswordCredentials)
 			authentication {
 				basic(BasicAuthentication)
