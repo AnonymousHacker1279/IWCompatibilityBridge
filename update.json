@@ -1,10 +1,11 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/immersive-weapons-compatibility-bridge",
 	"promos": {
-		"1.18.2-latest": "1.18.2-1.0.0",
-		"1.18.2-recommended": "1.18.2-1.0.0"
+		"1.18.2-latest": "1.18.2-1.0.1",
+		"1.18.2-recommended": "1.18.2-1.0.1"
 	},
 	"1.18.2": {
+		"1.18.2-1.0.1": "Minor patch release - https://github.com/AnonymousHacker1279/IWCompatibilityBridge/releases/tag/v1.0.1",
 		"1.18.2-1.0.0": "Grand release - https://github.com/AnonymousHacker1279/IWCompatibilityBridge/releases/tag/v1.0.0"
 	}
 }
