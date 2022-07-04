@@ -15,7 +15,6 @@ import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.immersiveweapons.client.gui.screen.TeslaSynthesizerScreen;
 import tech.anonymoushacker1279.immersiveweapons.container.TeslaSynthesizerContainer;
 import tech.anonymoushacker1279.immersiveweapons.init.DeferredRegistryHandler;
-import tech.anonymoushacker1279.immersiveweapons.item.crafting.CustomRecipeTypes;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.TeslaSynthesizerRecipe;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category.TeslaSynthesizerRecipeCategory;
@@ -61,7 +60,7 @@ public class JEIPluginHandler implements IModPlugin {
 	public void registerRecipes(@NotNull IRecipeRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
 			List<TeslaSynthesizerRecipe> teslaSynthesizerRecipes = Objects.requireNonNull(getRecipeManager())
-					.getAllRecipesFor(CustomRecipeTypes.TESLA_SYNTHESIZER);
+					.getAllRecipesFor(DeferredRegistryHandler.TESLA_SYNTHESIZER_RECIPE_TYPE.get());
 
 			registration.addRecipes(TESLA_SYNTHESIZER, teslaSynthesizerRecipes);
 		}
@@ -87,7 +86,8 @@ public class JEIPluginHandler implements IModPlugin {
 	@Override
 	public void registerRecipeTransferHandlers(@NotNull IRecipeTransferRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
-			registration.addRecipeTransferHandler(TeslaSynthesizerContainer.class, TESLA_SYNTHESIZER,
+			registration.addRecipeTransferHandler(TeslaSynthesizerContainer.class,
+					DeferredRegistryHandler.TESLA_SYNTHESIZER_CONTAINER.get(), TESLA_SYNTHESIZER,
 					0, 3, 0, 35);
 		}
 	}

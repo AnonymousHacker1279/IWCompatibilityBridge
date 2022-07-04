@@ -2,10 +2,9 @@
 
 # Immersive Weapons Compatibility Bridge
 
-![CodeQL](https://github.com/AnonymousHacker1279/ImmersiveWeapons-Mod/workflows/CodeQL/badge.svg)
-[![](http://cf.way2muchnoise.eu/full_494454_Downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/immersive-weapons)
-[![](http://cf.way2muchnoise.eu/versions/494454.svg)](https://www.curseforge.com/minecraft/mc-mods/immersive-weapons)
-[![CodeFactor](https://www.codefactor.io/repository/github/anonymoushacker1279/immersiveweapons/badge/master)](https://www.codefactor.io/repository/github/anonymoushacker1279/immersiveweapons/overview/master)
+[![](http://cf.way2muchnoise.eu/full_633345_Downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/immersive-weapons)
+[![](http://cf.way2muchnoise.eu/versions/633345.svg)](https://www.curseforge.com/minecraft/mc-mods/immersive-weapons)
+[![CodeFactor](https://www.codefactor.io/repository/github/anonymoushacker1279/iwcompatibilitybridge/badge/master)](https://www.codefactor.io/repository/github/anonymoushacker1279/immersiveweapons/overview/master)
 
 ## Add inter-mod compatibility to Immersive Weapons
 
@@ -41,20 +40,8 @@ join. There is also a lorebook item which can be found in certain structures aro
 
 ### Project MMO
 
-PMMO support consists of EXP-granting events for crafting objects with the Small Parts Table or Tesla Synthesizer.
-
-PMMO requires a second step to set up properly. You must define the XP value triggers in your `xp_value_trigger.json`
-configuration. For example, setting up the Small Parts Table would require the following:
-
-```json
-{
-	"immersiveweapons.small_parts_table.craft": {
-		"crafting": 10
-	}
-}
-```
-
-The key for the Tesla Synthesizer is `immersiveweapons.tesla_synthesizer.craft`.
+PMMO support consists of EXP-granting events for crafting objects with the Small Parts Table or Tesla Synthesizer. More
+events to come!
 
 #### Disabling: Set the `enable_pmmo` key to `false` in the configuration.
 
