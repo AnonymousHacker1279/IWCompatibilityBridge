@@ -3,7 +3,8 @@ package tech.anonymoushacker1279.iwcompatbridge.plugin.patchouli.components;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.EntityType;
@@ -39,10 +40,10 @@ public class EntityStatisticsComponent implements ICustomComponent {
 	                   float partialTicks, int mouseX, int mouseY) {
 
 		Font font = Minecraft.getInstance().font;
-		TranslatableComponent stats;
+		MutableComponent stats;
 		if (statisticType.equals("entities_killed")) {
 			int entitiesKilled = EntityStatisticsProcessor.STATS_DICT.get(entityType)[0];
-			stats = new TranslatableComponent("iwcompatbridge.lorebook.entity_statistics.entities_killed", entitiesKilled);
+			stats = Component.translatable("iwcompatbridge.lorebook.entity_statistics.entities_killed", entitiesKilled);
 
 			int wY = y + 15;
 			for (FormattedCharSequence charSequence : font.split(KilledEntityTiers.getTier(entitiesKilled), 100)) {
@@ -51,9 +52,9 @@ public class EntityStatisticsComponent implements ICustomComponent {
 			}
 		} else if (statisticType.equals("deaths_by_entity")) {
 			int deathsByEntity = EntityStatisticsProcessor.STATS_DICT.get(entityType)[1];
-			stats = new TranslatableComponent("iwcompatbridge.lorebook.entity_statistics.deaths_by_entity", deathsByEntity);
+			stats = Component.translatable("iwcompatbridge.lorebook.entity_statistics.deaths_by_entity", deathsByEntity);
 		} else {
-			stats = new TranslatableComponent("null");
+			stats = Component.literal("null");
 		}
 
 		int statsWidth = font.width(stats);

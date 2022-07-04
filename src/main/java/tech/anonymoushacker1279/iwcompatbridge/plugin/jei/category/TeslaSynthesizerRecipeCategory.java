@@ -2,20 +2,19 @@ package tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category;
 
 import com.google.common.cache.*;
 import com.mojang.blaze3d.vertex.PoseStack;
+import mezz.jei.api.constants.ModIds;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.*;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.recipe.IFocusGroup;
-import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.*;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import mezz.jei.config.Constants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -23,14 +22,16 @@ import org.jetbrains.annotations.NotNull;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.immersiveweapons.init.DeferredRegistryHandler;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.TeslaSynthesizerRecipe;
+import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPluginHandler;
 
 public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynthesizerRecipe> {
 
-	public static final ResourceLocation UID = new ResourceLocation(ImmersiveWeapons.MOD_ID, "tesla_synthesizer");
 	private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(ImmersiveWeapons.MOD_ID,
 			"textures/gui/jei/tesla_synthesizer.png");
 	private static final ResourceLocation CONTAINER_TEXTURE = new ResourceLocation(ImmersiveWeapons.MOD_ID,
 			"textures/gui/container/tesla_synthesizer.png");
+	private static final ResourceLocation RECIPE_GUI_VANILLA = new ResourceLocation(ModIds.JEI_ID,
+			"textures/gui/gui_vanilla.png");
 	private final IDrawable background;
 	private final IDrawable icon;
 	private final LoadingCache<Integer, IDrawableAnimated> cachedArrows;
@@ -43,7 +44,7 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 	 * @param guiHelper a <code>IGuiHelper</code> instance
 	 */
 	public TeslaSynthesizerRecipeCategory(IGuiHelper guiHelper) {
-		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM,
+		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
 				new ItemStack(DeferredRegistryHandler.TESLA_SYNTHESIZER.get()));
 
 		background = guiHelper.createDrawable(GUI_TEXTURE, 0, 0, 132, 54);
@@ -57,7 +58,7 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 				.build(new CacheLoader<>() {
 					@Override
 					public @NotNull IDrawableAnimated load(@NotNull Integer cookTime) {
-						return guiHelper.drawableBuilder(Constants.RECIPE_GUI_VANILLA, 82, 128, 24, 17)
+						return guiHelper.drawableBuilder(RECIPE_GUI_VANILLA, 82, 128, 24, 17)
 								.buildAnimated(cookTime, IDrawableAnimated.StartDirection.LEFT, false);
 					}
 				});
@@ -83,8 +84,8 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 		int cookTime = recipe.getCookTime();
 		if (cookTime > 0) {
 			int cookTimeSeconds = cookTime / 20;
-			TranslatableComponent timeString = new TranslatableComponent("gui.jei.category.smelting.time.seconds", cookTimeSeconds);
-			TranslatableComponent noteString = new TranslatableComponent("gui.jei.category.tesla_synthesizer.note");
+			MutableComponent timeString = Component.translatable("gui.jei.category.smelting.time.seconds", cookTimeSeconds);
+			MutableComponent noteString = Component.translatable("gui.jei.category.tesla_synthesizer.note");
 			Minecraft minecraft = Minecraft.getInstance();
 			Font fontRenderer = minecraft.font;
 			int timeStringWidth = fontRenderer.width(timeString);
@@ -94,24 +95,9 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 		}
 	}
 
-	/**
-	 * Get the UID of the category.
-	 *
-	 * @return ResourceLocation
-	 */
 	@Override
-	public @NotNull ResourceLocation getUid() {
-		return UID;
-	}
-
-	/**
-	 * Get the recipe class for this category.
-	 *
-	 * @return Class extending TeslaSynthesizerRecipe
-	 */
-	@Override
-	public @NotNull Class<? extends TeslaSynthesizerRecipe> getRecipeClass() {
-		return TeslaSynthesizerRecipe.class;
+	public @NotNull RecipeType<TeslaSynthesizerRecipe> getRecipeType() {
+		return JEIPluginHandler.TESLA_SYNTHESIZER;
 	}
 
 	/**
@@ -121,7 +107,7 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 	 */
 	@Override
 	public @NotNull Component getTitle() {
-		return new TranslatableComponent("gui.jei.category.tesla_synthesizer");
+		return Component.translatable("gui.jei.category.tesla_synthesizer");
 	}
 
 	/**

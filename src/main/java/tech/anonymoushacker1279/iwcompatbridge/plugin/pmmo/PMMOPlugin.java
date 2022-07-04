@@ -6,7 +6,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.immersiveweapons.api.IWPlugin;
 import tech.anonymoushacker1279.immersiveweapons.api.events.SmallPartsTableCraftEvent;
 import tech.anonymoushacker1279.immersiveweapons.api.events.TeslaSynthesizerCraftEvent;
@@ -41,12 +40,10 @@ public class PMMOPlugin implements IWPlugin {
 	}
 
 	public static void awardSmallPartsTableCraftXP(ServerPlayer player) {
-		APIUtils.awardXpTrigger(player.getUUID(), ImmersiveWeapons.MOD_ID + ".small_parts_table.craft",
-				null, true, false);
+		APIUtils.addXp("craft", player, 10);
 	}
 
 	public static void awardTeslaSynthesizerCraftXP(ServerPlayer player) {
-		APIUtils.awardXpTrigger(player.getUUID(), ImmersiveWeapons.MOD_ID + ".tesla_synthesizer.craft",
-				null, true, false);
+		APIUtils.addXp("craft", player, 50);
 	}
 }

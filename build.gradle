@@ -128,7 +128,9 @@ dependencies {
 	implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${terrablender_version}")
 
 	// Include JEI
-	implementation fg.deobf("mezz.jei:jei-${jei_version}")
+	compileOnly fg.deobf("mezz.jei:jei-1.19-common-api:${jei_version}")
+	compileOnly fg.deobf("mezz.jei:jei-1.19-forge-api:${jei_version}")
+	runtimeOnly fg.deobf("mezz.jei:jei-1.19-forge:${jei_version}")
 	// Include WTHIT and badpackets
 	compileOnly fg.deobf("mcp.mobius.waila:wthit-api:forge-${wthit_version}")
 	runtimeOnly fg.deobf("mcp.mobius.waila:wthit:forge-${wthit_version}")
