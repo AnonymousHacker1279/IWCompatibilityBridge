@@ -2,9 +2,9 @@
 
 # Immersive Weapons Compatibility Bridge
 
-[![](http://cf.way2muchnoise.eu/full_633345_Downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/immersive-weapons)
-[![](http://cf.way2muchnoise.eu/versions/633345.svg)](https://www.curseforge.com/minecraft/mc-mods/immersive-weapons)
-[![CodeFactor](https://www.codefactor.io/repository/github/anonymoushacker1279/iwcompatibilitybridge/badge/master)](https://www.codefactor.io/repository/github/anonymoushacker1279/immersiveweapons/overview/master)
+[![](http://cf.way2muchnoise.eu/full_633345_Downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/immersive-weapons-compatibility-bridge)
+[![](http://cf.way2muchnoise.eu/versions/633345.svg)](https://www.curseforge.com/minecraft/mc-mods/immersive-weapons-compatibility-bridge)
+[![CodeFactor](https://www.codefactor.io/repository/github/anonymoushacker1279/iwcompatibilitybridge/badge/master)](https://www.codefactor.io/repository/github/anonymoushacker1279/iwcompatibilitybridge/overview/master)
 
 ## Add inter-mod compatibility to Immersive Weapons
 
