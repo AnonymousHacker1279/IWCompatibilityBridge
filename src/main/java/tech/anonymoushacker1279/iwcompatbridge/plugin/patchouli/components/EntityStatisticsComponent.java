@@ -73,6 +73,6 @@ public class EntityStatisticsComponent implements ICustomComponent {
 		textColor = Integer.parseInt(colorVar.unwrap().getAsString(), 16);
 		statisticType = statTypeVar.unwrap().getAsString();
 		itemStackIcon = new ItemStack(ForgeRegistries.ITEMS.getValue(ResourceLocation.tryParse(iconVar.unwrap().getAsString())));
-		entityType = ForgeRegistries.ENTITIES.getValue(ResourceLocation.tryParse(entityVar.unwrap().getAsString()));
+		entityType = ForgeRegistries.ENTITY_TYPES.getValue(ResourceLocation.tryParse(entityVar.unwrap().getAsString()));
 	}
 }
