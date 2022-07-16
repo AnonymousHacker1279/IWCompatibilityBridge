@@ -1,7 +1,7 @@
 package tech.anonymoushacker1279.iwcompatbridge.plugin.wthit;
 
 import mcp.mobius.waila.api.IRegistrar;
-import tech.anonymoushacker1279.immersiveweapons.block.trap.PitfallBlock;
+import tech.anonymoushacker1279.immersiveweapons.block.PitfallBlock;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.wthit.overrides.PitfallBlockOverride;
 
 public class WTHITPluginRegisters {
