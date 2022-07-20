@@ -1,12 +1,13 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/immersive-weapons-compatibility-bridge",
 	"promos": {
-		"1.19-latest": "1.19-1.1.1",
-		"1.19-recommended": "1.19-1.1.1",
+		"1.19-latest": "1.19-1.1.2",
+		"1.19-recommended": "1.19-1.1.2",
 		"1.18.2-latest": "1.18.2-1.0.2",
 		"1.18.2-recommended": "1.18.2-1.0.2"
 	},
 	"1.19": {
+		"1.19-1.1.2": "Fix crashes when PMMO is not installed - https://github.com/AnonymousHacker1279/IWCompatibilityBridge/releases/tag/v1.1.2",
 		"1.19-1.1.1": "Support modern versions of Forge - https://github.com/AnonymousHacker1279/IWCompatibilityBridge/releases/tag/v1.1.1",
 		"1.19-1.1.0": "Initial 1.19 release - https://github.com/AnonymousHacker1279/IWCompatibilityBridge/releases/tag/v1.1.0"
 	},
