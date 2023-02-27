@@ -12,7 +12,7 @@ The IWCB mod adds support for various mods. Those are:
 
 - Just Enough Items
 - What The Hell Is That?<sup>1</sup>
-- Patchouli
+- Lucent
 - Project MMO
 
 <sup>1 - WTHIT is a Waila fork; the plugin *may* work with other forks.</sup>
@@ -23,32 +23,41 @@ The IWCB mod adds support for various mods. Those are:
 
 JEI support consists of a recipe handler for the Tesla Synthesizer.
 
-#### Disabling: Set the `enable_jei` key to `false` in the configuration.
+**Disabling: Set the `enable_jei` key to `false` in the configuration.**
 
 ### What The Hell is That?
 
 WTHIT support consists of an override handler for the Pitfall block to make it appear like regular grass blocks.
 
-#### Disabling: Set the `enable_wthit` key to `false` in the configuration.
+**Disabling: Set the `enable_wthit` key to `false` in the configuration.**
 
-### Patchouli
+### Lucent
 
-Patchouli support consists of two books for guiding players. The Encyclopedia is the main one, and it is granted on
-join. There is also a lorebook item which can be found in certain structures around the world.
+Lucent support consists of adding dynamic lighting to various aspects of the game.
 
-#### Disabling: Use a datapack to remove the Patchouli books under `data/iwcompatbridge/patchouli_books`
+**Disabling: Set the `enable_lucent` key to `false` in the configuration. Some more basic aspects are handled via
+datapacks, so you will need to overwrite these as well.**
 
 ### Project MMO
 
 PMMO support consists of EXP-granting events for crafting objects with the Small Parts Table or Tesla Synthesizer. More
 events to come!
 
-#### Disabling: Set the `enable_pmmo` key to `false` in the configuration.
+**Disabling: Set the `enable_pmmo` key to `false` in the configuration.**
 
 ## Version Support
 
 Active development will always be focused on the latest Immersive Weapons version. Bugfixes may be ported to older
 versions, but you should always upgrade when possible.
+
+## Removed Mods
+
+### Patchouli
+
+Due to the lack of maintenance regarding newer versions and the sheer amount of work to maintain the books, it has been
+removed. Please consider using the [Official Wiki](https://anonymoushacker1279.tech/wiki/immersiveweapons) instead.
+
+*Do note that the wiki still requires a lot of work and there are missing entries. Please consider helping out!*
 
 ## Contributing
 

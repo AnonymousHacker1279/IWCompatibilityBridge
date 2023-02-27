@@ -1,11 +1,11 @@
 package tech.anonymoushacker1279.iwcompatbridge.plugin.wthit;
 
-import mcp.mobius.waila.api.*;
+import mcp.mobius.waila.api.IRegistrar;
+import mcp.mobius.waila.api.IWailaPlugin;
 import net.minecraftforge.fml.ModList;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 
-@WailaPlugin(id = ImmersiveWeapons.MOD_ID + ":waila_plugin")
 @SuppressWarnings("unused")
 public class WTHITPluginHandler implements IWailaPlugin {
 	private final ModList modList = ModList.get();

@@ -20,18 +20,20 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
-import tech.anonymoushacker1279.immersiveweapons.init.DeferredRegistryHandler;
+import tech.anonymoushacker1279.immersiveweapons.init.BlockRegistry;
+import tech.anonymoushacker1279.immersiveweapons.init.ItemRegistry;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.TeslaSynthesizerRecipe;
+import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPluginHandler;
 
 public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynthesizerRecipe> {
 
-	private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(ImmersiveWeapons.MOD_ID,
+	private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(IWCompatBridge.MOD_ID,
 			"textures/gui/jei/tesla_synthesizer.png");
 	private static final ResourceLocation CONTAINER_TEXTURE = new ResourceLocation(ImmersiveWeapons.MOD_ID,
 			"textures/gui/container/tesla_synthesizer.png");
 	private static final ResourceLocation RECIPE_GUI_VANILLA = new ResourceLocation(ModIds.JEI_ID,
-			"textures/gui/gui_vanilla.png");
+			"textures/jei/gui/gui_vanilla.png");
 	private final IDrawable background;
 	private final IDrawable icon;
 	private final LoadingCache<Integer, IDrawableAnimated> cachedArrows;
@@ -45,7 +47,7 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 	 */
 	public TeslaSynthesizerRecipeCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
-				new ItemStack(DeferredRegistryHandler.TESLA_SYNTHESIZER.get()));
+				new ItemStack(BlockRegistry.TESLA_SYNTHESIZER.get()));
 
 		background = guiHelper.createDrawable(GUI_TEXTURE, 0, 0, 132, 54);
 
@@ -145,6 +147,6 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 19)
 				.addItemStack(recipe.getResultItem());
 		builder.addSlot(RecipeIngredientRole.CATALYST, 51, 37)
-				.addItemStack(new ItemStack(DeferredRegistryHandler.MOLTEN_INGOT.get()));
+				.addItemStack(new ItemStack(ItemRegistry.MOLTEN_INGOT.get()));
 	}
 }

@@ -13,11 +13,12 @@ public class CommonConfig {
 	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_JEI_PLUGIN;
 	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_WTHIT_PLUGIN;
 	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_PMMO_PLUGIN;
-	
+	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_LUCENT_PLUGIN;
+
 	CommonConfig(ForgeConfigSpec.Builder builder) {
 		builder.push("Plugin Configuration");
 
-		builder.push("World border Settings");
+		builder.push("Plugin Settings");
 		ENABLE_JEI_PLUGIN = builder
 				.comment("Enable the JEI plugin")
 				.define("enable_jei", true);
@@ -27,6 +28,9 @@ public class CommonConfig {
 		ENABLE_PMMO_PLUGIN = builder
 				.comment("Enable the Project MMO plugin")
 				.define("enable_pmmo", true);
+		ENABLE_LUCENT_PLUGIN = builder
+				.comment("Enable the Lucent plugin")
+				.define("enable_lucent", true);
 		builder.pop();
 
 		builder.pop();
