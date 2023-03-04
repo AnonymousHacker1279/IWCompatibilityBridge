@@ -4,6 +4,7 @@ import com.legacy.lucent.api.EntityBrightness;
 import com.legacy.lucent.api.plugin.ILucentPlugin;
 import com.legacy.lucent.api.plugin.LucentPlugin;
 import tech.anonymoushacker1279.immersiveweapons.entity.projectile.*;
+import tech.anonymoushacker1279.immersiveweapons.entity.projectile.bullet.BulletEntity;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 
