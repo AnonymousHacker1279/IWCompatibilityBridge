@@ -1,5 +1,4 @@
 plugins {
-	id 'eclipse'
 	id 'maven-publish'
 	id 'net.minecraftforge.gradle' version '5.+'
 	id 'org.parchmentmc.librarian.forgegradle' version '1.+'
@@ -9,10 +8,14 @@ repositories {
 	maven {
 		name "AnonymousHacker1279"
 		url "https://maven.anonymoushacker1279.tech/releases"
+		credentials(PasswordCredentials)
+		authentication {
+			basic(BasicAuthentication)
+		}
 	}
 	maven {
-		name "Progwml6 Maven"
-		url "https://dvs1.progwml6.com/files/maven/"
+		name "Jared's Maven"
+		url 'https://maven.blamejared.com'
 	}
 	maven {
 		name "ModMaven"
@@ -27,13 +30,14 @@ repositories {
 		url "https://maven.bai.lol"
 	}
 	maven {
-		url 'https://maven.blamejared.com'
-	}
-	maven {
 		url "https://cursemaven.com"
 		content {
 			includeGroup "curse.maven"
 		}
+	}
+	maven {
+		name "Modding Legacy Maven"
+		url "https://maven.moddinglegacy.com/artifactory/modding-legacy/"
 	}
 }
 
@@ -61,7 +65,7 @@ minecraft {
 			property 'mixin.env.remapRefMap', 'true'
 			property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
-			jvmArgs '-Xmx4G', '-XX:+UseShenandoahGC'
+			jvmArgs '-Xmx6G', '-XX:+UseShenandoahGC'
 
 			mods {
 				iwcompatbridge {
@@ -81,7 +85,7 @@ minecraft {
 			property 'mixin.env.remapRefMap', 'true'
 			property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
-			jvmArgs '-Xmx4G', '-XX:+UseShenandoahGC'
+			jvmArgs '-Xmx6G', '-XX:+UseShenandoahGC'
 
 			mods {
 				iwcompatbridge {
@@ -103,7 +107,7 @@ minecraft {
 
 			args '--mod', 'iwcompatbridge', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
-			jvmArgs '-Xmx4G', '-XX:+UseShenandoahGC'
+			jvmArgs '-Xmx6G', '-XX:+UseShenandoahGC'
 
 			mods {
 				iwcompatbridge {
@@ -128,45 +132,18 @@ dependencies {
 	implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${terrablender_version}")
 
 	// Include JEI
-	compileOnly fg.deobf("mezz.jei:jei-1.19-common-api:${jei_version}")
-	compileOnly fg.deobf("mezz.jei:jei-1.19-forge-api:${jei_version}")
-	runtimeOnly fg.deobf("mezz.jei:jei-1.19-forge:${jei_version}")
+	compileOnly fg.deobf("mezz.jei:jei-1.19.3-common-api:${jei_version}")
+	compileOnly fg.deobf("mezz.jei:jei-1.19.3-forge-api:${jei_version}")
+	runtimeOnly fg.deobf("mezz.jei:jei-1.19.3-forge:${jei_version}")
 	// Include WTHIT and badpackets
 	compileOnly fg.deobf("mcp.mobius.waila:wthit-api:forge-${wthit_version}")
 	runtimeOnly fg.deobf("mcp.mobius.waila:wthit:forge-${wthit_version}")
 	implementation fg.deobf("lol.bai:badpackets:forge-${badpackets_version}")
-	// Include Patchouli
-	compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
-	runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 	// Include Project MMO
-	implementation fg.deobf("curse.maven:projectmmo-353935:${project_mmo_version}")
-}
-
-// This block of code expands all the gradle properties in the specified resource targets.
-// It copies them into the targets and expands all the defined properties.
-def resourceTargets = ['data/iwcompatbridge/patchouli_books/encyclopedia/book.json',
-                       'data/iwcompatbridge/patchouli_books/lorebook/book.json']
-def intoTargets = ["$rootDir/out/production/resources/", "$rootDir/out/production/${project.name}.main/", "$rootDir/bin/main/"]
-def replaceProperties = [build_version: version]
-processResources {
-	inputs.properties replaceProperties
-	replaceProperties.put 'project', project
-
-	filesMatching(resourceTargets) {
-		expand replaceProperties
-	}
-
-	intoTargets.each { target ->
-		if (file(target).exists()) {
-			copy {
-				from(sourceSets.main.resources) {
-					include resourceTargets
-					expand replaceProperties
-				}
-				into target
-			}
-		}
-	}
+	// TODO: Uncomment when released for 1.19.3
+	//implementation fg.deobf("curse.maven:projectmmo-353935:${project_mmo_version}")
+	// Include Lucent
+	implementation fg.deobf("curse.maven:lucent-493280:${lucent_version}")
 }
 
 // Add properties to JAR manifest
@@ -193,12 +170,17 @@ publishing {
 		}
 	}
 	repositories {
-		maven {
-			name "AnonymousHacker1279"
-			url "https://maven.anonymoushacker1279.tech/releases"
-			credentials(PasswordCredentials)
-			authentication {
-				basic(BasicAuthentication)
+		repositories {
+			maven {
+				name "AnonymousHacker1279"
+
+				def baseMavenUrl = "https://maven.anonymoushacker1279.tech/"
+				url version.contains("SNAPSHOT") ? baseMavenUrl + "snapshots" : baseMavenUrl + "releases"
+
+				credentials(PasswordCredentials)
+				authentication {
+					basic(BasicAuthentication)
+				}
 			}
 		}
 	}
@@ -206,4 +188,5 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+	options.fork = true // Use a separate JVM process for Java compilation
 }

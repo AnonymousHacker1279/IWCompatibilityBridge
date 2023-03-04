@@ -15,7 +15,7 @@ import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 @EventBusSubscriber(modid = IWCompatBridge.MOD_ID, bus = Bus.FORGE)
 public class PMMOPlugin implements IWPlugin {
 
-	private static boolean isPMMOInstalled = false;
+	private static boolean isInstalled = false;
 
 	@Override
 	public String getPluginName() {
@@ -30,20 +30,20 @@ public class PMMOPlugin implements IWPlugin {
 	@Override
 	public void init(FMLCommonSetupEvent event) {
 		if (areLoadingRequirementsMet()) {
-			isPMMOInstalled = true;
+			isInstalled = true;
 		}
 	}
 
 	@SubscribeEvent
 	public static void smallPartsTableCraftEvent(SmallPartsTableCraftEvent event) {
-		if (isPMMOInstalled && CommonConfig.ENABLE_PMMO_PLUGIN.get() && !event.getPlayer().level.isClientSide) {
+		if (isInstalled && CommonConfig.ENABLE_PMMO_PLUGIN.get() && !event.getPlayer().level.isClientSide) {
 			XPHandler.awardSmallPartsTableCraftXP((ServerPlayer) event.getPlayer());
 		}
 	}
 
 	@SubscribeEvent
 	public static void teslaSynthesizerCraftEvent(TeslaSynthesizerCraftEvent event) {
-		if (isPMMOInstalled && CommonConfig.ENABLE_PMMO_PLUGIN.get() && !event.getPlayer().level.isClientSide) {
+		if (isInstalled && CommonConfig.ENABLE_PMMO_PLUGIN.get() && !event.getPlayer().level.isClientSide) {
 			XPHandler.awardTeslaSynthesizerCraftXP((ServerPlayer) event.getPlayer());
 		}
 	}

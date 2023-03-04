@@ -13,10 +13,12 @@ import net.minecraftforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.NotNull;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.immersiveweapons.client.gui.screen.TeslaSynthesizerScreen;
-import tech.anonymoushacker1279.immersiveweapons.container.TeslaSynthesizerContainer;
-import tech.anonymoushacker1279.immersiveweapons.init.DeferredRegistryHandler;
+import tech.anonymoushacker1279.immersiveweapons.init.*;
+import tech.anonymoushacker1279.immersiveweapons.item.crafting.AstralCrystalRecipe;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.TeslaSynthesizerRecipe;
+import tech.anonymoushacker1279.immersiveweapons.menu.TeslaSynthesizerMenu;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
+import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category.AstralCrystalRecipeCategory;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category.TeslaSynthesizerRecipeCategory;
 
 import java.util.List;
@@ -28,6 +30,8 @@ public class JEIPluginHandler implements IModPlugin {
 
 	public static final RecipeType<TeslaSynthesizerRecipe> TESLA_SYNTHESIZER =
 			RecipeType.create(ImmersiveWeapons.MOD_ID, "tesla_synthesizer", TeslaSynthesizerRecipe.class);
+	public static final RecipeType<AstralCrystalRecipe> ASTRAL_CRYSTAL =
+			RecipeType.create(ImmersiveWeapons.MOD_ID, "astral_crystal", AstralCrystalRecipe.class);
 
 	/**
 	 * Get the plugin UID.
@@ -47,7 +51,8 @@ public class JEIPluginHandler implements IModPlugin {
 	@Override
 	public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
-			registration.addRecipeCatalyst(new ItemStack(DeferredRegistryHandler.TESLA_SYNTHESIZER.get()), TESLA_SYNTHESIZER);
+			registration.addRecipeCatalyst(new ItemStack(BlockRegistry.TESLA_SYNTHESIZER.get()), TESLA_SYNTHESIZER);
+			registration.addRecipeCatalyst(new ItemStack(BlockRegistry.ASTRAL_CRYSTAL.get()), ASTRAL_CRYSTAL);
 		}
 	}
 
@@ -60,9 +65,12 @@ public class JEIPluginHandler implements IModPlugin {
 	public void registerRecipes(@NotNull IRecipeRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
 			List<TeslaSynthesizerRecipe> teslaSynthesizerRecipes = Objects.requireNonNull(getRecipeManager())
-					.getAllRecipesFor(DeferredRegistryHandler.TESLA_SYNTHESIZER_RECIPE_TYPE.get());
+					.getAllRecipesFor(RecipeTypeRegistry.TESLA_SYNTHESIZER_RECIPE_TYPE.get());
+			List<AstralCrystalRecipe> astralCrystalRecipes = Objects.requireNonNull(getRecipeManager())
+					.getAllRecipesFor(RecipeTypeRegistry.ASTRAL_CRYSTAL_RECIPE_TYPE.get());
 
 			registration.addRecipes(TESLA_SYNTHESIZER, teslaSynthesizerRecipes);
+			registration.addRecipes(ASTRAL_CRYSTAL, astralCrystalRecipes);
 		}
 	}
 
@@ -75,6 +83,7 @@ public class JEIPluginHandler implements IModPlugin {
 	public void registerCategories(@NotNull IRecipeCategoryRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
 			registration.addRecipeCategories(new TeslaSynthesizerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+			registration.addRecipeCategories(new AstralCrystalRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 		}
 	}
 
@@ -86,8 +95,8 @@ public class JEIPluginHandler implements IModPlugin {
 	@Override
 	public void registerRecipeTransferHandlers(@NotNull IRecipeTransferRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
-			registration.addRecipeTransferHandler(TeslaSynthesizerContainer.class,
-					DeferredRegistryHandler.TESLA_SYNTHESIZER_CONTAINER.get(), TESLA_SYNTHESIZER,
+			registration.addRecipeTransferHandler(TeslaSynthesizerMenu.class,
+					MenuTypeRegistry.TESLA_SYNTHESIZER_MENU.get(), TESLA_SYNTHESIZER,
 					0, 3, 0, 35);
 		}
 	}

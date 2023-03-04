@@ -1,14 +1,6 @@
 {
-	"item.iwcompatbridge.encyclopedia": "Encyclopedia",
-	"item.iwcompatbridge.lorebook": "Oppslukende Legender",
-	"iwcompatbridge.encyclopedia.landing": "Immersive Weapons is $(m)a weapons mod$() more than just a weapons mod aiming to spice up your combat skills.$(br2)The Encyclopedia is your go-to solution for finding information.",
-	"iwcompatbridge.lorebook.landing": "The secrets of the universe, as described by me, Hans.",
-	"iwcompatbridge.lorebook.entity_statistics.entities_killed": "Entities Killed: %s",
-	"iwcompatbridge.lorebook.entity_statistics.deaths_by_entity": "Deaths by Entity: %s",
-	"iwcompatbridge.lorebook.killed_entity_tiers.passive": "You haven't destroyed a single life.",
-	"iwcompatbridge.lorebook.killed_entity_tiers.murderer": "You are an aspiring murderer.",
-	"iwcompatbridge.lorebook.killed_entity_tiers.serial_killer": "You are becoming quite like a serial killer.",
-	"iwcompatbridge.lorebook.killed_entity_tiers.cult_leader": "You must be leading a death cult.",
-	"iwcompatbridge.lorebook.killed_entity_tiers.slayer": "You have slayed many, and are showing no signs of stopping soon.",
-	"iwcompatbridge.lorebook.killed_entity_tiers.kill_em_all": "By now, you've probably killed 'em all!"
+	"gui.jei.category.small_parts": "Small Parts Crafting",
+	"gui.jei.category.tesla_synthesizer": "Tesla Synthesizing",
+	"gui.jei.category.astral_crystal": "Astral Crystal Sorcery",
+	"gui.jei.category.tesla_synthesizer.note": "*32x speed"
 }
