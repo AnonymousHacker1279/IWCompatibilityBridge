@@ -7,6 +7,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.*;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -91,7 +92,7 @@ public class AstralCrystalRecipeCategory implements IRecipeCategory<AstralCrysta
 		builder.addSlot(RecipeIngredientRole.CATALYST, 54, 3)
 				.addIngredients(secondaryMaterial);
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 79, 29)
-				.addItemStack(recipe.getResultItem());
+				.addItemStack(recipe.getResultItem(RegistryAccess.EMPTY));
 
 	}
 }

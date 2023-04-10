@@ -13,6 +13,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -145,7 +146,7 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 		builder.addSlot(RecipeIngredientRole.INPUT, 51, 1)
 				.addIngredients(recipe.getIngredients().get(2));
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 110, 19)
-				.addItemStack(recipe.getResultItem());
+				.addItemStack(recipe.getResultItem(RegistryAccess.EMPTY));
 		builder.addSlot(RecipeIngredientRole.CATALYST, 51, 37)
 				.addItemStack(new ItemStack(ItemRegistry.MOLTEN_INGOT.get()));
 	}
