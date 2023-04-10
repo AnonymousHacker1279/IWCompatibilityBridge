@@ -7,7 +7,10 @@ plugins {
 repositories {
 	maven {
 		name "AnonymousHacker1279"
-		url "https://maven.anonymoushacker1279.tech/releases"
+
+		def baseMavenUrl = "https://maven.anonymoushacker1279.tech/"
+		url immersiveweapons_version.contains("SNAPSHOT") ? baseMavenUrl + "snapshots" : baseMavenUrl + "releases"
+
 		credentials(PasswordCredentials)
 		authentication {
 			basic(BasicAuthentication)
@@ -65,7 +68,7 @@ minecraft {
 			property 'mixin.env.remapRefMap', 'true'
 			property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
-			jvmArgs '-Xmx6G', '-XX:+UseShenandoahGC'
+			jvmArgs '-Xmx6G', '-XX:+AllowEnhancedClassRedefinition'
 
 			mods {
 				iwcompatbridge {
@@ -85,7 +88,7 @@ minecraft {
 			property 'mixin.env.remapRefMap', 'true'
 			property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
-			jvmArgs '-Xmx6G', '-XX:+UseShenandoahGC'
+			jvmArgs '-Xmx6G', '-XX:+AllowEnhancedClassRedefinition'
 
 			mods {
 				iwcompatbridge {
@@ -107,7 +110,7 @@ minecraft {
 
 			args '--mod', 'iwcompatbridge', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
-			jvmArgs '-Xmx6G', '-XX:+UseShenandoahGC'
+			jvmArgs '-Xmx6G', '-XX:+AllowEnhancedClassRedefinition'
 
 			mods {
 				iwcompatbridge {
@@ -122,7 +125,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-	implementation 'org.jetbrains:annotations:23.0.0'
+	implementation 'org.jetbrains:annotations:24.0.1'
 
 	minecraft "net.minecraftforge:forge:${forge_version}"
 
@@ -132,9 +135,9 @@ dependencies {
 	implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${terrablender_version}")
 
 	// Include JEI
-	compileOnly fg.deobf("mezz.jei:jei-1.19.3-common-api:${jei_version}")
-	compileOnly fg.deobf("mezz.jei:jei-1.19.3-forge-api:${jei_version}")
-	runtimeOnly fg.deobf("mezz.jei:jei-1.19.3-forge:${jei_version}")
+	compileOnly fg.deobf("mezz.jei:jei-1.19.4-common-api:${jei_version}")
+	compileOnly fg.deobf("mezz.jei:jei-1.19.4-forge-api:${jei_version}")
+	runtimeOnly fg.deobf("mezz.jei:jei-1.19.4-forge:${jei_version}")
 	// Include WTHIT and badpackets
 	compileOnly fg.deobf("mcp.mobius.waila:wthit-api:forge-${wthit_version}")
 	runtimeOnly fg.deobf("mcp.mobius.waila:wthit:forge-${wthit_version}")
@@ -143,7 +146,7 @@ dependencies {
 	// TODO: Uncomment when released for 1.19.3
 	//implementation fg.deobf("curse.maven:projectmmo-353935:${project_mmo_version}")
 	// Include Lucent
-	implementation fg.deobf("curse.maven:lucent-493280:${lucent_version}")
+	implementation fg.deobf("com.legacy:lucent:${lucent_version}")
 }
 
 // Add properties to JAR manifest
