@@ -14,6 +14,7 @@ public class CommonConfig {
 	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_WTHIT_PLUGIN;
 	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_PMMO_PLUGIN;
 	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_LUCENT_PLUGIN;
+	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_CURIOS_PLUGIN;
 
 	CommonConfig(ForgeConfigSpec.Builder builder) {
 		builder.push("Plugin Configuration");
@@ -31,6 +32,9 @@ public class CommonConfig {
 		ENABLE_LUCENT_PLUGIN = builder
 				.comment("Enable the Lucent plugin")
 				.define("enable_lucent", true);
+		ENABLE_CURIOS_PLUGIN = builder
+				.comment("Enable the Curios plugin")
+				.define("enable_curios", true);
 		builder.pop();
 
 		builder.pop();

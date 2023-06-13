@@ -2,5 +2,8 @@
 	"gui.jei.category.small_parts": "Small Parts Crafting",
 	"gui.jei.category.tesla_synthesizer": "Tesla Synthesizing",
 	"gui.jei.category.astral_crystal": "Astral Crystal Sorcery",
-	"gui.jei.category.tesla_synthesizer.note": "*16x speed"
+	"gui.jei.category.tesla_synthesizer.note": "*16x speed",
+	"iwcompatbridge.wthit.damageable_block.health": "Health: %s/%s",
+	"iwcompatbridge.wthit.damageable_block.stage": "Stage: %s/%s",
+	"curios.identifier.spirit": "Spirit"
 }

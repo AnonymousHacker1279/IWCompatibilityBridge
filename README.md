@@ -15,6 +15,7 @@ The IWCB mod adds support for various mods. Those are:
 - What The Hell Is That?<sup>1</sup>
 - Lucent
 - Project MMO
+- Curios
 
 <sup>1 - WTHIT is a Waila fork; the plugin *may* work with other forks.</sup>
 
@@ -29,6 +30,7 @@ JEI support consists of a recipe handler for the Tesla Synthesizer.
 ### What The Hell is That?
 
 WTHIT support consists of an override handler for the Pitfall block to make it appear like regular grass blocks.
+It will also display health and damage stages of damageable blocks (such as wooden spikes or barbed wire).
 
 **Disabling: Set the `enable_wthit` key to `false` in the configuration.**
 
@@ -45,6 +47,13 @@ PMMO support consists of EXP-granting events for crafting objects with the Small
 events to come!
 
 **Disabling: Set the `enable_pmmo` key to `false` in the configuration.**
+
+### Curios
+
+Curios support consists of slots for Immersive Weapons' accessory items. When Curios is loaded, items will no longer
+need to sit in the inventory to work, and can instead be placed in the appropriate Curios slot.
+
+**Disabling: Set the `enable_curios` key to `false` in the configuration.**
 
 ## Version Support
 

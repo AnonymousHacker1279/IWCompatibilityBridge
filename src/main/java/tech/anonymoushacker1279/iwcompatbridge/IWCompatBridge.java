@@ -8,6 +8,7 @@ import net.minecraftforge.fml.config.ModConfig.Type;
 import org.slf4j.Logger;
 import tech.anonymoushacker1279.immersiveweapons.api.PluginHandler;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
+import tech.anonymoushacker1279.iwcompatbridge.plugin.curios.CuriosPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.lucent.LucentPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.pmmo.PMMOPlugin;
@@ -37,5 +38,6 @@ public class IWCompatBridge {
 		PluginHandler.registerPlugin(new WTHITPlugin());
 		PluginHandler.registerPlugin(new PMMOPlugin());
 		PluginHandler.registerPlugin(new LucentPlugin());
+		PluginHandler.registerPlugin(new CuriosPlugin());
 	}
 }
