@@ -1,10 +1,11 @@
 plugins {
 	id 'maven-publish'
-	id 'net.minecraftforge.gradle' version '5.+'
+	id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 	id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
 repositories {
+	mavenLocal()
 	maven {
 		name "AnonymousHacker1279"
 
@@ -30,7 +31,7 @@ repositories {
 	}
 	maven {
 		name "Bai Maven"
-		url "https://maven.bai.lol"
+		url "https://maven2.bai.lol"
 	}
 	maven {
 		url "https://cursemaven.com"
@@ -41,6 +42,9 @@ repositories {
 	maven {
 		name "Modding Legacy Maven"
 		url "https://maven.moddinglegacy.com/artifactory/modding-legacy/"
+	}
+	maven {
+		url = "https://maven.theillusivec4.top/"
 	}
 }
 
@@ -143,10 +147,13 @@ dependencies {
 	runtimeOnly fg.deobf("mcp.mobius.waila:wthit:forge-${wthit_version}")
 	implementation fg.deobf("lol.bai:badpackets:forge-${badpackets_version}")
 	// Include Project MMO
-	// TODO: Uncomment when released for 1.19.3
-	//implementation fg.deobf("curse.maven:projectmmo-353935:${project_mmo_version}")
+	implementation fg.deobf("curse.maven:projectmmo-353935:${project_mmo_version}")
 	// Include Lucent
 	implementation fg.deobf("com.legacy:lucent:${lucent_version}")
+
+	// Include Curios
+	runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+	compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
 }
 
 // Add properties to JAR manifest
