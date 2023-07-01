@@ -39,7 +39,7 @@ public class AccessoryBridge {
 	}
 
 	/**
-	 * A modified version of {} designed to work with Curios.
+	 * A modified version of {@link AccessoryItem#isAccessoryActive(Player, AccessoryItem)} designed to work with Curios.
 	 * Checks if a given accessory is equipped in a Curios slot.
 	 * <p>
 	 * Because this checks for the first item, it will always be an active one.
