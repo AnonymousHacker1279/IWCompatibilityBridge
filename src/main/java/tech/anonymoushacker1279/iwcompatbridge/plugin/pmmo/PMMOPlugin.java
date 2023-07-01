@@ -36,14 +36,14 @@ public class PMMOPlugin implements IWPlugin {
 
 	@SubscribeEvent
 	public static void smallPartsTableCraftEvent(SmallPartsTableCraftEvent event) {
-		if (isInstalled && CommonConfig.ENABLE_PMMO_PLUGIN.get() && !event.getPlayer().level.isClientSide) {
+		if (isInstalled && CommonConfig.ENABLE_PMMO_PLUGIN.get() && !event.getPlayer().level().isClientSide) {
 			XPHandler.awardSmallPartsTableCraftXP((ServerPlayer) event.getPlayer());
 		}
 	}
 
 	@SubscribeEvent
 	public static void teslaSynthesizerCraftEvent(TeslaSynthesizerCraftEvent event) {
-		if (isInstalled && CommonConfig.ENABLE_PMMO_PLUGIN.get() && !event.getPlayer().level.isClientSide) {
+		if (isInstalled && CommonConfig.ENABLE_PMMO_PLUGIN.get() && !event.getPlayer().level().isClientSide) {
 			XPHandler.awardTeslaSynthesizerCraftXP((ServerPlayer) event.getPlayer());
 		}
 	}

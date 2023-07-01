@@ -10,7 +10,6 @@ import tech.anonymoushacker1279.immersiveweapons.api.PluginHandler;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.curios.CuriosPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPlugin;
-import tech.anonymoushacker1279.iwcompatbridge.plugin.lucent.LucentPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.pmmo.PMMOPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.wthit.WTHITPlugin;
 
@@ -37,7 +36,7 @@ public class IWCompatBridge {
 		PluginHandler.registerPlugin(new JEIPlugin());
 		PluginHandler.registerPlugin(new WTHITPlugin());
 		PluginHandler.registerPlugin(new PMMOPlugin());
-		PluginHandler.registerPlugin(new LucentPlugin());
+		// PluginHandler.registerPlugin(new LucentPlugin());    // TODO: re-enable when Lucent updates
 		PluginHandler.registerPlugin(new CuriosPlugin());
 	}
 }

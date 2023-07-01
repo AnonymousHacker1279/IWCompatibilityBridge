@@ -1,11 +1,11 @@
 modLoader = "javafml" #mandatory
-loaderVersion = "[45,)" #mandatory
+loaderVersion = "${loader_version_range}" #mandatory
 license = "MIT"
 issueTrackerURL = "https://github.com/AnonymousHacker1279/IWCompatibilityBridge/issues" #optional
 
 [[mods]] #mandatory
 modId = "iwcompatbridge" #mandatory
-version = "${file.jarVersion}" #mandatory
+version = "${mod_version}" #mandatory
 displayName = "Immersive Weapons Compatibility Bridge" #mandatory
 displayURL = "https://www.curseforge.com/minecraft/mc-mods/immersive-weapons-compatibility-bridge" #optional
 updateJSONURL = "https://raw.githubusercontent.com/AnonymousHacker1279/IWCompatibilityBridge/master/update.json"
@@ -19,20 +19,20 @@ The Immersive Weapons Compatibility Bridge adds compatibility to several mods.
 [[dependencies.iwcompatbridge]] #optional
 modId = "forge" #mandatory
 mandatory = true #mandatory
-versionRange = "[45.0.39,)" #mandatory
+versionRange = "${forge_version_range}" #mandatory
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.4,1.20)"
+versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "immersiveweapons"
 mandatory = true
-versionRange = "[1.19.4-1.23.0,)"
+versionRange = "[1.20.1-1.24.0,)"
 ordering = "NONE"
 side = "BOTH"

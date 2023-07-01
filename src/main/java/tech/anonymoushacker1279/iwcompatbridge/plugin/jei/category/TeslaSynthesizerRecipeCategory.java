@@ -1,7 +1,6 @@
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category;
 
 import com.google.common.cache.*;
-import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.ModIds;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -12,6 +11,7 @@ import mezz.jei.api.recipe.*;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
@@ -73,17 +73,17 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 
 	@Override
 	public void draw(@NotNull TeslaSynthesizerRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView,
-	                 @NotNull PoseStack poseStack, double mouseX, double mouseY) {
+	                 @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
-		animatedFlame.draw(poseStack, 52, 20);
+		animatedFlame.draw(guiGraphics, 52, 20);
 
 		IDrawableAnimated arrow = getArrow(recipe);
-		arrow.draw(poseStack, 75, 19);
+		arrow.draw(guiGraphics, 75, 19);
 
-		drawText(recipe, poseStack);
+		drawText(recipe, guiGraphics);
 	}
 
-	protected void drawText(TeslaSynthesizerRecipe recipe, PoseStack poseStack) {
+	protected void drawText(TeslaSynthesizerRecipe recipe, GuiGraphics guiGraphics) {
 		int cookTime = recipe.getCookTime();
 		if (cookTime > 0) {
 			int cookTimeSeconds = cookTime / 20;
@@ -93,8 +93,8 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 			Font fontRenderer = minecraft.font;
 			int timeStringWidth = fontRenderer.width(timeString);
 			int noteStringWidth = fontRenderer.width(noteString);
-			fontRenderer.draw(poseStack, timeString, background.getWidth() - timeStringWidth, 45, 0xFF808080);
-			fontRenderer.draw(poseStack, noteString, background.getWidth() - noteStringWidth, 1, 0x4582b3);
+			guiGraphics.drawString(fontRenderer, timeString, background.getWidth() - timeStringWidth, 45, 0x808080);
+			guiGraphics.drawString(fontRenderer, noteString, background.getWidth() - noteStringWidth, 1, 0x4582b3);
 		}
 	}
 
