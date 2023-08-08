@@ -9,6 +9,8 @@ import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.List;
 
+import static tech.anonymoushacker1279.immersiveweapons.event.game_effects.AccessoryEffects.handleEffectScaling;
+
 /*
  * A class to handle Curios integration. Classes here are invoked by IW in the relevant areas, when IWCB is loaded
  * and the Curios plugin is registered.
@@ -32,7 +34,7 @@ public class AccessoryBridge {
 
 		for (SlotResult slotResult : curios) {
 			AccessoryItem accessoryItem = (AccessoryItem) slotResult.stack().getItem();
-			value += accessoryItem.getEffects().getOrDefault(type, 0d);
+			value += handleEffectScaling(accessoryItem, type, player);
 		}
 
 		return value;

@@ -9,7 +9,6 @@ public class CommonConfig {
 	public static final ForgeConfigSpec COMMON_SPEC;
 	public static final CommonConfig COMMON;
 
-	// World border settings
 	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_JEI_PLUGIN;
 	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_WTHIT_PLUGIN;
 	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_PMMO_PLUGIN;

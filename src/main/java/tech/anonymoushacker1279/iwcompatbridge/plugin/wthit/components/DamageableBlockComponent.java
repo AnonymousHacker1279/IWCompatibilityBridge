@@ -1,10 +1,10 @@
-package tech.anonymoushacker1279.iwcompatbridge.plugin.wthit.overrides;
+package tech.anonymoushacker1279.iwcompatbridge.plugin.wthit.components;
 
 import mcp.mobius.waila.api.*;
 import net.minecraft.network.chat.Component;
 import tech.anonymoushacker1279.immersiveweapons.blockentity.DamageableBlockEntity;
 
-public class DamageableBlockOverride implements IBlockComponentProvider {
+public class DamageableBlockComponent implements IBlockComponentProvider {
 
 	@Override
 	public void appendBody(ITooltip tooltip, IBlockAccessor accessor, IPluginConfig config) {
