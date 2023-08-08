@@ -1,9 +1,11 @@
 plugins {
 	id 'maven-publish'
-	id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+	id 'net.neoforged.gradle' version '[6.0.13, 6.2)'
 	id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+	id "me.hypherionmc.modutils.modpublisher" version "1.0.19"
 	id 'idea'
 }
+
 
 repositories {
 	mavenLocal()
@@ -95,7 +97,7 @@ minecraft {
 		}
 
 		data {
-			args '--mod', 'immersiveweapons', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+			args '--mod', 'iwcompatbridge', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
 			jvmArgs '-Xmx4G', '-XX:+AllowEnhancedClassRedefinition'
 		}
@@ -108,7 +110,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
 	implementation 'org.jetbrains:annotations:24.0.1'
 
-	minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+	minecraft "net.neoforged:forge:${minecraft_version}-${neoforge_version}"
 
 	// Include Immersive Weapons
 	implementation fg.deobf("tech.anonymoushacker1279.immersiveweapons:ImmersiveWeapons:${immersiveweapons_version}")
@@ -137,7 +139,7 @@ dependencies {
 tasks.named('processResources', ProcessResources).configure {
 	def replaceProperties = [
 			minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
-			forge_version       : forge_version, forge_version_range: forge_version_range,
+			neoforge_version    : neoforge_version, neoforge_version_range: neoforge_version_range,
 			loader_version_range: loader_version_range, mod_version: mod_version
 	]
 	inputs.properties replaceProperties
@@ -150,7 +152,7 @@ tasks.named('processResources', ProcessResources).configure {
 tasks.named('jar', Jar).configure {
 	manifest {
 		attributes([
-				'Specification-Title'     : "immersiveweapons",
+				'Specification-Title'     : "iwcompatbridge",
 				'Specification-Vendor'    : "AnonymousHacker1279",
 				'Specification-Version'   : '1',
 				'Implementation-Title'    : project.name,
@@ -182,6 +184,41 @@ publishing {
 			}
 		}
 	}
+}
+
+if (file("RELEASE_NOTES.md").exists()) {
+	publisher {
+		apiKeys {
+			// Load API keys from tokens.properties file
+			def tokens = new Properties()
+			file("tokens.properties").withInputStream {
+				stream -> tokens.load(stream)
+			}
+
+			curseforge = tokens.getProperty("curseforge")
+		}
+
+		debug = false
+		curseID = 633345
+		githubRepo = "AnonymousHacker1279/IWCompatiblityBridge"
+		versionType = "release"
+		// Read the contents of the RELEASE_NOTES.md file
+		changelog = file("RELEASE_NOTES.md").text
+		// Get the IWCB version from the mod_version variable, it's the last part of the version string
+		version = "v" + mod_version.split("-")[1]
+		displayName = "Immersive Weapons Compatibility Bridge - " + version
+		gameVersions = [minecraft_version]
+		loaders = ["forge", "neoforge"]
+		curseEnvironment = "both"
+		artifact = jar
+
+		curseDepends {
+			required = ["immersive-weapons"]
+			optional = ["jei", "wthit-forge", "curios", "lucent", "project-mmo"]
+		}
+	}
+} else {
+	println("No RELEASE_NOTES.md found, publishing outside of Maven is disabled.")
 }
 
 tasks.withType(JavaCompile).configureEach {
