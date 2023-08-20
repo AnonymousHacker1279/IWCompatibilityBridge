@@ -1,7 +1,14 @@
 package tech.anonymoushacker1279.iwcompatbridge.plugin.lucent;
 
-// TODO: uncomment when Lucent is updated
-/*
+import com.legacy.lucent.api.EntityBrightness;
+import com.legacy.lucent.api.plugin.ILucentPlugin;
+import com.legacy.lucent.api.plugin.LucentPlugin;
+import tech.anonymoushacker1279.immersiveweapons.entity.projectile.MortarShellEntity;
+import tech.anonymoushacker1279.immersiveweapons.entity.projectile.SmokeGrenadeEntity;
+import tech.anonymoushacker1279.immersiveweapons.entity.projectile.bullet.BulletEntity;
+import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
+import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
+
 @LucentPlugin
 public class LucentPluginHandler implements ILucentPlugin {
 
@@ -41,4 +48,4 @@ public class LucentPluginHandler implements ILucentPlugin {
 			}
 		}
 	}
-}*/
+}

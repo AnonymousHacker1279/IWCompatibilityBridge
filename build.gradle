@@ -128,8 +128,7 @@ dependencies {
 	// Include Project MMO
 	implementation fg.deobf("curse.maven:projectmmo-353935:${project_mmo_version}")
 	// Include Lucent
-	// TODO: reimplement when updated to 1.20.1
-	// implementation fg.deobf("com.legacy:lucent:${lucent_version}")
+	implementation fg.deobf("com.legacy:lucent:${lucent_version}")
 
 	// Include Curios
 	runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
@@ -196,11 +195,13 @@ if (file("RELEASE_NOTES.md").exists()) {
 			}
 
 			curseforge = tokens.getProperty("curseforge")
+			modrinth = tokens.getProperty("modrinth")
 		}
 
 		debug = false
 		curseID = 633345
-		githubRepo = "AnonymousHacker1279/IWCompatiblityBridge"
+		modrinthID = "SAUGybfH"
+		githubRepo = "AnonymousHacker1279/IWCompatibilityBridge"
 		versionType = "release"
 		// Read the contents of the RELEASE_NOTES.md file
 		changelog = file("RELEASE_NOTES.md").text
@@ -215,6 +216,11 @@ if (file("RELEASE_NOTES.md").exists()) {
 		curseDepends {
 			required = ["immersive-weapons"]
 			optional = ["jei", "wthit-forge", "curios", "lucent", "project-mmo"]
+		}
+
+		modrinthDepends {
+			required = ["QZFdnUQ5"]
+			optional = ["u6dRKJwZ", "6AQIaxuO", "vvuO3ImH", "JE0fgMUp", "KFQYC1Uy"]
 		}
 	}
 } else {
