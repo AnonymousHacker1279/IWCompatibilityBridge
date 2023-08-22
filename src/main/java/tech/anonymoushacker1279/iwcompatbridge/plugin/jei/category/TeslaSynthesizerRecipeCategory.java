@@ -93,8 +93,8 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 			Font fontRenderer = minecraft.font;
 			int timeStringWidth = fontRenderer.width(timeString);
 			int noteStringWidth = fontRenderer.width(noteString);
-			guiGraphics.drawString(fontRenderer, timeString, background.getWidth() - timeStringWidth, 45, 0x808080);
-			guiGraphics.drawString(fontRenderer, noteString, background.getWidth() - noteStringWidth, 1, 0x4582b3);
+			guiGraphics.drawString(fontRenderer, timeString, background.getWidth() - timeStringWidth, 45, 0x808080, false);
+			guiGraphics.drawString(fontRenderer, noteString, background.getWidth() - noteStringWidth, 1, 0x4582b3, false);
 		}
 	}
 

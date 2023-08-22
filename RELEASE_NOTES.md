@@ -1,16 +1,11 @@
-This release supports IW v1.25.0. As with IW, it has moved to NeoForge. No new releases will be designed for the classic
-Forge modloader.
+This release supports IW v1.25.1. It re-implements Lucent support, as well as includes two new JEI recipe handlers.
 
-The mod may be compatible with both modloaders, but it is not guaranteed to work. If you encounter issues on Forge,
-please try using NeoForge first.
+### New Features
 
-### Feature Changes / Additions
+- Lucent support re-implemented
+- Barrel tap recipe type added to JEI plugin
+- Piston crushing recipe type added to JEI plugin
 
-- Update Curios plugin to support new accessories
-- Update WTHIT plugin to show trade reset times for the Skygazer and Skeleton Merchant entities
+### Bugfixes
 
-#### Other non-code changes include:
-
-- License assets under CC-BY-NC-SA 4.0 (code is still under MIT)
-- Branding changes, including new logos and cover art on description pages (credit to `@shinyflareon` on Discord for the
-  new cover art!)
+- Remove text shadow in the Tesla Synthesizer JEI plugin
