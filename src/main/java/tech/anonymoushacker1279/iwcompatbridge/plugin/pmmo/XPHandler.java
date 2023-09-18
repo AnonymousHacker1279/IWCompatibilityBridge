@@ -6,10 +6,10 @@ import net.minecraft.server.level.ServerPlayer;
 public class XPHandler {
 
 	public static void awardSmallPartsTableCraftXP(ServerPlayer player) {
-		APIUtils.addXp("craft", player, 10);
+		APIUtils.addXp("crafting", player, 10);
 	}
 
 	public static void awardTeslaSynthesizerCraftXP(ServerPlayer player) {
-		APIUtils.addXp("craft", player, 50);
+		APIUtils.addXp("crafting", player, 50);
 	}
 }

@@ -1,6 +1,8 @@
 {
 	"replace": false,
 	"values": [
-		"immersiveweapons:satchel"
+		"immersiveweapons:satchel",
+		"immersiveweapons:holy_mantle",
+		"immersiveweapons:venstral_jar"
 	]
 }
