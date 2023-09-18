@@ -9,5 +9,6 @@
 	"iwcompatbridge.wthit.damageable_block.health": "Health: %s/%s",
 	"iwcompatbridge.wthit.damageable_block.stage": "Stage: %s/%s",
 	"iwcompatbridge.wthit.merchant.trade_refresh_time": "Trades refresh in: %s:%s",
+	"iwcompatbridge.wthit.tesla_synthesizer.progress": "Time remaining: %s:%s",
 	"curios.identifier.spirit": "Spirit"
 }

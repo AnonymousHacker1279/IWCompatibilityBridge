@@ -1,11 +1,9 @@
-This release supports IW v1.25.1. It re-implements Lucent support, as well as includes two new JEI recipe handlers.
+This release supports IW v1.26.0.
 
 ### New Features
 
-- Lucent support re-implemented
-- Barrel tap recipe type added to JEI plugin
-- Piston crushing recipe type added to JEI plugin
+- Cook time for the Tesla Synthesizer now displayed via WTHIT
 
 ### Bugfixes
 
-- Remove text shadow in the Tesla Synthesizer JEI plugin
+- Update category in PMMO plugin to be `crafting` instead of `craft`
