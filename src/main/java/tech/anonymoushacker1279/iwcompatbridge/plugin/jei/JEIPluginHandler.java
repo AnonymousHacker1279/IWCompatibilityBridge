@@ -13,9 +13,9 @@ import net.minecraftforge.fml.util.thread.EffectiveSide;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.NotNull;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
-import tech.anonymoushacker1279.immersiveweapons.client.gui.screen.TeslaSynthesizerScreen;
 import tech.anonymoushacker1279.immersiveweapons.init.*;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.*;
+import tech.anonymoushacker1279.immersiveweapons.menu.AmmunitionTableMenu;
 import tech.anonymoushacker1279.immersiveweapons.menu.TeslaSynthesizerMenu;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category.*;
@@ -35,6 +35,8 @@ public class JEIPluginHandler implements IModPlugin {
 			RecipeType.create(ImmersiveWeapons.MOD_ID, "barrel_tap", BarrelTapRecipe.class);
 	public static final RecipeType<PistonCrushingRecipe> PISTON_CRUSHING =
 			RecipeType.create(ImmersiveWeapons.MOD_ID, "piston_crushing", PistonCrushingRecipe.class);
+	public static final RecipeType<AmmunitionTableRecipe> AMMUNITION_TABLE =
+			RecipeType.create(ImmersiveWeapons.MOD_ID, "ammunition_table", AmmunitionTableRecipe.class);
 
 	/**
 	 * Get the plugin UID.
@@ -58,6 +60,7 @@ public class JEIPluginHandler implements IModPlugin {
 			registration.addRecipeCatalyst(new ItemStack(BlockRegistry.ASTRAL_CRYSTAL.get()), ASTRAL_CRYSTAL);
 			registration.addRecipeCatalyst(new ItemStack(BlockRegistry.BARREL_TAP.get()), BARREL_TAP);
 			registration.addRecipeCatalyst(new ItemStack(Blocks.PISTON), PISTON_CRUSHING);
+			registration.addRecipeCatalyst(new ItemStack(BlockRegistry.AMMUNITION_TABLE.get()), AMMUNITION_TABLE);
 		}
 	}
 
@@ -77,11 +80,14 @@ public class JEIPluginHandler implements IModPlugin {
 					.getAllRecipesFor(RecipeTypeRegistry.BARREL_TAP_RECIPE_TYPE.get());
 			List<PistonCrushingRecipe> pistonCrushingRecipes = Objects.requireNonNull(getRecipeManager())
 					.getAllRecipesFor(RecipeTypeRegistry.PISTON_CRUSHING_RECIPE_TYPE.get());
+			List<AmmunitionTableRecipe> ammunitionTableRecipes = Objects.requireNonNull(getRecipeManager())
+					.getAllRecipesFor(RecipeTypeRegistry.AMMUNITION_TABLE_RECIPE_TYPE.get());
 
 			registration.addRecipes(TESLA_SYNTHESIZER, teslaSynthesizerRecipes);
 			registration.addRecipes(ASTRAL_CRYSTAL, astralCrystalRecipes);
 			registration.addRecipes(BARREL_TAP, barrelTapRecipes);
 			registration.addRecipes(PISTON_CRUSHING, pistonCrushingRecipes);
+			registration.addRecipes(AMMUNITION_TABLE, ammunitionTableRecipes);
 		}
 	}
 
@@ -97,6 +103,7 @@ public class JEIPluginHandler implements IModPlugin {
 			registration.addRecipeCategories(new AstralCrystalRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 			registration.addRecipeCategories(new BarrelTapRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 			registration.addRecipeCategories(new PistonCrushingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+			registration.addRecipeCategories(new AmmunitionTableRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 		}
 	}
 
@@ -110,19 +117,10 @@ public class JEIPluginHandler implements IModPlugin {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
 			registration.addRecipeTransferHandler(TeslaSynthesizerMenu.class,
 					MenuTypeRegistry.TESLA_SYNTHESIZER_MENU.get(), TESLA_SYNTHESIZER,
-					0, 3, 0, 35);
-		}
-	}
-
-	/**
-	 * Register GUI handlers.
-	 *
-	 * @param registration an <code>IGuiHandlerRegistration</code> instance
-	 */
-	@Override
-	public void registerGuiHandlers(@NotNull IGuiHandlerRegistration registration) {
-		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
-			registration.addRecipeClickArea(TeslaSynthesizerScreen.class, 107, 16, 25, 15, TESLA_SYNTHESIZER);
+					0, 3, 4, 35);
+			registration.addRecipeTransferHandler(AmmunitionTableMenu.class,
+					MenuTypeRegistry.AMMUNITION_TABLE_MENU.get(), AMMUNITION_TABLE,
+					0, 6, 7, 36);
 		}
 	}
 
