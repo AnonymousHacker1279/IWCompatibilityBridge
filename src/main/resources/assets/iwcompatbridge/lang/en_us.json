@@ -6,6 +6,7 @@
 	"gui.jei.category.piston_crushing": "Piston Crushing",
 	"gui.jei.category.tesla_synthesizer.note": "*16x speed",
 	"gui.jei.category.piston_crushing.note": "%s-%s drops",
+	"gui.jei.category.ammunition_table": "Ammunition Crafting",
 	"iwcompatbridge.wthit.damageable_block.health": "Health: %s/%s",
 	"iwcompatbridge.wthit.damageable_block.stage": "Stage: %s/%s",
 	"iwcompatbridge.wthit.merchant.trade_refresh_time": "Trades refresh in: %s:%s",
