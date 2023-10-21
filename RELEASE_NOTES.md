@@ -1,9 +1,14 @@
-This release supports IW v1.27.0.
+This release includes some basic Mekanism ore processing recipes.
 
 ### New Features
 
-- JEI support for the Ammunition Table
+- Mekanism ore processing support for cobalt materials. This includes:
+	- Clumps
+	- Dusts / Dirty Dusts
+	- Ingots
+	- Ores
+	- Shards
 
 ### Bugfixes
 
-- Tesla Synthesizer cook time is no longer displayed at 0 seconds
+- Fix Curios being incorrectly defined as a mandatory dependency.

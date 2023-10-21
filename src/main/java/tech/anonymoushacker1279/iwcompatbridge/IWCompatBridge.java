@@ -5,9 +5,11 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig.Type;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import tech.anonymoushacker1279.immersiveweapons.api.PluginHandler;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
+import tech.anonymoushacker1279.iwcompatbridge.init.IWCBDeferredRegistryHandler;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.curios.CuriosPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.lucent.LucentPlugin;
@@ -30,8 +32,13 @@ public class IWCompatBridge {
 		LOGGER.info("Registering configuration files");
 		ModLoadingContext.get().registerConfig(Type.COMMON, CommonConfig.COMMON_SPEC);
 
+		// Initialize deferred registry
+		IWCBDeferredRegistryHandler.init();
+
 		// Register on the event bus
 		MinecraftForge.EVENT_BUS.register(this);
+
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(IWCBDeferredRegistryHandler::setupCreativeTabs);
 
 		// Register plugins
 		PluginHandler.registerPlugin(new JEIPlugin());

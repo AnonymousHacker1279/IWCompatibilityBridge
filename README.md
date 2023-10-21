@@ -16,6 +16,7 @@ The IWCB mod adds support for various mods. Those are:
 - Lucent
 - Project MMO
 - Curios
+- Mekanism
 
 <sup>1 - WTHIT is a Waila fork; the plugin *may* work with other forks.</sup>
 
@@ -54,6 +55,12 @@ Curios support consists of slots for Immersive Weapons' accessory items. When Cu
 need to sit in the inventory to work, and can instead be placed in the appropriate Curios slot.
 
 **Disabling: Set the `enable_curios` key to `false` in the configuration.**
+
+### Mekanism
+
+Mekanism support consists of ore processing recipes for cobalt materials.
+
+**Disabling: Use a datapack to remove the recipe entries**
 
 ## Version Support
 

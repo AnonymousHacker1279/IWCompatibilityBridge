@@ -1,0 +1,22 @@
+{
+  "type": "mekanism:purifying",
+  "chemicalInput": {
+    "amount": 1,
+    "gas": "mekanism:oxygen"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "itemInput": {
+    "ingredient": {
+      "item": "immersiveweapons:raw_cobalt"
+    }
+  },
+  "output": {
+    "count": 2,
+    "item": "iwcompatbridge:cobalt_clump"
+  }
+}

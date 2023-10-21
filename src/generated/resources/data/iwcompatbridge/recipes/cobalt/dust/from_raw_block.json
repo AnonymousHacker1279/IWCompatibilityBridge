@@ -1,0 +1,18 @@
+{
+  "type": "mekanism:enriching",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "input": {
+    "ingredient": {
+      "item": "immersiveweapons:raw_cobalt_block"
+    }
+  },
+  "output": {
+    "count": 12,
+    "item": "iwcompatbridge:cobalt_dust"
+  }
+}

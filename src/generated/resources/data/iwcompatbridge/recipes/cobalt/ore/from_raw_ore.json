@@ -1,0 +1,23 @@
+{
+  "type": "mekanism:combining",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "extraInput": {
+    "ingredient": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "mainInput": {
+    "amount": 20,
+    "ingredient": {
+      "item": "immersiveweapons:raw_cobalt"
+    }
+  },
+  "output": {
+    "item": "immersiveweapons:cobalt_ore"
+  }
+}

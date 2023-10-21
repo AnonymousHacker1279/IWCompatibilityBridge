@@ -129,10 +129,12 @@ dependencies {
 	implementation fg.deobf("curse.maven:projectmmo-353935:${project_mmo_version}")
 	// Include Lucent
 	implementation fg.deobf("com.legacy:lucent:${lucent_version}")
-
 	// Include Curios
 	runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
 	compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+	// Include Mekanism
+	implementation fg.deobf("mekanism:Mekanism:${mekanism_version}")
+	runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")
 }
 
 tasks.named('processResources', ProcessResources).configure {

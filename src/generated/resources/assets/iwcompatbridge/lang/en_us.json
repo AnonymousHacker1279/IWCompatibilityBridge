@@ -1,0 +1,20 @@
+{
+  "curios.identifier.spirit": "Spirit",
+  "gui.jei.category.ammunition_table": "Ammunition Crafting",
+  "gui.jei.category.astral_crystal": "Astral Crystal Sorcery",
+  "gui.jei.category.barrel_tap_fermenting": "Barrel Fermenting",
+  "gui.jei.category.piston_crushing": "Piston Crushing",
+  "gui.jei.category.piston_crushing.note": "%s-%s drops",
+  "gui.jei.category.small_parts": "Small Parts Crafting",
+  "gui.jei.category.tesla_synthesizer": "Tesla Synthesizing",
+  "gui.jei.category.tesla_synthesizer.note": "*16x speed",
+  "item.iwcompatbridge.cobalt_clump": "Cobalt Clump",
+  "item.iwcompatbridge.cobalt_dirty_dust": "Dirty Cobalt Dust",
+  "item.iwcompatbridge.cobalt_dust": "Cobalt Dust",
+  "item.iwcompatbridge.cobalt_shard": "Cobalt Shard",
+  "itemGroup.iwcompatbridge.creative_tab": "IW Compatibility Bridge",
+  "iwcompatbridge.wthit.damageable_block.health": "Health: %s/%s",
+  "iwcompatbridge.wthit.damageable_block.stage": "Stage: %s/%s",
+  "iwcompatbridge.wthit.merchant.trade_refresh_time": "Trades refresh in: %s:%s",
+  "iwcompatbridge.wthit.tesla_synthesizer.progress": "Time remaining: %s:%s"
+}
