@@ -1,0 +1,22 @@
+{
+  "type": "mekanism:injecting",
+  "chemicalInput": {
+    "amount": 1,
+    "gas": "mekanism:hydrogen_chloride"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:ores/cobalt"
+    }
+  },
+  "output": {
+    "count": 4,
+    "item": "iwcompatbridge:cobalt_shard"
+  }
+}
