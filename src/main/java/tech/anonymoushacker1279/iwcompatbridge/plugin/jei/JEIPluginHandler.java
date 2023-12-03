@@ -1,3 +1,4 @@
+/* TODO: reimplement when JEI updates
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei;
 
 import mezz.jei.api.IModPlugin;
@@ -9,8 +10,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.fml.util.thread.EffectiveSide;
-import net.minecraftforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.NotNull;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.immersiveweapons.init.*;
@@ -38,21 +37,37 @@ public class JEIPluginHandler implements IModPlugin {
 	public static final RecipeType<AmmunitionTableRecipe> AMMUNITION_TABLE =
 			RecipeType.create(ImmersiveWeapons.MOD_ID, "ammunition_table", AmmunitionTableRecipe.class);
 
-	/**
-	 * Get the plugin UID.
-	 *
-	 * @return ResourceLocation
-	 */
+	*/
+/**
+ * Get the plugin UID.
+ *
+ * @return ResourceLocation
+ * <p>
+ * Register recipe catalysts.
+ * @param registration an <code>IRecipeCatalystRegistration</code> instance
+ * <p>
+ * Register recipes.
+ * @param registration an <code>IRecipeRegistration</code> instance
+ * <p>
+ * Register recipe categories.
+ * @param registration an <code>IRecipeCategoryRegistration</code> instance
+ * <p>
+ * Register recipe transfer handlers.
+ * @param registration an <code>IRecipeTransferRegistration</code> instance
+ *//*
+
 	@Override
 	public @NotNull ResourceLocation getPluginUid() {
 		return new ResourceLocation(ImmersiveWeapons.MOD_ID, "jei_plugin");
 	}
 
-	/**
-	 * Register recipe catalysts.
-	 *
-	 * @param registration an <code>IRecipeCatalystRegistration</code> instance
-	 */
+	*/
+/**
+ * Register recipe catalysts.
+ *
+ * @param registration an <code>IRecipeCatalystRegistration</code> instance
+ *//*
+
 	@Override
 	public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
@@ -64,11 +79,13 @@ public class JEIPluginHandler implements IModPlugin {
 		}
 	}
 
-	/**
-	 * Register recipes.
-	 *
-	 * @param registration an <code>IRecipeRegistration</code> instance
-	 */
+	*/
+/**
+ * Register recipes.
+ *
+ * @param registration an <code>IRecipeRegistration</code> instance
+ *//*
+
 	@Override
 	public void registerRecipes(@NotNull IRecipeRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
@@ -91,11 +108,13 @@ public class JEIPluginHandler implements IModPlugin {
 		}
 	}
 
-	/**
-	 * Register recipe categories.
-	 *
-	 * @param registration an <code>IRecipeCategoryRegistration</code> instance
-	 */
+	*/
+/**
+ * Register recipe categories.
+ *
+ * @param registration an <code>IRecipeCategoryRegistration</code> instance
+ *//*
+
 	@Override
 	public void registerCategories(@NotNull IRecipeCategoryRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
@@ -107,11 +126,13 @@ public class JEIPluginHandler implements IModPlugin {
 		}
 	}
 
-	/**
-	 * Register recipe transfer handlers.
-	 *
-	 * @param registration an <code>IRecipeTransferRegistration</code> instance
-	 */
+	*/
+/**
+ * Register recipe transfer handlers.
+ *
+ * @param registration an <code>IRecipeTransferRegistration</code> instance
+ *//*
+
 	@Override
 	public void registerRecipeTransferHandlers(@NotNull IRecipeTransferRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
@@ -138,4 +159,4 @@ public class JEIPluginHandler implements IModPlugin {
 			throw new RuntimeException(e);
 		}
 	}
-}
+}*/

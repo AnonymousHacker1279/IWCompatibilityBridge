@@ -1,14 +1,3 @@
-This release includes some basic Mekanism ore processing recipes.
+This major update ports to MC 1.20.2 and IW 1.28.0.
 
-### New Features
-
-- Mekanism ore processing support for cobalt materials. This includes:
-	- Clumps
-	- Dusts / Dirty Dusts
-	- Ingots
-	- Ores
-	- Shards
-
-### Bugfixes
-
-- Fix Curios being incorrectly defined as a mandatory dependency.
+As many dependencies have not yet updated, only the WTHIT and Curios plugins are available.

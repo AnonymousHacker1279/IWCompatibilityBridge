@@ -1,21 +1,22 @@
 package tech.anonymoushacker1279.iwcompatbridge.config;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.Builder;
+
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.Builder;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class CommonConfig {
 
-	public static final ForgeConfigSpec COMMON_SPEC;
+	public static final ModConfigSpec COMMON_SPEC;
 	public static final CommonConfig COMMON;
 
-	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_JEI_PLUGIN;
-	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_WTHIT_PLUGIN;
-	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_PMMO_PLUGIN;
-	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_LUCENT_PLUGIN;
-	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_CURIOS_PLUGIN;
+	public static ModConfigSpec.ConfigValue<Boolean> ENABLE_JEI_PLUGIN;
+	public static ModConfigSpec.ConfigValue<Boolean> ENABLE_WTHIT_PLUGIN;
+	public static ModConfigSpec.ConfigValue<Boolean> ENABLE_PMMO_PLUGIN;
+	public static ModConfigSpec.ConfigValue<Boolean> ENABLE_LUCENT_PLUGIN;
+	public static ModConfigSpec.ConfigValue<Boolean> ENABLE_CURIOS_PLUGIN;
 
-	CommonConfig(ForgeConfigSpec.Builder builder) {
+	CommonConfig(ModConfigSpec.Builder builder) {
 		builder.push("Plugin Configuration");
 
 		builder.push("Plugin Settings");
@@ -40,9 +41,9 @@ public class CommonConfig {
 	}
 
 	static {
-		Pair<CommonConfig, ForgeConfigSpec> commonConfigForgeConfigSpecPair = new Builder().configure(CommonConfig::new);
+		Pair<CommonConfig, ModConfigSpec> commonConfigModConfigSpecPair = new Builder().configure(CommonConfig::new);
 
-		COMMON_SPEC = commonConfigForgeConfigSpecPair.getRight();
-		COMMON = commonConfigForgeConfigSpecPair.getLeft();
+		COMMON_SPEC = commonConfigModConfigSpecPair.getRight();
+		COMMON = commonConfigModConfigSpecPair.getLeft();
 	}
 }
