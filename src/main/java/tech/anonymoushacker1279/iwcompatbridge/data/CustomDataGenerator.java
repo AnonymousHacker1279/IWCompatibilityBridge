@@ -2,20 +2,28 @@ package tech.anonymoushacker1279.iwcompatbridge.data;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.Mod.EventBusSubscriber.Bus;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.iwcompatbridge.data.lang.IWCBLanguageGenerator;
 import tech.anonymoushacker1279.iwcompatbridge.data.model.IWCBItemModelGenerator;
-import tech.anonymoushacker1279.iwcompatbridge.data.recipe.mekanism.MekanismRecipeGenerator;
 
 @Mod.EventBusSubscriber(bus = Bus.MOD)
 public class CustomDataGenerator {
 
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
+		/*
+		This is to ensure that this generator does not run in its parent project. This is probably not the best
+		approach, but I have no idea how to do it better.
+		 */
+		if (event.getGenerator().getPackOutput().getOutputFolder().toString().toLowerCase().contains(ImmersiveWeapons.MOD_ID)) {
+			return;
+		}
+
 		DataGenerator generator = event.getGenerator();
 		PackOutput output = generator.getPackOutput();
 
@@ -26,6 +34,6 @@ public class CustomDataGenerator {
 		generator.addProvider(event.includeClient(), new IWCBLanguageGenerator(output));
 
 		// Server data
-		generator.addProvider(event.includeServer(), new MekanismRecipeGenerator(output));
+		// generator.addProvider(event.includeServer(), new MekanismRecipeGenerator(output));
 	}
 }

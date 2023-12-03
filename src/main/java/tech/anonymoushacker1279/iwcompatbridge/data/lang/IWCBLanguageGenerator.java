@@ -2,7 +2,7 @@ package tech.anonymoushacker1279.iwcompatbridge.data.lang;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
 import tech.anonymoushacker1279.iwcompatbridge.init.IWCBItemRegistry;
 
@@ -33,7 +33,7 @@ public class IWCBLanguageGenerator extends IWCBLanguageProvider {
 		excludedItems.add(IWCBItemRegistry.COBALT_DIRTY_DUST.get());
 
 		// Filter the excluded items from the registry
-		Stream<RegistryObject<Item>> items = IWCBItemRegistry.ITEMS.getEntries().stream()
+		Stream<DeferredHolder<Item, ? extends Item>> items = IWCBItemRegistry.ITEMS.getEntries().stream()
 				.filter(item -> !excludedItems.contains(item.get()));
 
 		// Get a list of all items, and convert their registry names to proper names

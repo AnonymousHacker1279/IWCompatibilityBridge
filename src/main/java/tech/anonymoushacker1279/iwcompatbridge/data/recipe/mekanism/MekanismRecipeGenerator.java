@@ -1,3 +1,4 @@
+/* TODO: reimplement when Mekanism updates
 package tech.anonymoushacker1279.iwcompatbridge.data.recipe.mekanism;
 
 import mekanism.api.chemical.gas.GasStack;
@@ -10,8 +11,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.crafting.conditions.ICondition;
-import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import tech.anonymoushacker1279.immersiveweapons.data.tags.groups.forge.ForgeItemTagGroups;
 import tech.anonymoushacker1279.immersiveweapons.init.BlockRegistry;
 import tech.anonymoushacker1279.immersiveweapons.init.ItemRegistry;
@@ -158,4 +157,4 @@ public class MekanismRecipeGenerator extends IWCBRecipeProvider {
 				.addCondition(modLoaded)
 				.build(finishedRecipeConsumer, new ResourceLocation(IWCompatBridge.MOD_ID, path));
 	}
-}
+}*/

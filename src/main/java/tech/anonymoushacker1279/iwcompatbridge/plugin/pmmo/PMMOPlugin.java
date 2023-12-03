@@ -1,11 +1,11 @@
 package tech.anonymoushacker1279.iwcompatbridge.plugin.pmmo;
 
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.Mod.EventBusSubscriber;
+import net.neoforged.fml.common.Mod.EventBusSubscriber.Bus;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import tech.anonymoushacker1279.immersiveweapons.api.IWPlugin;
 import tech.anonymoushacker1279.immersiveweapons.api.events.SmallPartsTableCraftEvent;
 import tech.anonymoushacker1279.immersiveweapons.api.events.TeslaSynthesizerCraftEvent;

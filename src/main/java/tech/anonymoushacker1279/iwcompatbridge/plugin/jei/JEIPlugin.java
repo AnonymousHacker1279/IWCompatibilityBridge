@@ -1,6 +1,6 @@
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei;
 
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 import tech.anonymoushacker1279.immersiveweapons.api.IWPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
 

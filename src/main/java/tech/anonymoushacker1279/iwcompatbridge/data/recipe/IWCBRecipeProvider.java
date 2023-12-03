@@ -1,5 +1,6 @@
 package tech.anonymoushacker1279.iwcompatbridge.data.recipe;
 
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.crafting.*;
@@ -8,21 +9,21 @@ import org.jetbrains.annotations.Nullable;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
 
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
 
 public abstract class IWCBRecipeProvider extends RecipeProvider {
 
-	protected static Consumer<FinishedRecipe> finishedRecipeConsumer;
+	protected static RecipeOutput output;
 	protected final PackOutput packOutput;
 
-	public IWCBRecipeProvider(PackOutput output) {
-		super(output);
+	public IWCBRecipeProvider(PackOutput output, CompletableFuture<Provider> lookupProvider) {
+		super(output, lookupProvider);
 		packOutput = output;
 	}
 
 	@Override
-	protected void buildRecipes(Consumer<FinishedRecipe> recipeConsumer) {
-		finishedRecipeConsumer = recipeConsumer;
+	protected void buildRecipes(RecipeOutput output) {
+		IWCBRecipeProvider.output = output;
 	}
 
 	public static void createSmeltingRecipe(List<ItemLike> pIngredients, ItemLike pResult, float pExperience, int pCookingTime, @Nullable String pGroup) {
@@ -51,7 +52,7 @@ public abstract class IWCBRecipeProvider extends RecipeProvider {
 		for (ItemLike itemlike : pIngredients) {
 			SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), RecipeCategory.MISC, pResult, pExperience, pCookingTime, pCookingSerializer)
 					.group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
-					.save(finishedRecipeConsumer, IWCompatBridge.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
+					.save(output, IWCompatBridge.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
 		}
 	}
 
@@ -60,6 +61,6 @@ public abstract class IWCBRecipeProvider extends RecipeProvider {
 
 		SimpleCookingRecipeBuilder.generic(Ingredient.of(ingredient), RecipeCategory.MISC, pResult, pExperience, pCookingTime, pCookingSerializer)
 				.group(pGroup).unlockedBy(getHasName(ingredient), has(ingredient))
-				.save(finishedRecipeConsumer, IWCompatBridge.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(ingredient));
+				.save(output, IWCompatBridge.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(ingredient));
 	}
 }

@@ -1,8 +1,9 @@
 plugins {
 	id 'maven-publish'
-	id 'net.neoforged.gradle' version '[6.0.13, 6.2)'
-	id 'org.parchmentmc.librarian.forgegradle' version '1.+'
-	id "me.hypherionmc.modutils.modpublisher" version "1.0.19"
+	// Pinned because it updates too frequently and forces recompile
+	id 'net.neoforged.gradle.userdev' version '7.0.57'
+	// id 'org.parchmentmc.librarian.forgegradle' version '1.+' TODO: Uncomment when Librarian is updated
+	id "me.hypherionmc.modutils.modpublisher" version "1.0.20"
 	id 'idea'
 }
 
@@ -57,50 +58,31 @@ version = mod_version
 group = mod_group_id
 
 base {
-	archivesName = "iwcompatbridge"
+	archivesName = project.mod_id
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-minecraft {
-	mappings channel: mappings_channel, version: mappings_version
+runs {
+	configureEach {
+		systemProperty 'forge.logging.markers', 'REGISTRIES'
+		systemProperty 'forge.logging.console.level', 'debug'
 
-	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-	copyIdeResources = true
+		jvmArguments.addAll '-Xmx6G', '-XX:+AllowEnhancedClassRedefinition'
 
-	runs {
-		configureEach {
-			workingDirectory project.file('run')
+		modSource project.sourceSets.main
+	}
 
-			property 'forge.logging.markers', 'REGISTRIES'
-			property 'forge.logging.console.level', 'debug'
-			property 'mixin.env.remapRefMap', 'true'
-			property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+	client {
+	}
 
-			jvmArgs '-Xmx6G', '-XX:+AllowEnhancedClassRedefinition'
+	server {
+		programArgument '--nogui'
+	}
 
-			mods {
-				"immersiveweapons" {
-					source sourceSets.main
-				}
-			}
-		}
-
-
-		client {
-			args '--uuid', '94f11dac-d1bc-46da-877b-c69f533f2da2'
-		}
-
-		server {
-			args '--nogui'
-		}
-
-		data {
-			args '--mod', 'iwcompatbridge', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-			jvmArgs '-Xmx4G', '-XX:+AllowEnhancedClassRedefinition'
-		}
+	data {
+		programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
 	}
 }
 
@@ -110,31 +92,29 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
 	implementation 'org.jetbrains:annotations:24.0.1'
 
-	minecraft "net.neoforged:forge:${minecraft_version}-${neoforge_version}"
+	implementation "net.neoforged:neoforge:${neoforge_version}"
 
 	// Include Immersive Weapons
-	implementation fg.deobf("tech.anonymoushacker1279.immersiveweapons:ImmersiveWeapons:${immersiveweapons_version}")
-	// Include TerraBlender (for IW)
-	implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${terrablender_version}")
+	implementation "tech.anonymoushacker1279.immersiveweapons:ImmersiveWeapons:${immersiveweapons_version}"
 
 	// Include JEI
-	compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-	compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
-	runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+	// compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+	// compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+	// runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 	// Include WTHIT and badpackets
-	compileOnly fg.deobf("mcp.mobius.waila:wthit-api:forge-${wthit_version}")
-	runtimeOnly fg.deobf("mcp.mobius.waila:wthit:forge-${wthit_version}")
-	implementation fg.deobf("lol.bai:badpackets:forge-${badpackets_version}")
+	compileOnly "mcp.mobius.waila:wthit-api:neo-${wthit_version}"
+	runtimeOnly "mcp.mobius.waila:wthit:neo-${wthit_version}"
+	implementation "lol.bai:badpackets:neo-${badpackets_version}"
 	// Include Project MMO
-	implementation fg.deobf("curse.maven:projectmmo-353935:${project_mmo_version}")
+	// implementation fg.deobf("curse.maven:projectmmo-353935:${project_mmo_version}")
 	// Include Lucent
-	implementation fg.deobf("com.legacy:lucent:${lucent_version}")
+	// implementation fg.deobf("com.legacy:lucent:${lucent_version}")
 	// Include Curios
-	runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
-	compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+	runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+	compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
 	// Include Mekanism
-	implementation fg.deobf("mekanism:Mekanism:${mekanism_version}")
-	runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")
+	// implementation fg.deobf("mekanism:Mekanism:${mekanism_version}")
+	// runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")
 }
 
 tasks.named('processResources', ProcessResources).configure {
@@ -153,7 +133,7 @@ tasks.named('processResources', ProcessResources).configure {
 tasks.named('jar', Jar).configure {
 	manifest {
 		attributes([
-				'Specification-Title'     : "iwcompatbridge",
+				'Specification-Title'     : mod_id,
 				'Specification-Vendor'    : "AnonymousHacker1279",
 				'Specification-Version'   : '1',
 				'Implementation-Title'    : project.name,
@@ -162,8 +142,6 @@ tasks.named('jar', Jar).configure {
 				'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
 		])
 	}
-
-	finalizedBy 'reobfJar'
 }
 
 publishing {
@@ -211,7 +189,7 @@ if (file("RELEASE_NOTES.md").exists()) {
 		version = "v" + mod_version.split("-")[1]
 		displayName = "Immersive Weapons Compatibility Bridge - " + version
 		gameVersions = [minecraft_version]
-		loaders = ["forge", "neoforge"]
+		loaders = ["neoforge"]
 		curseEnvironment = "both"
 		artifact = jar
 

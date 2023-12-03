@@ -1,3 +1,4 @@
+/* TODO: reimplement when JEI updates
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category;
 
 import mezz.jei.api.constants.VanillaTypes;
@@ -30,11 +31,22 @@ public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrush
 	private final IDrawable background;
 	private final IDrawable icon;
 
-	/**
-	 * Constructor for PistonCrushingRecipeCategory.
-	 *
-	 * @param guiHelper a <code>IGuiHelper</code> instance
-	 */
+	*/
+/**
+ * Constructor for PistonCrushingRecipeCategory.
+ *
+ * @param guiHelper a <code>IGuiHelper</code> instance
+ * <p>
+ * Get the title of the recipe category.
+ * @return String
+ * <p>
+ * Get the background.
+ * @return IDrawable
+ * <p>
+ * Get the icon.
+ * @return IDrawable
+ *//*
+
 	public PistonCrushingRecipeCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
 				new ItemStack(Blocks.PISTON));
@@ -58,31 +70,37 @@ public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrush
 		return JEIPluginHandler.PISTON_CRUSHING;
 	}
 
-	/**
-	 * Get the title of the recipe category.
-	 *
-	 * @return String
-	 */
+	*/
+/**
+ * Get the title of the recipe category.
+ *
+ * @return String
+ *//*
+
 	@Override
 	public @NotNull Component getTitle() {
 		return Component.translatable("gui.jei.category.piston_crushing");
 	}
 
-	/**
-	 * Get the background.
-	 *
-	 * @return IDrawable
-	 */
+	*/
+/**
+ * Get the background.
+ *
+ * @return IDrawable
+ *//*
+
 	@Override
 	public @NotNull IDrawable getBackground() {
 		return background;
 	}
 
-	/**
-	 * Get the icon.
-	 *
-	 * @return IDrawable
-	 */
+	*/
+/**
+ * Get the icon.
+ *
+ * @return IDrawable
+ *//*
+
 	@Override
 	public @NotNull IDrawable getIcon() {
 		return icon;
@@ -99,4 +117,4 @@ public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrush
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 55, 17)
 				.addItemStack(recipe.getResultItem(RegistryAccess.EMPTY));
 	}
-}
+}*/

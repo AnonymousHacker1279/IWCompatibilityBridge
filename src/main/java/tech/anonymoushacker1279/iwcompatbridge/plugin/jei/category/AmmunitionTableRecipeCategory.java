@@ -1,3 +1,4 @@
+/* TODO: reimplement when JEI updates
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category;
 
 import mezz.jei.api.constants.VanillaTypes;
@@ -64,4 +65,4 @@ public class AmmunitionTableRecipeCategory implements IRecipeCategory<Ammunition
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 84, 10)
 				.addItemStack(recipe.getResultItem(RegistryAccess.EMPTY));
 	}
-}
+}*/

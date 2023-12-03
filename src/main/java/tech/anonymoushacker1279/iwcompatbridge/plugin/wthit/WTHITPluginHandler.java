@@ -2,7 +2,7 @@ package tech.anonymoushacker1279.iwcompatbridge.plugin.wthit;
 
 import mcp.mobius.waila.api.IRegistrar;
 import mcp.mobius.waila.api.IWailaPlugin;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 
