@@ -1,14 +1,6 @@
-This release includes some basic Mekanism ore processing recipes.
-
-### New Features
-
-- Mekanism ore processing support for cobalt materials. This includes:
-	- Clumps
-	- Dusts / Dirty Dusts
-	- Ingots
-	- Ores
-	- Shards
+This release includes a bugfix for the Curios plugin.
 
 ### Bugfixes
 
-- Fix Curios being incorrectly defined as a mandatory dependency.
+- Prevent multiple accessories of the same type from being stacked when there are multiple slots available. While this
+  is considered unintended behavior, it is configurable in case the old behavior is preferred.

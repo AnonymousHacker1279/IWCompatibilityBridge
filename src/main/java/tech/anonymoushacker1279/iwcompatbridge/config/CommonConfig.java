@@ -15,6 +15,8 @@ public class CommonConfig {
 	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_LUCENT_PLUGIN;
 	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_CURIOS_PLUGIN;
 
+	public static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_ACCESSORY_STACKING;
+
 	CommonConfig(ForgeConfigSpec.Builder builder) {
 		builder.push("Plugin Configuration");
 
@@ -34,6 +36,12 @@ public class CommonConfig {
 		ENABLE_CURIOS_PLUGIN = builder
 				.comment("Enable the Curios plugin")
 				.define("enable_curios", true);
+		builder.pop();
+
+		builder.push("Curios Settings");
+		ENABLE_ACCESSORY_STACKING = builder
+				.comment("Enable multiple accessories of the same type to be equipped at once")
+				.define("enable_accessory_stacking", false);
 		builder.pop();
 
 		builder.pop();
