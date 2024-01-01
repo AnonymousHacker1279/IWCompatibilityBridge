@@ -1,7 +1,7 @@
 package tech.anonymoushacker1279.iwcompatbridge.plugin.curios;
 
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.eventbus.api.Event.Result;
+import net.neoforged.bus.api.Event.Result;
 import tech.anonymoushacker1279.immersiveweapons.init.ItemRegistry;
 import tech.anonymoushacker1279.immersiveweapons.item.AccessoryItem;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
