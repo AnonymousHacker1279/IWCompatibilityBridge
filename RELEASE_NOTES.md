@@ -1,3 +1,6 @@
-This major update ports to MC 1.20.2 and IW 1.28.0.
+This release includes a bugfix for the Curios plugin.
 
-As many dependencies have not yet updated, only the WTHIT and Curios plugins are available.
+### Bugfixes
+
+- Prevent multiple accessories of the same type from being stacked when there are multiple slots available. While this
+  is considered unintended behavior, it is configurable in case the old behavior is preferred.
