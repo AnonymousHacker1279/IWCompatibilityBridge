@@ -33,7 +33,7 @@ public class AccessoryBridge {
 	public static double collectEffects(EffectType type, Player player) {
 		double value = 0;
 
-		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player).resolve();
+		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
 		if (optional.isPresent()) {
 			ICuriosItemHandler itemHandler = optional.get();
 			List<SlotResult> curios = itemHandler.findCurios(itemStack -> itemStack.getItem() instanceof AccessoryItem);
@@ -57,7 +57,7 @@ public class AccessoryBridge {
 	public static Map<AttributeModifier, Attribute> collectStandardAttributes(Player player) {
 		Map<AttributeModifier, Attribute> attributeMap = new HashMap<>(5);
 
-		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player).resolve();
+		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
 		if (optional.isPresent()) {
 			ICuriosItemHandler itemHandler = optional.get();
 			List<SlotResult> curios = itemHandler.findCurios(itemStack -> itemStack.getItem() instanceof AccessoryItem);
@@ -83,7 +83,7 @@ public class AccessoryBridge {
 	public static Map<Map<AttributeModifier, Attribute>, Double> collectDynamicAttributes(Player player) {
 		Map<Map<AttributeModifier, Attribute>, Double> attributeMap = new HashMap<>(5);
 
-		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player).resolve();
+		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
 		if (optional.isPresent()) {
 			ICuriosItemHandler itemHandler = optional.get();
 			List<SlotResult> curios = itemHandler.findCurios(itemStack -> itemStack.getItem() instanceof AccessoryItem);
@@ -109,7 +109,7 @@ public class AccessoryBridge {
 	public static List<MobEffectInstance> collectMobEffects(Player player) {
 		List<MobEffectInstance> effectList = new ArrayList<>(5);
 
-		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player).resolve();
+		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
 		if (optional.isPresent()) {
 			ICuriosItemHandler itemHandler = optional.get();
 			List<SlotResult> curios = itemHandler.findCurios(itemStack -> itemStack.getItem() instanceof AccessoryItem);
@@ -132,7 +132,7 @@ public class AccessoryBridge {
 	 * Because this checks for the first item, it will always be an active one.
 	 */
 	public static boolean isAccessoryActive(Player player, AccessoryItem item) {
-		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player).resolve();
+		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
 		if (optional.isPresent()) {
 			ICuriosItemHandler itemHandler = optional.get();
 			List<SlotResult> curios = itemHandler.findCurios(itemStack -> itemStack.getItem() == item);

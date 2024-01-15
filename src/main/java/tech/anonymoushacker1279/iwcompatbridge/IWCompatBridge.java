@@ -1,10 +1,10 @@
 package tech.anonymoushacker1279.iwcompatbridge;
 
 import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig.Type;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import tech.anonymoushacker1279.immersiveweapons.api.PluginHandler;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
@@ -21,7 +21,7 @@ public class IWCompatBridge {
 	public static final Logger LOGGER = LogUtils.getLogger();
 
 	// Mod setup begins here
-	public IWCompatBridge() {
+	public IWCompatBridge(IEventBus modEventBus) {
 		LOGGER.info("IWCompatBridge is starting");
 
 		// Load configuration
@@ -29,9 +29,9 @@ public class IWCompatBridge {
 		ModLoadingContext.get().registerConfig(Type.COMMON, CommonConfig.COMMON_SPEC);
 
 		// Initialize deferred registry
-		IWCBDeferredRegistryHandler.init();
+		IWCBDeferredRegistryHandler.init(modEventBus);
 
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(IWCBDeferredRegistryHandler::setupCreativeTabs);
+		modEventBus.addListener(IWCBDeferredRegistryHandler::setupCreativeTabs);
 
 		// Register plugins
 		// PluginHandler.registerPlugin(new JEIPlugin());

@@ -1,45 +1,45 @@
-modLoader = "javafml" #mandatory
-loaderVersion = "${loader_version_range}" #mandatory
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
 license = "MIT"
-issueTrackerURL = "https://github.com/AnonymousHacker1279/IWCompatibilityBridge/issues" #optional
+issueTrackerURL = "https://github.com/AnonymousHacker1279/IWCompatibilityBridge/issues"
 
-[[mods]] #mandatory
-modId = "iwcompatbridge" #mandatory
-version = "${mod_version}" #mandatory
-displayName = "Immersive Weapons Compatibility Bridge" #mandatory
-displayURL = "https://www.curseforge.com/minecraft/mc-mods/immersive-weapons-compatibility-bridge" #optional
+[[mods]]
+modId = "iwcompatbridge"
+version = "${mod_version}"
+displayName = "Immersive Weapons Compatibility Bridge"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/immersive-weapons-compatibility-bridge"
 updateJSONURL = "https://raw.githubusercontent.com/AnonymousHacker1279/IWCompatibilityBridge/master/update.json"
-logoFile = "logo.png" #optional
-credits = "Written by AnonymousHacker1279" #optional
-authors = "AnonymousHacker1279" #optional
+logoFile = "logo.png"
+credits = "Written by AnonymousHacker1279"
+authors = "AnonymousHacker1279"
 description = '''
 The Immersive Weapons Compatibility Bridge adds compatibility to several mods.
 '''
 
-[[dependencies.iwcompatbridge]] #optional
-modId = "neoforge" #mandatory
-mandatory = true #mandatory
-versionRange = "${neoforge_version_range}" #mandatory
+[[dependencies.iwcompatbridge]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neoforge_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "minecraft"
-mandatory = true
+type = "required"
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "immersiveweapons"
-mandatory = true
-versionRange = "[1.20.2-1.28.0,)"
+type = "required"
+versionRange = "[1.20.2-1.28.0,)"   # TODO: update to 1.20.4
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "curios"
-mandatory = false
-versionRange = "[6.1.0+1.20.2,)"
+type = "optional"
+versionRange = "[7.0.0-beta.3+1.20.4,)"
 ordering = "NONE"
 side = "BOTH"

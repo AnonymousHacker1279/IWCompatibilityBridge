@@ -5,7 +5,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -25,9 +24,7 @@ public class IWCBDeferredRegistryHandler {
 			.title(Component.translatable("itemGroup.iwcompatbridge.creative_tab"))
 			.build());
 
-	public static void init() {
-		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+	public static void init(IEventBus modEventBus) {
 		IWCompatBridge.LOGGER.info("Initializing deferred registry for items");
 		IWCBItemRegistry.ITEMS.register(modEventBus);
 
