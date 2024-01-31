@@ -1,4 +1,3 @@
-/* TODO: reimplement when JEI updates
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei;
 
 import mezz.jei.api.IModPlugin;
@@ -8,9 +7,13 @@ import mezz.jei.api.registration.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.fml.util.thread.EffectiveSide;
+import net.neoforged.neoforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.immersiveweapons.init.*;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.*;
@@ -18,9 +21,6 @@ import tech.anonymoushacker1279.immersiveweapons.menu.AmmunitionTableMenu;
 import tech.anonymoushacker1279.immersiveweapons.menu.TeslaSynthesizerMenu;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category.*;
-
-import java.util.List;
-import java.util.Objects;
 
 @JeiPlugin
 @SuppressWarnings("unused")
@@ -37,37 +37,21 @@ public class JEIPluginHandler implements IModPlugin {
 	public static final RecipeType<AmmunitionTableRecipe> AMMUNITION_TABLE =
 			RecipeType.create(ImmersiveWeapons.MOD_ID, "ammunition_table", AmmunitionTableRecipe.class);
 
-	*/
-/**
- * Get the plugin UID.
- *
- * @return ResourceLocation
- * <p>
- * Register recipe catalysts.
- * @param registration an <code>IRecipeCatalystRegistration</code> instance
- * <p>
- * Register recipes.
- * @param registration an <code>IRecipeRegistration</code> instance
- * <p>
- * Register recipe categories.
- * @param registration an <code>IRecipeCategoryRegistration</code> instance
- * <p>
- * Register recipe transfer handlers.
- * @param registration an <code>IRecipeTransferRegistration</code> instance
- *//*
-
+	/**
+	 * Get the plugin UID.
+	 *
+	 * @return ResourceLocation
+	 */
 	@Override
 	public @NotNull ResourceLocation getPluginUid() {
 		return new ResourceLocation(ImmersiveWeapons.MOD_ID, "jei_plugin");
 	}
 
-	*/
-/**
- * Register recipe catalysts.
- *
- * @param registration an <code>IRecipeCatalystRegistration</code> instance
- *//*
-
+	/**
+	 * Register recipe catalysts.
+	 *
+	 * @param registration an <code>IRecipeCatalystRegistration</code> instance
+	 */
 	@Override
 	public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
@@ -79,42 +63,57 @@ public class JEIPluginHandler implements IModPlugin {
 		}
 	}
 
-	*/
-/**
- * Register recipes.
- *
- * @param registration an <code>IRecipeRegistration</code> instance
- *//*
-
+	/**
+	 * Register recipes.
+	 *
+	 * @param registration an <code>IRecipeRegistration</code> instance
+	 */
 	@Override
 	public void registerRecipes(@NotNull IRecipeRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
-			List<TeslaSynthesizerRecipe> teslaSynthesizerRecipes = Objects.requireNonNull(getRecipeManager())
-					.getAllRecipesFor(RecipeTypeRegistry.TESLA_SYNTHESIZER_RECIPE_TYPE.get());
-			List<AstralCrystalRecipe> astralCrystalRecipes = Objects.requireNonNull(getRecipeManager())
-					.getAllRecipesFor(RecipeTypeRegistry.ASTRAL_CRYSTAL_RECIPE_TYPE.get());
-			List<BarrelTapRecipe> barrelTapRecipes = Objects.requireNonNull(getRecipeManager())
-					.getAllRecipesFor(RecipeTypeRegistry.BARREL_TAP_RECIPE_TYPE.get());
-			List<PistonCrushingRecipe> pistonCrushingRecipes = Objects.requireNonNull(getRecipeManager())
-					.getAllRecipesFor(RecipeTypeRegistry.PISTON_CRUSHING_RECIPE_TYPE.get());
-			List<AmmunitionTableRecipe> ammunitionTableRecipes = Objects.requireNonNull(getRecipeManager())
-					.getAllRecipesFor(RecipeTypeRegistry.AMMUNITION_TABLE_RECIPE_TYPE.get());
+			RecipeManager recipeManager = getRecipeManager();
 
-			registration.addRecipes(TESLA_SYNTHESIZER, teslaSynthesizerRecipes);
-			registration.addRecipes(ASTRAL_CRYSTAL, astralCrystalRecipes);
-			registration.addRecipes(BARREL_TAP, barrelTapRecipes);
-			registration.addRecipes(PISTON_CRUSHING, pistonCrushingRecipes);
-			registration.addRecipes(AMMUNITION_TABLE, ammunitionTableRecipes);
+			if (recipeManager == null) {
+				return;
+			}
+
+			registration.addRecipes(TESLA_SYNTHESIZER, recipeManager
+					.getAllRecipesFor(RecipeTypeRegistry.TESLA_SYNTHESIZER_RECIPE_TYPE.get())
+					.stream()
+					.map(RecipeHolder::value)
+					.toList());
+
+			registration.addRecipes(ASTRAL_CRYSTAL, recipeManager
+					.getAllRecipesFor(RecipeTypeRegistry.ASTRAL_CRYSTAL_RECIPE_TYPE.get())
+					.stream()
+					.map(RecipeHolder::value)
+					.toList());
+
+			registration.addRecipes(BARREL_TAP, recipeManager
+					.getAllRecipesFor(RecipeTypeRegistry.BARREL_TAP_RECIPE_TYPE.get())
+					.stream()
+					.map(RecipeHolder::value)
+					.toList());
+
+			registration.addRecipes(PISTON_CRUSHING, recipeManager
+					.getAllRecipesFor(RecipeTypeRegistry.PISTON_CRUSHING_RECIPE_TYPE.get())
+					.stream()
+					.map(RecipeHolder::value)
+					.toList());
+
+			registration.addRecipes(AMMUNITION_TABLE, recipeManager
+					.getAllRecipesFor(RecipeTypeRegistry.AMMUNITION_TABLE_RECIPE_TYPE.get())
+					.stream()
+					.map(RecipeHolder::value)
+					.toList());
 		}
 	}
 
-	*/
-/**
- * Register recipe categories.
- *
- * @param registration an <code>IRecipeCategoryRegistration</code> instance
- *//*
-
+	/**
+	 * Register recipe categories.
+	 *
+	 * @param registration an <code>IRecipeCategoryRegistration</code> instance
+	 */
 	@Override
 	public void registerCategories(@NotNull IRecipeCategoryRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
@@ -126,13 +125,11 @@ public class JEIPluginHandler implements IModPlugin {
 		}
 	}
 
-	*/
-/**
- * Register recipe transfer handlers.
- *
- * @param registration an <code>IRecipeTransferRegistration</code> instance
- *//*
-
+	/**
+	 * Register recipe transfer handlers.
+	 *
+	 * @param registration an <code>IRecipeTransferRegistration</code> instance
+	 */
 	@Override
 	public void registerRecipeTransferHandlers(@NotNull IRecipeTransferRegistration registration) {
 		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
@@ -145,6 +142,7 @@ public class JEIPluginHandler implements IModPlugin {
 		}
 	}
 
+	@Nullable
 	private static RecipeManager getRecipeManager() {
 		try {
 			if (EffectiveSide.get().isClient()) {
@@ -159,4 +157,4 @@ public class JEIPluginHandler implements IModPlugin {
 			throw new RuntimeException(e);
 		}
 	}
-}*/
+}

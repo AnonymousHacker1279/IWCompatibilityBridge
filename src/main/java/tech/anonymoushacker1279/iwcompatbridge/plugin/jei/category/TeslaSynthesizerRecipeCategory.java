@@ -1,4 +1,3 @@
-/* TODO: reimplement when JEI updates
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category;
 
 import com.google.common.cache.*;
@@ -42,22 +41,11 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 	protected final IDrawableStatic staticFlame;
 	protected final IDrawableAnimated animatedFlame;
 
-	*/
-/**
- * Constructor for TeslaSynthesizerRecipeCategory.
- *
- * @param guiHelper a <code>IGuiHelper</code> instance
- * <p>
- * Get the title of the recipe category.
- * @return String
- * <p>
- * Get the background.
- * @return IDrawable
- * <p>
- * Get the icon.
- * @return IDrawable
- *//*
-
+	/**
+	 * Constructor for TeslaSynthesizerRecipeCategory.
+	 *
+	 * @param guiHelper a <code>IGuiHelper</code> instance
+	 */
 	public TeslaSynthesizerRecipeCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
 				new ItemStack(BlockRegistry.TESLA_SYNTHESIZER.get()));
@@ -115,37 +103,31 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 		return JEIPluginHandler.TESLA_SYNTHESIZER;
 	}
 
-	*/
-/**
- * Get the title of the recipe category.
- *
- * @return String
- *//*
-
+	/**
+	 * Get the title of the recipe category.
+	 *
+	 * @return String
+	 */
 	@Override
 	public @NotNull Component getTitle() {
 		return Component.translatable("gui.jei.category.tesla_synthesizer");
 	}
 
-	*/
-/**
- * Get the background.
- *
- * @return IDrawable
- *//*
-
+	/**
+	 * Get the background.
+	 *
+	 * @return IDrawable
+	 */
 	@Override
 	public @NotNull IDrawable getBackground() {
 		return background;
 	}
 
-	*/
-/**
- * Get the icon.
- *
- * @return IDrawable
- *//*
-
+	/**
+	 * Get the icon.
+	 *
+	 * @return IDrawable
+	 */
 	@Override
 	public @NotNull IDrawable getIcon() {
 		return icon;
@@ -168,4 +150,4 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 		builder.addSlot(RecipeIngredientRole.CATALYST, 51, 37)
 				.addItemStack(new ItemStack(ItemRegistry.MOLTEN_INGOT.get()));
 	}
-}*/
+}

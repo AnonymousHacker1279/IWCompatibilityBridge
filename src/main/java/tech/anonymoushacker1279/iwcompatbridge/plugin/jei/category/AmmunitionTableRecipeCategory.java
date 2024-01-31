@@ -1,4 +1,3 @@
-/* TODO: reimplement when JEI updates
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category;
 
 import mezz.jei.api.constants.VanillaTypes;
@@ -53,16 +52,15 @@ public class AmmunitionTableRecipeCategory implements IRecipeCategory<Ammunition
 		return icon;
 	}
 
-
 	@Override
 	public void setRecipe(IRecipeLayoutBuilder builder, AmmunitionTableRecipe recipe, @NotNull IFocusGroup focuses) {
 		NonNullList<Ingredient> ingredients = NonNullList.create();
 		ingredients.addAll(recipe.getIngredients());
 
 		builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
-				.addIngredients(Ingredient.merge(ingredients));
+				.addIngredientsUnsafe(ingredients);
 
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 84, 10)
 				.addItemStack(recipe.getResultItem(RegistryAccess.EMPTY));
 	}
-}*/
+}

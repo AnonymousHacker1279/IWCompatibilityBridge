@@ -1,4 +1,3 @@
-/* TODO: reimplement when JEI updates
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category;
 
 import mezz.jei.api.constants.VanillaTypes;
@@ -26,22 +25,11 @@ public class AstralCrystalRecipeCategory implements IRecipeCategory<AstralCrysta
 	private final IDrawable background;
 	private final IDrawable icon;
 
-	*/
-/**
- * Constructor for AstralCrystalRecipeCategory.
- *
- * @param guiHelper a <code>IGuiHelper</code> instance
- * <p>
- * Get the title of the recipe category.
- * @return String
- * <p>
- * Get the background.
- * @return IDrawable
- * <p>
- * Get the icon.
- * @return IDrawable
- *//*
-
+	/**
+	 * Constructor for AstralCrystalRecipeCategory.
+	 *
+	 * @param guiHelper a <code>IGuiHelper</code> instance
+	 */
 	public AstralCrystalRecipeCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
 				new ItemStack(BlockRegistry.ASTRAL_CRYSTAL.get()));
@@ -54,37 +42,31 @@ public class AstralCrystalRecipeCategory implements IRecipeCategory<AstralCrysta
 		return JEIPluginHandler.ASTRAL_CRYSTAL;
 	}
 
-	*/
-/**
- * Get the title of the recipe category.
- *
- * @return String
- *//*
-
+	/**
+	 * Get the title of the recipe category.
+	 *
+	 * @return String
+	 */
 	@Override
 	public @NotNull Component getTitle() {
 		return Component.translatable("gui.jei.category.astral_crystal");
 	}
 
-	*/
-/**
- * Get the background.
- *
- * @return IDrawable
- *//*
-
+	/**
+	 * Get the background.
+	 *
+	 * @return IDrawable
+	 */
 	@Override
 	public @NotNull IDrawable getBackground() {
 		return background;
 	}
 
-	*/
-/**
- * Get the icon.
- *
- * @return IDrawable
- *//*
-
+	/**
+	 * Get the icon.
+	 *
+	 * @return IDrawable
+	 */
 	@Override
 	public @NotNull IDrawable getIcon() {
 		return icon;
@@ -113,4 +95,4 @@ public class AstralCrystalRecipeCategory implements IRecipeCategory<AstralCrysta
 				.addItemStack(recipe.getResultItem(RegistryAccess.EMPTY));
 
 	}
-}*/
+}

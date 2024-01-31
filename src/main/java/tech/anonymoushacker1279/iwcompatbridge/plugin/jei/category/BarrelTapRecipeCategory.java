@@ -1,4 +1,3 @@
-/* TODO: reimplement when JEI updates
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category;
 
 import mezz.jei.api.constants.VanillaTypes;
@@ -26,22 +25,11 @@ public class BarrelTapRecipeCategory implements IRecipeCategory<BarrelTapRecipe>
 	private final IDrawable background;
 	private final IDrawable icon;
 
-	*/
-/**
- * Constructor for BarrelTapRecipeCategory.
- *
- * @param guiHelper a <code>IGuiHelper</code> instance
- * <p>
- * Get the title of the recipe category.
- * @return String
- * <p>
- * Get the background.
- * @return IDrawable
- * <p>
- * Get the icon.
- * @return IDrawable
- *//*
-
+	/**
+	 * Constructor for BarrelTapRecipeCategory.
+	 *
+	 * @param guiHelper a <code>IGuiHelper</code> instance
+	 */
 	public BarrelTapRecipeCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
 				new ItemStack(BlockRegistry.BARREL_TAP.get()));
@@ -54,37 +42,31 @@ public class BarrelTapRecipeCategory implements IRecipeCategory<BarrelTapRecipe>
 		return JEIPluginHandler.BARREL_TAP;
 	}
 
-	*/
-/**
- * Get the title of the recipe category.
- *
- * @return String
- *//*
-
+	/**
+	 * Get the title of the recipe category.
+	 *
+	 * @return String
+	 */
 	@Override
 	public @NotNull Component getTitle() {
 		return Component.translatable("gui.jei.category.barrel_tap_fermenting");
 	}
 
-	*/
-/**
- * Get the background.
- *
- * @return IDrawable
- *//*
-
+	/**
+	 * Get the background.
+	 *
+	 * @return IDrawable
+	 */
 	@Override
 	public @NotNull IDrawable getBackground() {
 		return background;
 	}
 
-	*/
-/**
- * Get the icon.
- *
- * @return IDrawable
- *//*
-
+	/**
+	 * Get the icon.
+	 *
+	 * @return IDrawable
+	 */
 	@Override
 	public @NotNull IDrawable getIcon() {
 		return icon;
@@ -101,4 +83,4 @@ public class BarrelTapRecipeCategory implements IRecipeCategory<BarrelTapRecipe>
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 137, 42)
 				.addItemStack(recipe.getResultItem(RegistryAccess.EMPTY));
 	}
-}*/
+}

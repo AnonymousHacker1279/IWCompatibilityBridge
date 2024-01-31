@@ -97,9 +97,9 @@ dependencies {
 	implementation "tech.anonymoushacker1279.immersiveweapons:ImmersiveWeapons:${immersiveweapons_version}"
 
 	// Include JEI
-	// compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-	// compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
-	// runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+	compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+	compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+	runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 	// Include WTHIT and badpackets
 	compileOnly "mcp.mobius.waila:wthit-api:neo-${wthit_version}"
 	runtimeOnly "mcp.mobius.waila:wthit:neo-${wthit_version}"
