@@ -19,7 +19,6 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jetbrains.annotations.NotNull;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.immersiveweapons.init.BlockRegistry;
 import tech.anonymoushacker1279.immersiveweapons.init.ItemRegistry;
@@ -60,7 +59,7 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 				.maximumSize(25)
 				.build(new CacheLoader<>() {
 					@Override
-					public @NotNull IDrawableAnimated load(@NotNull Integer cookTime) {
+					public IDrawableAnimated load(Integer cookTime) {
 						return guiHelper.drawableBuilder(RECIPE_GUI_VANILLA, 82, 128, 24, 17)
 								.buildAnimated(cookTime, IDrawableAnimated.StartDirection.LEFT, false);
 					}
@@ -72,8 +71,8 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 	}
 
 	@Override
-	public void draw(@NotNull TeslaSynthesizerRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView,
-	                 @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
+	public void draw(TeslaSynthesizerRecipe recipe, IRecipeSlotsView recipeSlotsView,
+	                 GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
 		animatedFlame.draw(guiGraphics, 52, 20);
 
@@ -99,7 +98,7 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 	}
 
 	@Override
-	public @NotNull RecipeType<TeslaSynthesizerRecipe> getRecipeType() {
+	public RecipeType<TeslaSynthesizerRecipe> getRecipeType() {
 		return JEIPluginHandler.TESLA_SYNTHESIZER;
 	}
 
@@ -109,7 +108,7 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 	 * @return String
 	 */
 	@Override
-	public @NotNull Component getTitle() {
+	public Component getTitle() {
 		return Component.translatable("gui.jei.category.tesla_synthesizer");
 	}
 
@@ -119,7 +118,7 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 	 * @return IDrawable
 	 */
 	@Override
-	public @NotNull IDrawable getBackground() {
+	public IDrawable getBackground() {
 		return background;
 	}
 
@@ -129,13 +128,13 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 	 * @return IDrawable
 	 */
 	@Override
-	public @NotNull IDrawable getIcon() {
+	public IDrawable getIcon() {
 		return icon;
 	}
 
 
 	@Override
-	public void setRecipe(IRecipeLayoutBuilder builder, TeslaSynthesizerRecipe recipe, @NotNull IFocusGroup focuses) {
+	public void setRecipe(IRecipeLayoutBuilder builder, TeslaSynthesizerRecipe recipe, IFocusGroup focuses) {
 		NonNullList<Ingredient> ingredients = NonNullList.create();
 		ingredients.addAll(recipe.getIngredients());
 

@@ -18,7 +18,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
-import org.jetbrains.annotations.NotNull;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.PistonCrushingRecipe;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPluginHandler;
@@ -43,8 +42,8 @@ public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrush
 	}
 
 	@Override
-	public void draw(@NotNull PistonCrushingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView,
-	                 @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
+	public void draw(PistonCrushingRecipe recipe, IRecipeSlotsView recipeSlotsView,
+	                 GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
 		MutableComponent dropString = Component.translatable("gui.jei.category.piston_crushing.note", recipe.getMinCount(), recipe.getMaxCount());
 		Minecraft minecraft = Minecraft.getInstance();
@@ -54,7 +53,7 @@ public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrush
 	}
 
 	@Override
-	public @NotNull RecipeType<PistonCrushingRecipe> getRecipeType() {
+	public RecipeType<PistonCrushingRecipe> getRecipeType() {
 		return JEIPluginHandler.PISTON_CRUSHING;
 	}
 
@@ -64,7 +63,7 @@ public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrush
 	 * @return String
 	 */
 	@Override
-	public @NotNull Component getTitle() {
+	public Component getTitle() {
 		return Component.translatable("gui.jei.category.piston_crushing");
 	}
 
@@ -74,7 +73,7 @@ public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrush
 	 * @return IDrawable
 	 */
 	@Override
-	public @NotNull IDrawable getBackground() {
+	public IDrawable getBackground() {
 		return background;
 	}
 
@@ -84,13 +83,13 @@ public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrush
 	 * @return IDrawable
 	 */
 	@Override
-	public @NotNull IDrawable getIcon() {
+	public IDrawable getIcon() {
 		return icon;
 	}
 
 
 	@Override
-	public void setRecipe(IRecipeLayoutBuilder builder, PistonCrushingRecipe recipe, @NotNull IFocusGroup focuses) {
+	public void setRecipe(IRecipeLayoutBuilder builder, PistonCrushingRecipe recipe, IFocusGroup focuses) {
 		NonNullList<Ingredient> ingredients = NonNullList.create();
 		ingredients.addAll(recipe.getIngredients());
 

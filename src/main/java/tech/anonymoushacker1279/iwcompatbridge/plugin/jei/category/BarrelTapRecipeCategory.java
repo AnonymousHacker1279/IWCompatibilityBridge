@@ -12,7 +12,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jetbrains.annotations.NotNull;
 import tech.anonymoushacker1279.immersiveweapons.init.BlockRegistry;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.BarrelTapRecipe;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
@@ -38,7 +37,7 @@ public class BarrelTapRecipeCategory implements IRecipeCategory<BarrelTapRecipe>
 	}
 
 	@Override
-	public @NotNull RecipeType<BarrelTapRecipe> getRecipeType() {
+	public RecipeType<BarrelTapRecipe> getRecipeType() {
 		return JEIPluginHandler.BARREL_TAP;
 	}
 
@@ -48,7 +47,7 @@ public class BarrelTapRecipeCategory implements IRecipeCategory<BarrelTapRecipe>
 	 * @return String
 	 */
 	@Override
-	public @NotNull Component getTitle() {
+	public Component getTitle() {
 		return Component.translatable("gui.jei.category.barrel_tap_fermenting");
 	}
 
@@ -58,7 +57,7 @@ public class BarrelTapRecipeCategory implements IRecipeCategory<BarrelTapRecipe>
 	 * @return IDrawable
 	 */
 	@Override
-	public @NotNull IDrawable getBackground() {
+	public IDrawable getBackground() {
 		return background;
 	}
 
@@ -68,13 +67,13 @@ public class BarrelTapRecipeCategory implements IRecipeCategory<BarrelTapRecipe>
 	 * @return IDrawable
 	 */
 	@Override
-	public @NotNull IDrawable getIcon() {
+	public IDrawable getIcon() {
 		return icon;
 	}
 
 
 	@Override
-	public void setRecipe(IRecipeLayoutBuilder builder, BarrelTapRecipe recipe, @NotNull IFocusGroup focuses) {
+	public void setRecipe(IRecipeLayoutBuilder builder, BarrelTapRecipe recipe, IFocusGroup focuses) {
 		NonNullList<Ingredient> ingredients = NonNullList.create();
 		ingredients.addAll(recipe.getIngredients());
 

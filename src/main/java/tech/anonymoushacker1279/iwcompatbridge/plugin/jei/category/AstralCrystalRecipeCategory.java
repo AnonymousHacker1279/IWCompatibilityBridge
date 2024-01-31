@@ -12,7 +12,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jetbrains.annotations.NotNull;
 import tech.anonymoushacker1279.immersiveweapons.init.BlockRegistry;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.AstralCrystalRecipe;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
@@ -38,7 +37,7 @@ public class AstralCrystalRecipeCategory implements IRecipeCategory<AstralCrysta
 	}
 
 	@Override
-	public @NotNull RecipeType<AstralCrystalRecipe> getRecipeType() {
+	public RecipeType<AstralCrystalRecipe> getRecipeType() {
 		return JEIPluginHandler.ASTRAL_CRYSTAL;
 	}
 
@@ -48,7 +47,7 @@ public class AstralCrystalRecipeCategory implements IRecipeCategory<AstralCrysta
 	 * @return String
 	 */
 	@Override
-	public @NotNull Component getTitle() {
+	public Component getTitle() {
 		return Component.translatable("gui.jei.category.astral_crystal");
 	}
 
@@ -58,7 +57,7 @@ public class AstralCrystalRecipeCategory implements IRecipeCategory<AstralCrysta
 	 * @return IDrawable
 	 */
 	@Override
-	public @NotNull IDrawable getBackground() {
+	public IDrawable getBackground() {
 		return background;
 	}
 
@@ -68,13 +67,13 @@ public class AstralCrystalRecipeCategory implements IRecipeCategory<AstralCrysta
 	 * @return IDrawable
 	 */
 	@Override
-	public @NotNull IDrawable getIcon() {
+	public IDrawable getIcon() {
 		return icon;
 	}
 
 
 	@Override
-	public void setRecipe(IRecipeLayoutBuilder builder, AstralCrystalRecipe recipe, @NotNull IFocusGroup focuses) {
+	public void setRecipe(IRecipeLayoutBuilder builder, AstralCrystalRecipe recipe, IFocusGroup focuses) {
 		NonNullList<Ingredient> ingredients = NonNullList.create();
 		ingredients.addAll(recipe.getIngredients());
 
@@ -93,6 +92,5 @@ public class AstralCrystalRecipeCategory implements IRecipeCategory<AstralCrysta
 				.addIngredients(secondaryMaterial);
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 79, 29)
 				.addItemStack(recipe.getResultItem(RegistryAccess.EMPTY));
-
 	}
 }
