@@ -10,7 +10,6 @@ import tech.anonymoushacker1279.immersiveweapons.api.IWPlugin;
 import tech.anonymoushacker1279.immersiveweapons.api.events.SmallPartsTableCraftEvent;
 import tech.anonymoushacker1279.immersiveweapons.api.events.TeslaSynthesizerCraftEvent;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
-import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 
 @EventBusSubscriber(modid = IWCompatBridge.MOD_ID, bus = Bus.FORGE)
 public class PMMOPlugin implements IWPlugin {
@@ -36,15 +35,15 @@ public class PMMOPlugin implements IWPlugin {
 
 	@SubscribeEvent
 	public static void smallPartsTableCraftEvent(SmallPartsTableCraftEvent event) {
-		if (isInstalled && CommonConfig.ENABLE_PMMO_PLUGIN.get() && !event.getPlayer().level().isClientSide) {
-			XPHandler.awardSmallPartsTableCraftXP((ServerPlayer) event.getPlayer());
+		if (isInstalled && event.getPlayer() instanceof ServerPlayer serverPlayer) {
+			XPHandler.awardSmallPartsTableCraftXP(serverPlayer);
 		}
 	}
 
 	@SubscribeEvent
 	public static void teslaSynthesizerCraftEvent(TeslaSynthesizerCraftEvent event) {
-		if (isInstalled && CommonConfig.ENABLE_PMMO_PLUGIN.get() && !event.getPlayer().level().isClientSide) {
-			XPHandler.awardTeslaSynthesizerCraftXP((ServerPlayer) event.getPlayer());
+		if (isInstalled && event.getPlayer() instanceof ServerPlayer serverPlayer) {
+			XPHandler.awardTeslaSynthesizerCraftXP(serverPlayer);
 		}
 	}
 }

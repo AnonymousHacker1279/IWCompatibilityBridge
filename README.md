@@ -9,7 +9,7 @@
 
 ## Add inter-mod compatibility to Immersive Weapons
 
-The IWCB mod adds support for various mods. Those are:
+IWCB adds extra support for various mods. Those are:
 
 - Just Enough Items
 - What The Hell Is That?<sup>1</sup>
@@ -24,57 +24,38 @@ The IWCB mod adds support for various mods. Those are:
 
 ### Just Enough Items
 
-JEI support consists of a recipe handler for the Tesla Synthesizer.
-
-**Disabling: Set the `enable_jei` key to `false` in the configuration.**
+JEI support consists of recipe handlers and information pages for custom crafting blocks.
 
 ### What The Hell is That?
 
-WTHIT support consists of an override handler for the Pitfall block to make it appear like regular grass blocks.
-It will also display health and damage stages of damageable blocks (such as wooden spikes or barbed wire).
+WTHIT support consists of several elements. Those being:
 
-**Disabling: Set the `enable_wthit` key to `false` in the configuration.**
+- Display health and damage stages of damageable blocks (such as wooden spikes or barbed wire)
+- Display cook/smelt time remaining of crafting blocks (such as the Tesla Synthesizer or Star Forge)
+- Hide Pitfall blocks as regular grass blocks
 
 ### Lucent
 
 Lucent support consists of adding dynamic lighting to various aspects of the game.
-
-**Disabling: Set the `enable_lucent` key to `false` in the configuration. Some more basic aspects are handled via
-datapacks, so you will need to overwrite these as well.**
 
 ### Project MMO
 
 PMMO support consists of EXP-granting events for crafting objects with the Small Parts Table or Tesla Synthesizer. More
 events to come!
 
-**Disabling: Set the `enable_pmmo` key to `false` in the configuration.**
-
 ### Curios
 
 Curios support consists of slots for Immersive Weapons' accessory items. When Curios is loaded, items will no longer
 need to sit in the inventory to work, and can instead be placed in the appropriate Curios slot.
 
-**Disabling: Set the `enable_curios` key to `false` in the configuration.**
-
 ### Mekanism
 
 Mekanism support consists of ore processing recipes for cobalt materials.
-
-**Disabling: Use a datapack to remove the recipe entries**
 
 ## Version Support
 
 Active development will always be focused on the latest Immersive Weapons version. Bugfixes may be ported to older
 versions, but you should always upgrade when possible.
-
-## Removed Mods
-
-### Patchouli
-
-Due to the lack of maintenance regarding newer versions and the sheer amount of work to maintain the books, it has been
-removed. Please consider using the [Official Wiki](https://anonymoushacker1279.tech/wiki/immersiveweapons) instead.
-
-*Do note that the wiki still requires a lot of work and there are missing entries. Please consider helping out!*
 
 ## Contributing
 

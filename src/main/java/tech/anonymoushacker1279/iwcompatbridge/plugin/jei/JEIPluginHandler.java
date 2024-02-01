@@ -19,7 +19,6 @@ import tech.anonymoushacker1279.immersiveweapons.init.*;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.*;
 import tech.anonymoushacker1279.immersiveweapons.menu.*;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
-import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category.*;
 
 @JeiPlugin
@@ -56,14 +55,12 @@ public class JEIPluginHandler implements IModPlugin {
 	 */
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
-			registration.addRecipeCatalyst(new ItemStack(BlockRegistry.TESLA_SYNTHESIZER.get()), TESLA_SYNTHESIZER);
-			registration.addRecipeCatalyst(new ItemStack(BlockRegistry.ASTRAL_CRYSTAL.get()), ASTRAL_CRYSTAL);
-			registration.addRecipeCatalyst(new ItemStack(BlockRegistry.BARREL_TAP.get()), BARREL_TAP);
-			registration.addRecipeCatalyst(new ItemStack(Blocks.PISTON), PISTON_CRUSHING);
-			registration.addRecipeCatalyst(new ItemStack(BlockRegistry.AMMUNITION_TABLE.get()), AMMUNITION_TABLE);
-			registration.addRecipeCatalyst(new ItemStack(BlockRegistry.STAR_FORGE_CONTROLLER.get()), STAR_FORGE);
-		}
+		registration.addRecipeCatalyst(new ItemStack(BlockRegistry.TESLA_SYNTHESIZER.get()), TESLA_SYNTHESIZER);
+		registration.addRecipeCatalyst(new ItemStack(BlockRegistry.ASTRAL_CRYSTAL.get()), ASTRAL_CRYSTAL);
+		registration.addRecipeCatalyst(new ItemStack(BlockRegistry.BARREL_TAP.get()), BARREL_TAP);
+		registration.addRecipeCatalyst(new ItemStack(Blocks.PISTON), PISTON_CRUSHING);
+		registration.addRecipeCatalyst(new ItemStack(BlockRegistry.AMMUNITION_TABLE.get()), AMMUNITION_TABLE);
+		registration.addRecipeCatalyst(new ItemStack(BlockRegistry.STAR_FORGE_CONTROLLER.get()), STAR_FORGE);
 	}
 
 	/**
@@ -73,56 +70,54 @@ public class JEIPluginHandler implements IModPlugin {
 	 */
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
-		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
-			RecipeManager recipeManager = getRecipeManager();
+		RecipeManager recipeManager = getRecipeManager();
 
-			if (recipeManager == null) {
-				return;
-			}
-
-			registration.addRecipes(TESLA_SYNTHESIZER, recipeManager
-					.getAllRecipesFor(RecipeTypeRegistry.TESLA_SYNTHESIZER_RECIPE_TYPE.get())
-					.stream()
-					.map(RecipeHolder::value)
-					.toList());
-
-			registration.addRecipes(ASTRAL_CRYSTAL, recipeManager
-					.getAllRecipesFor(RecipeTypeRegistry.ASTRAL_CRYSTAL_RECIPE_TYPE.get())
-					.stream()
-					.map(RecipeHolder::value)
-					.toList());
-
-			registration.addRecipes(BARREL_TAP, recipeManager
-					.getAllRecipesFor(RecipeTypeRegistry.BARREL_TAP_RECIPE_TYPE.get())
-					.stream()
-					.map(RecipeHolder::value)
-					.toList());
-
-			registration.addRecipes(PISTON_CRUSHING, recipeManager
-					.getAllRecipesFor(RecipeTypeRegistry.PISTON_CRUSHING_RECIPE_TYPE.get())
-					.stream()
-					.map(RecipeHolder::value)
-					.toList());
-
-			registration.addRecipes(AMMUNITION_TABLE, recipeManager
-					.getAllRecipesFor(RecipeTypeRegistry.AMMUNITION_TABLE_RECIPE_TYPE.get())
-					.stream()
-					.map(RecipeHolder::value)
-					.toList());
-
-			registration.addRecipes(STAR_FORGE, recipeManager
-					.getAllRecipesFor(RecipeTypeRegistry.STAR_FORGE_RECIPE_TYPE.get())
-					.stream()
-					.map(RecipeHolder::value)
-					.toList());
-
-			registration.addItemStackInfo(BlockRegistry.TESLA_SYNTHESIZER.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.tesla_synthesizer.info"));
-			registration.addItemStackInfo(BlockRegistry.ASTRAL_CRYSTAL.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.astral_crystal.info"));
-			registration.addItemStackInfo(BlockRegistry.BARREL_TAP.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.barrel_tap.info"));
-			registration.addItemStackInfo(Blocks.PISTON.asItem().getDefaultInstance(), Component.translatable("gui.jei.item.piston_crushing.info"));
-			registration.addItemStackInfo(BlockRegistry.AMMUNITION_TABLE.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.ammunition_table.info"));
-			registration.addItemStackInfo(BlockRegistry.STAR_FORGE_CONTROLLER.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.star_forge.info"));
+		if (recipeManager == null) {
+			return;
 		}
+
+		registration.addRecipes(TESLA_SYNTHESIZER, recipeManager
+				.getAllRecipesFor(RecipeTypeRegistry.TESLA_SYNTHESIZER_RECIPE_TYPE.get())
+				.stream()
+				.map(RecipeHolder::value)
+				.toList());
+
+		registration.addRecipes(ASTRAL_CRYSTAL, recipeManager
+				.getAllRecipesFor(RecipeTypeRegistry.ASTRAL_CRYSTAL_RECIPE_TYPE.get())
+				.stream()
+				.map(RecipeHolder::value)
+				.toList());
+
+		registration.addRecipes(BARREL_TAP, recipeManager
+				.getAllRecipesFor(RecipeTypeRegistry.BARREL_TAP_RECIPE_TYPE.get())
+				.stream()
+				.map(RecipeHolder::value)
+				.toList());
+
+		registration.addRecipes(PISTON_CRUSHING, recipeManager
+				.getAllRecipesFor(RecipeTypeRegistry.PISTON_CRUSHING_RECIPE_TYPE.get())
+				.stream()
+				.map(RecipeHolder::value)
+				.toList());
+
+		registration.addRecipes(AMMUNITION_TABLE, recipeManager
+				.getAllRecipesFor(RecipeTypeRegistry.AMMUNITION_TABLE_RECIPE_TYPE.get())
+				.stream()
+				.map(RecipeHolder::value)
+				.toList());
+
+		registration.addRecipes(STAR_FORGE, recipeManager
+				.getAllRecipesFor(RecipeTypeRegistry.STAR_FORGE_RECIPE_TYPE.get())
+				.stream()
+				.map(RecipeHolder::value)
+				.toList());
+
+		registration.addItemStackInfo(BlockRegistry.TESLA_SYNTHESIZER.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.tesla_synthesizer.info"));
+		registration.addItemStackInfo(BlockRegistry.ASTRAL_CRYSTAL.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.astral_crystal.info"));
+		registration.addItemStackInfo(BlockRegistry.BARREL_TAP.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.barrel_tap.info"));
+		registration.addItemStackInfo(Blocks.PISTON.asItem().getDefaultInstance(), Component.translatable("gui.jei.item.piston_crushing.info"));
+		registration.addItemStackInfo(BlockRegistry.AMMUNITION_TABLE.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.ammunition_table.info"));
+		registration.addItemStackInfo(BlockRegistry.STAR_FORGE_CONTROLLER.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.star_forge.info"));
 	}
 
 	/**
@@ -132,14 +127,13 @@ public class JEIPluginHandler implements IModPlugin {
 	 */
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registration) {
-		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
-			registration.addRecipeCategories(new TeslaSynthesizerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
-			registration.addRecipeCategories(new AstralCrystalRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
-			registration.addRecipeCategories(new BarrelTapRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
-			registration.addRecipeCategories(new PistonCrushingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
-			registration.addRecipeCategories(new AmmunitionTableRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
-			registration.addRecipeCategories(new StarForgeRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
-		}
+		registration.addRecipeCategories(new TeslaSynthesizerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new AstralCrystalRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new BarrelTapRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new PistonCrushingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new AmmunitionTableRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new StarForgeRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+
 	}
 
 	/**
@@ -149,17 +143,15 @@ public class JEIPluginHandler implements IModPlugin {
 	 */
 	@Override
 	public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-		if (CommonConfig.ENABLE_JEI_PLUGIN.get()) {
-			registration.addRecipeTransferHandler(TeslaSynthesizerMenu.class,
-					MenuTypeRegistry.TESLA_SYNTHESIZER_MENU.get(), TESLA_SYNTHESIZER,
-					0, 3, 4, 36);
-			registration.addRecipeTransferHandler(AmmunitionTableMenu.class,
-					MenuTypeRegistry.AMMUNITION_TABLE_MENU.get(), AMMUNITION_TABLE,
-					0, 6, 7, 36);
-			registration.addRecipeTransferHandler(StarForgeMenu.class,
-					MenuTypeRegistry.STAR_FORGE_MENU.get(), STAR_FORGE,
-					0, 2, 3, 36);
-		}
+		registration.addRecipeTransferHandler(TeslaSynthesizerMenu.class,
+				MenuTypeRegistry.TESLA_SYNTHESIZER_MENU.get(), TESLA_SYNTHESIZER,
+				0, 3, 4, 36);
+		registration.addRecipeTransferHandler(AmmunitionTableMenu.class,
+				MenuTypeRegistry.AMMUNITION_TABLE_MENU.get(), AMMUNITION_TABLE,
+				0, 6, 7, 36);
+		registration.addRecipeTransferHandler(StarForgeMenu.class,
+				MenuTypeRegistry.STAR_FORGE_MENU.get(), STAR_FORGE,
+				0, 2, 3, 36);
 	}
 
 	@Override

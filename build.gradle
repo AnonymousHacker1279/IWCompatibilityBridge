@@ -16,9 +16,16 @@ repositories {
 	mavenLocal()
 	maven {
 		name "AnonymousHacker1279"
+		url "https://maven.anonymoushacker1279.tech/releases"
 
-		def baseMavenUrl = "https://maven.anonymoushacker1279.tech/"
-		url immersiveweapons_version.contains("SNAPSHOT") ? baseMavenUrl + "snapshots" : baseMavenUrl + "releases"
+		credentials(PasswordCredentials)
+		authentication {
+			basic(BasicAuthentication)
+		}
+	}
+	maven {
+		name "AnonymousHacker1279Snapshots"
+		url "https://maven.anonymoushacker1279.tech/snapshots"
 
 		credentials(PasswordCredentials)
 		authentication {
@@ -147,8 +154,9 @@ dependencies {
 
 	implementation "net.neoforged:neoforge:${neoforge_version}"
 
-	// Include Immersive Weapons
+	// Include Immersive Weapons and Cobalt Config
 	implementation "tech.anonymoushacker1279.immersiveweapons:ImmersiveWeapons:${immersiveweapons_version}"
+	implementation "tech.anonymoushacker1279.cobaltconfig:CobaltConfig:${cobaltconfig_version}"
 
 	// Include JEI
 	compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
@@ -264,7 +272,7 @@ if (file("RELEASE_NOTES.md").exists()) {
 		changelog = file("RELEASE_NOTES.md").text
 		// Get the IWCB version from the mod_version variable, it's the last part of the version string
 		version = "v" + mod_version.split("-")[1]
-		displayName = "Immersive Weapons Compatibility Bridge - " + version
+		displayName = "Immersive Weapons Compatibility Bridge - v" + mod_version.split("-")[1]
 		gameVersions = [minecraft_version]
 		loaders = ["neoforge"]
 		curseEnvironment = "both"
