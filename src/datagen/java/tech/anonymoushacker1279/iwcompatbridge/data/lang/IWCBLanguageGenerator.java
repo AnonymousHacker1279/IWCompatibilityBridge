@@ -82,6 +82,7 @@ public class IWCBLanguageGenerator extends IWCBLanguageProvider {
 		addWTHITTooltip("damageable_block.stage", "Stage: %s/%s");
 		addWTHITTooltip("merchant.trade_refresh_time", "Trades refresh in: %s:%s");
 		addWTHITTooltip("tesla_synthesizer.progress", "Time remaining: %s:%s");
+		addWTHITTooltip("star_forge.progress", "Time remaining: %ss");
 	}
 
 	private String capitalizeWords(String str) {
