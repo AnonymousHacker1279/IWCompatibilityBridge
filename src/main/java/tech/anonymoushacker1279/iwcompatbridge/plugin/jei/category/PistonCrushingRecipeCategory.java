@@ -1,4 +1,3 @@
-/* TODO: reimplement when JEI updates
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category;
 
 import mezz.jei.api.constants.VanillaTypes;
@@ -19,7 +18,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
-import org.jetbrains.annotations.NotNull;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.PistonCrushingRecipe;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPluginHandler;
@@ -31,22 +29,11 @@ public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrush
 	private final IDrawable background;
 	private final IDrawable icon;
 
-	*/
-/**
- * Constructor for PistonCrushingRecipeCategory.
- *
- * @param guiHelper a <code>IGuiHelper</code> instance
- * <p>
- * Get the title of the recipe category.
- * @return String
- * <p>
- * Get the background.
- * @return IDrawable
- * <p>
- * Get the icon.
- * @return IDrawable
- *//*
-
+	/**
+	 * Constructor for PistonCrushingRecipeCategory.
+	 *
+	 * @param guiHelper a <code>IGuiHelper</code> instance
+	 */
 	public PistonCrushingRecipeCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
 				new ItemStack(Blocks.PISTON));
@@ -55,10 +42,10 @@ public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrush
 	}
 
 	@Override
-	public void draw(@NotNull PistonCrushingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView,
-	                 @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
+	public void draw(PistonCrushingRecipe recipe, IRecipeSlotsView recipeSlotsView,
+	                 GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
-		MutableComponent dropString = Component.translatable("gui.jei.category.piston_crushing.note", recipe.minCount(), recipe.maxCount());
+		MutableComponent dropString = Component.translatable("gui.jei.category.piston_crushing.note", recipe.getMinCount(), recipe.getMaxCount());
 		Minecraft minecraft = Minecraft.getInstance();
 		Font fontRenderer = minecraft.font;
 		int width = fontRenderer.width(dropString);
@@ -66,49 +53,43 @@ public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrush
 	}
 
 	@Override
-	public @NotNull RecipeType<PistonCrushingRecipe> getRecipeType() {
+	public RecipeType<PistonCrushingRecipe> getRecipeType() {
 		return JEIPluginHandler.PISTON_CRUSHING;
 	}
 
-	*/
-/**
- * Get the title of the recipe category.
- *
- * @return String
- *//*
-
+	/**
+	 * Get the title of the recipe category.
+	 *
+	 * @return String
+	 */
 	@Override
-	public @NotNull Component getTitle() {
+	public Component getTitle() {
 		return Component.translatable("gui.jei.category.piston_crushing");
 	}
 
-	*/
-/**
- * Get the background.
- *
- * @return IDrawable
- *//*
-
+	/**
+	 * Get the background.
+	 *
+	 * @return IDrawable
+	 */
 	@Override
-	public @NotNull IDrawable getBackground() {
+	public IDrawable getBackground() {
 		return background;
 	}
 
-	*/
-/**
- * Get the icon.
- *
- * @return IDrawable
- *//*
-
+	/**
+	 * Get the icon.
+	 *
+	 * @return IDrawable
+	 */
 	@Override
-	public @NotNull IDrawable getIcon() {
+	public IDrawable getIcon() {
 		return icon;
 	}
 
 
 	@Override
-	public void setRecipe(IRecipeLayoutBuilder builder, PistonCrushingRecipe recipe, @NotNull IFocusGroup focuses) {
+	public void setRecipe(IRecipeLayoutBuilder builder, PistonCrushingRecipe recipe, IFocusGroup focuses) {
 		NonNullList<Ingredient> ingredients = NonNullList.create();
 		ingredients.addAll(recipe.getIngredients());
 
@@ -117,4 +98,4 @@ public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrush
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 55, 17)
 				.addItemStack(recipe.getResultItem(RegistryAccess.EMPTY));
 	}
-}*/
+}

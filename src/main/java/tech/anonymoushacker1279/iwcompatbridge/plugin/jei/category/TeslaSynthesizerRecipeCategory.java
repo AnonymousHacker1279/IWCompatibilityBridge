@@ -1,4 +1,3 @@
-/* TODO: reimplement when JEI updates
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category;
 
 import com.google.common.cache.*;
@@ -20,7 +19,6 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jetbrains.annotations.NotNull;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.immersiveweapons.init.BlockRegistry;
 import tech.anonymoushacker1279.immersiveweapons.init.ItemRegistry;
@@ -42,22 +40,11 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 	protected final IDrawableStatic staticFlame;
 	protected final IDrawableAnimated animatedFlame;
 
-	*/
-/**
- * Constructor for TeslaSynthesizerRecipeCategory.
- *
- * @param guiHelper a <code>IGuiHelper</code> instance
- * <p>
- * Get the title of the recipe category.
- * @return String
- * <p>
- * Get the background.
- * @return IDrawable
- * <p>
- * Get the icon.
- * @return IDrawable
- *//*
-
+	/**
+	 * Constructor for TeslaSynthesizerRecipeCategory.
+	 *
+	 * @param guiHelper a <code>IGuiHelper</code> instance
+	 */
 	public TeslaSynthesizerRecipeCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
 				new ItemStack(BlockRegistry.TESLA_SYNTHESIZER.get()));
@@ -72,7 +59,7 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 				.maximumSize(25)
 				.build(new CacheLoader<>() {
 					@Override
-					public @NotNull IDrawableAnimated load(@NotNull Integer cookTime) {
+					public IDrawableAnimated load(Integer cookTime) {
 						return guiHelper.drawableBuilder(RECIPE_GUI_VANILLA, 82, 128, 24, 17)
 								.buildAnimated(cookTime, IDrawableAnimated.StartDirection.LEFT, false);
 					}
@@ -84,8 +71,8 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 	}
 
 	@Override
-	public void draw(@NotNull TeslaSynthesizerRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView,
-	                 @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
+	public void draw(TeslaSynthesizerRecipe recipe, IRecipeSlotsView recipeSlotsView,
+	                 GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
 		animatedFlame.draw(guiGraphics, 52, 20);
 
@@ -111,49 +98,43 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 	}
 
 	@Override
-	public @NotNull RecipeType<TeslaSynthesizerRecipe> getRecipeType() {
+	public RecipeType<TeslaSynthesizerRecipe> getRecipeType() {
 		return JEIPluginHandler.TESLA_SYNTHESIZER;
 	}
 
-	*/
-/**
- * Get the title of the recipe category.
- *
- * @return String
- *//*
-
+	/**
+	 * Get the title of the recipe category.
+	 *
+	 * @return String
+	 */
 	@Override
-	public @NotNull Component getTitle() {
+	public Component getTitle() {
 		return Component.translatable("gui.jei.category.tesla_synthesizer");
 	}
 
-	*/
-/**
- * Get the background.
- *
- * @return IDrawable
- *//*
-
+	/**
+	 * Get the background.
+	 *
+	 * @return IDrawable
+	 */
 	@Override
-	public @NotNull IDrawable getBackground() {
+	public IDrawable getBackground() {
 		return background;
 	}
 
-	*/
-/**
- * Get the icon.
- *
- * @return IDrawable
- *//*
-
+	/**
+	 * Get the icon.
+	 *
+	 * @return IDrawable
+	 */
 	@Override
-	public @NotNull IDrawable getIcon() {
+	public IDrawable getIcon() {
 		return icon;
 	}
 
 
 	@Override
-	public void setRecipe(IRecipeLayoutBuilder builder, TeslaSynthesizerRecipe recipe, @NotNull IFocusGroup focuses) {
+	public void setRecipe(IRecipeLayoutBuilder builder, TeslaSynthesizerRecipe recipe, IFocusGroup focuses) {
 		NonNullList<Ingredient> ingredients = NonNullList.create();
 		ingredients.addAll(recipe.getIngredients());
 
@@ -168,4 +149,4 @@ public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynt
 		builder.addSlot(RecipeIngredientRole.CATALYST, 51, 37)
 				.addItemStack(new ItemStack(ItemRegistry.MOLTEN_INGOT.get()));
 	}
-}*/
+}

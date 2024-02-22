@@ -5,15 +5,21 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig.Type;
+import net.neoforged.fml.event.lifecycle.FMLConstructModEvent;
+import net.neoforged.neoforge.client.ConfigScreenHandler;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 import tech.anonymoushacker1279.immersiveweapons.api.PluginHandler;
+import tech.anonymoushacker1279.iwcompatbridge.config.ClientConfig;
 import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 import tech.anonymoushacker1279.iwcompatbridge.init.IWCBDeferredRegistryHandler;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.curios.CuriosEventHandler;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.curios.CuriosPlugin;
+import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPlugin;
+import tech.anonymoushacker1279.iwcompatbridge.plugin.lucent.LucentPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.wthit.WTHITPlugin;
+import tech.anonymoushacker1729.cobaltconfig.client.CobaltConfigScreen;
+import tech.anonymoushacker1729.cobaltconfig.config.ConfigManager.ConfigBuilder;
 
 @Mod(IWCompatBridge.MOD_ID)
 public class IWCompatBridge {
@@ -29,22 +35,34 @@ public class IWCompatBridge {
 
 		// Load configuration
 		LOGGER.info("Registering configuration files");
-		ModLoadingContext.get().registerConfig(Type.COMMON, CommonConfig.COMMON_SPEC);
+		new ConfigBuilder(MOD_ID, CommonConfig.class)
+				.setConfigName("Common Config")
+				.build();
+		new ConfigBuilder(MOD_ID, "client", ClientConfig.class)
+				.setConfigName("Client Config")
+				.setClientOnly(true)
+				.build();
 
 		// Initialize deferred registry
-		IWCBDeferredRegistryHandler.init();
+		IWCBDeferredRegistryHandler.init(modEventBus);
 
 		modEventBus.addListener(IWCBDeferredRegistryHandler::setupCreativeTabs);
+		modEventBus.addListener(this::constructMod);
 
 		// Register plugins
-		// PluginHandler.registerPlugin(new JEIPlugin());
+		PluginHandler.registerPlugin(new JEIPlugin());
 		PluginHandler.registerPlugin(new WTHITPlugin());
 		// PluginHandler.registerPlugin(new PMMOPlugin());
-		// PluginHandler.registerPlugin(new LucentPlugin());
+		PluginHandler.registerPlugin(new LucentPlugin());
 		PluginHandler.registerPlugin(new CuriosPlugin());
 
 		if (ModList.get().isLoaded("curios")) {
 			NeoForge.EVENT_BUS.addListener(CuriosEventHandler::curioEquipEvent);
 		}
+	}
+
+	public void constructMod(FMLConstructModEvent event) {
+		ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class,
+				() -> new ConfigScreenHandler.ConfigScreenFactory((mc, screen) -> CobaltConfigScreen.getScreen(screen, MOD_ID)));
 	}
 }

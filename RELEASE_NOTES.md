@@ -1,6 +1,9 @@
-This release includes a bugfix for the Curios plugin.
+This release ports to MC 1.20.4 and IW v1.29.0.
 
-### Bugfixes
+As dependencies are still upgrading, the Project MMO and Mekanism plugins are unavailable.
 
-- Prevent multiple accessories of the same type from being stacked when there are multiple slots available. While this
-  is considered unintended behavior, it is configurable in case the old behavior is preferred.
+### Feature Changes / Additions
+
+- Cook time for the Star Forge is visible via WTHIT
+- Add crafting support for the Star Forge to JEI, and add info pages for crafting blocks
+- Improve Lucent plugin mechanics

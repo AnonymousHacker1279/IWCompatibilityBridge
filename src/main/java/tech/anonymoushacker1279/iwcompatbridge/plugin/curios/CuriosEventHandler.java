@@ -16,11 +16,11 @@ import java.util.Optional;
 public class CuriosEventHandler {
 
 	public static void curioEquipEvent(CurioEquipEvent event) {
-		if (!CommonConfig.ENABLE_ACCESSORY_STACKING.get()) {
+		if (!CommonConfig.accessoryStacking) {
 			// Prevent stacking of the same types of accessories, for IW items
 			LivingEntity entity = event.getEntity();
 
-			Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(entity).resolve();
+			Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(entity);
 			if (optional.isPresent()) {
 				ICuriosItemHandler itemHandler = optional.get();
 				List<SlotResult> curios = itemHandler.findCurios(itemStack -> {

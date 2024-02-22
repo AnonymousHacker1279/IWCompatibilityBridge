@@ -18,7 +18,15 @@ public abstract class IWCBLanguageProvider extends LanguageProvider {
 		add("gui.jei.category." + name + ".note", note);
 	}
 
+	public void addJEIItemInfo(String name, String translation) {
+		add("gui.jei.item." + name + ".info", translation);
+	}
+
 	public void addWTHITTooltip(String name, String translation) {
 		add("iwcompatbridge.wthit." + name, translation);
+	}
+
+	public void addConfigField(String name, String translation) {
+		add("iwcompatbridge.cobaltconfig." + name, translation);
 	}
 }

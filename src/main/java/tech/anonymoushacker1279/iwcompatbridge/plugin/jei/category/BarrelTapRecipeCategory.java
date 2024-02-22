@@ -1,4 +1,3 @@
-/* TODO: reimplement when JEI updates
 package tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category;
 
 import mezz.jei.api.constants.VanillaTypes;
@@ -13,7 +12,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jetbrains.annotations.NotNull;
 import tech.anonymoushacker1279.immersiveweapons.init.BlockRegistry;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.BarrelTapRecipe;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
@@ -26,22 +24,11 @@ public class BarrelTapRecipeCategory implements IRecipeCategory<BarrelTapRecipe>
 	private final IDrawable background;
 	private final IDrawable icon;
 
-	*/
-/**
- * Constructor for BarrelTapRecipeCategory.
- *
- * @param guiHelper a <code>IGuiHelper</code> instance
- * <p>
- * Get the title of the recipe category.
- * @return String
- * <p>
- * Get the background.
- * @return IDrawable
- * <p>
- * Get the icon.
- * @return IDrawable
- *//*
-
+	/**
+	 * Constructor for BarrelTapRecipeCategory.
+	 *
+	 * @param guiHelper a <code>IGuiHelper</code> instance
+	 */
 	public BarrelTapRecipeCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
 				new ItemStack(BlockRegistry.BARREL_TAP.get()));
@@ -50,49 +37,43 @@ public class BarrelTapRecipeCategory implements IRecipeCategory<BarrelTapRecipe>
 	}
 
 	@Override
-	public @NotNull RecipeType<BarrelTapRecipe> getRecipeType() {
+	public RecipeType<BarrelTapRecipe> getRecipeType() {
 		return JEIPluginHandler.BARREL_TAP;
 	}
 
-	*/
-/**
- * Get the title of the recipe category.
- *
- * @return String
- *//*
-
+	/**
+	 * Get the title of the recipe category.
+	 *
+	 * @return String
+	 */
 	@Override
-	public @NotNull Component getTitle() {
+	public Component getTitle() {
 		return Component.translatable("gui.jei.category.barrel_tap_fermenting");
 	}
 
-	*/
-/**
- * Get the background.
- *
- * @return IDrawable
- *//*
-
+	/**
+	 * Get the background.
+	 *
+	 * @return IDrawable
+	 */
 	@Override
-	public @NotNull IDrawable getBackground() {
+	public IDrawable getBackground() {
 		return background;
 	}
 
-	*/
-/**
- * Get the icon.
- *
- * @return IDrawable
- *//*
-
+	/**
+	 * Get the icon.
+	 *
+	 * @return IDrawable
+	 */
 	@Override
-	public @NotNull IDrawable getIcon() {
+	public IDrawable getIcon() {
 		return icon;
 	}
 
 
 	@Override
-	public void setRecipe(IRecipeLayoutBuilder builder, BarrelTapRecipe recipe, @NotNull IFocusGroup focuses) {
+	public void setRecipe(IRecipeLayoutBuilder builder, BarrelTapRecipe recipe, IFocusGroup focuses) {
 		NonNullList<Ingredient> ingredients = NonNullList.create();
 		ingredients.addAll(recipe.getIngredients());
 
@@ -101,4 +82,4 @@ public class BarrelTapRecipeCategory implements IRecipeCategory<BarrelTapRecipe>
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 137, 42)
 				.addItemStack(recipe.getResultItem(RegistryAccess.EMPTY));
 	}
-}*/
+}
