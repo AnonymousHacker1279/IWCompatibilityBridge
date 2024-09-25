@@ -6,7 +6,7 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLConstructModEvent;
-import net.neoforged.neoforge.client.ConfigScreenHandler;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 import tech.anonymoushacker1279.immersiveweapons.api.PluginHandler;
@@ -16,7 +16,6 @@ import tech.anonymoushacker1279.iwcompatbridge.init.IWCBDeferredRegistryHandler;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.curios.CuriosEventHandler;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.curios.CuriosPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPlugin;
-import tech.anonymoushacker1279.iwcompatbridge.plugin.lucent.LucentPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.wthit.WTHITPlugin;
 import tech.anonymoushacker1729.cobaltconfig.client.CobaltConfigScreen;
 import tech.anonymoushacker1729.cobaltconfig.config.ConfigManager.ConfigBuilder;
@@ -52,8 +51,7 @@ public class IWCompatBridge {
 		// Register plugins
 		PluginHandler.registerPlugin(new JEIPlugin());
 		PluginHandler.registerPlugin(new WTHITPlugin());
-		// PluginHandler.registerPlugin(new PMMOPlugin());
-		PluginHandler.registerPlugin(new LucentPlugin());
+		// PluginHandler.registerPlugin(new LucentPlugin());
 		PluginHandler.registerPlugin(new CuriosPlugin());
 
 		if (ModList.get().isLoaded("curios")) {
@@ -62,7 +60,7 @@ public class IWCompatBridge {
 	}
 
 	public void constructMod(FMLConstructModEvent event) {
-		ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class,
-				() -> new ConfigScreenHandler.ConfigScreenFactory((mc, screen) -> CobaltConfigScreen.getScreen(screen, MOD_ID)));
+		ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class,
+				() -> (minecraft, modListScreen) -> CobaltConfigScreen.getScreen(modListScreen, MOD_ID));
 	}
 }

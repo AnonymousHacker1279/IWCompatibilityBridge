@@ -52,8 +52,8 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
-modId = "jei"
-type = "required"
-versionRange = "[17.1.0,)"
+modId = "emi"
+type = "optional"
+versionRange = "[1.1.6,)"
 ordering = "NONE"
 side = "BOTH"

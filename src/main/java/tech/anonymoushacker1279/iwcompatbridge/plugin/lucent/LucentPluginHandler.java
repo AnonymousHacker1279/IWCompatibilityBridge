@@ -1,3 +1,4 @@
+/*
 package tech.anonymoushacker1279.iwcompatbridge.plugin.lucent;
 
 import com.legacy.lucent.api.EntityBrightness;
@@ -59,4 +60,4 @@ public class LucentPluginHandler implements ILucentPlugin {
 	public void registerItemLightings(ItemLightingRegistry registry) {
 		registry.register(ItemRegistry.THE_SWORD.get(), ClientConfig.theSwordLightLevel);
 	}
-}
+}*/

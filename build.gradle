@@ -1,16 +1,12 @@
 plugins {
 	id 'java-library'
 	id 'maven-publish'
-	// Pinned because it updates too frequently and forces recompile
-	id 'net.neoforged.gradle.userdev' version '7.0.83'
-	id "com.hypherionmc.modutils.modpublisher" version "2.0.0"
+	id 'net.neoforged.gradle.userdev' version '7.0.133'
+	id "com.hypherionmc.modutils.modpublisher" version "2.1.2"
 	id 'idea'
 }
 
-import groovy.json.JsonOutput
-import groovy.json.JsonSlurper
-
-import java.security.MessageDigest
+apply from: 'optimization_utils.gradle'
 
 repositories {
 	mavenLocal()
@@ -62,6 +58,10 @@ repositories {
 		name "TheIllusiveC4 Maven"
 		url = "https://maven.theillusivec4.top/"
 	}
+	maven {
+		name = "TerraformersMC"
+		url = "https://maven.terraformersmc.com/"
+	}
 }
 
 
@@ -72,7 +72,7 @@ base {
 	archivesName = project.mod_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
@@ -150,7 +150,7 @@ sourceSets.main.resources {
 }
 
 dependencies {
-	implementation 'org.jetbrains:annotations:24.0.1'
+	implementation 'org.jetbrains:annotations:24.1.0'
 
 	implementation "net.neoforged:neoforge:${neoforge_version}"
 
@@ -158,18 +158,15 @@ dependencies {
 	implementation "tech.anonymoushacker1279.immersiveweapons:ImmersiveWeapons:${immersiveweapons_version}"
 	implementation "tech.anonymoushacker1279.cobaltconfig:CobaltConfig:${cobaltconfig_version}"
 
-	// Include JEI
-	compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
-	compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
-	runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+	// Include EMI
+	compileOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}:api"
+	runtimeOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
 	// Include WTHIT and badpackets
 	compileOnly "mcp.mobius.waila:wthit-api:neo-${wthit_version}"
 	runtimeOnly "mcp.mobius.waila:wthit:neo-${wthit_version}"
 	compileOnly "lol.bai:badpackets:neo-${badpackets_version}"
-	// Include Project MMO
-	// implementation fg.deobf("curse.maven:projectmmo-353935:${project_mmo_version}")
 	// Include Lucent
-	implementation "com.legacy:lucent:${lucent_version}"
+	// implementation "com.legacy:lucent:${lucent_version}"
 	// Include Curios
 	runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 	compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
@@ -186,33 +183,11 @@ tasks.named('processResources', ProcessResources).configure {
 	]
 	inputs.properties replaceProperties
 
-	filesMatching(['META-INF/mods.toml']) {
+	filesMatching(['META-INF/neoforge.mods.toml']) {
 		expand replaceProperties + [project: project]
 	}
 
 	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-}
-
-processResources {
-	// Minify JSON files
-	doLast {
-		def minifyStart = System.currentTimeMillis()
-		def filesMinified = 0
-		def bytesSaved = 0
-
-		fileTree(dir: outputs.files.asPath, include: '**/*.json').each {
-			File file = it
-			filesMinified++
-			def oldLength = file.length()
-			file.text = JsonOutput.toJson(new JsonSlurper().parse(file))
-			bytesSaved += (oldLength - file.length())
-		}
-
-		// Format the bytes saved to KB, and add commas
-		bytesSaved = String.format("%,d", (bytesSaved / 1024).toLong())
-
-		println('Minified ' + filesMinified + ' JSON files, saving ' + bytesSaved + ' KB. Took ' + (System.currentTimeMillis() - minifyStart) + 'ms.')
-	}
 }
 
 tasks.named('jar', Jar).configure {
@@ -264,28 +239,29 @@ if (file("RELEASE_NOTES.md").exists()) {
 		}
 
 		setDebug(false)
-		curseID = "633345"
-		modrinthID = "SAUGybfH"
-		githubRepo = "AnonymousHacker1279/IWCompatibilityBridge"
-		versionType = "release"
+		setCurseID("633345")
+		setModrinthID("SAUGybfH")
+		setGithubRepo("AnonymousHacker1279/IWCompatibilityBridge")
+		setVersionType("release")
 		// Read the contents of the RELEASE_NOTES.md file
-		changelog = file("RELEASE_NOTES.md").text
+		setChangelog(file("RELEASE_NOTES.md").text)
 		// Get the IWCB version from the mod_version variable, it's the last part of the version string
-		version = "v" + mod_version.split("-")[1]
-		displayName = "Immersive Weapons Compatibility Bridge - v" + mod_version.split("-")[1]
-		gameVersions = [minecraft_version]
-		loaders = ["neoforge"]
-		curseEnvironment = "both"
-		artifact = jar
+		setVersion("v" + mod_version.split("-")[1])
+		setDisplayName("Immersive Weapons Compatibility Bridge - v" + mod_version.split("-")[1])
+		setGameVersions([minecraft_version])
+		setLoaders("neoforge")
+		setCurseEnvironment("both")
+		setArtifact(tasks.jar)
+		setJavaVersions([JavaVersion.VERSION_21])
 
 		curseDepends {
-			required "immersive-weapons"
+			required "immersive-weapons", "cobalt-config"
 			optional "jei", "wthit-forge", "curios", "lucent", "project-mmo"
 		}
 
 		modrinthDepends {
-			required "QZFdnUQ5"
-			optional "u6dRKJwZ", "6AQIaxuO", "vvuO3ImH", "JE0fgMUp", "KFQYC1Uy"
+			required "immersive-weapons", "cobaltconfig"
+			optional "jei", "wthit", "curios", "lucent", "project-mmo"
 		}
 	}
 } else {
@@ -295,84 +271,4 @@ if (file("RELEASE_NOTES.md").exists()) {
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 	options.fork = true // Use a separate JVM process for Java compilation
-}
-
-void minimizePNGFile(File file) {
-	long size = file.length()
-	exec {
-		executable "optipng"
-		args "-q", "-o7", "-zm1-9", "-strip", "all", file
-	}
-	long newSize = file.length()
-	if (newSize < size) {
-		System.out.format("Reduced file size of %s from %d bytes to %d bytes (reduced by %.2f%%)\n",
-				file, size, newSize, ((double) (size - newSize)) / ((double) size) * 100.0)
-	}
-}
-
-static def calculateMD5Hash(File file) {
-	MessageDigest md = MessageDigest.getInstance("MD5")
-	file.withInputStream { md.update(it.bytes) }
-	byte[] digest = md.digest()
-	return digest.collect { String.format("%02x", it) }.join()
-}
-
-tasks.register('optimizePng').configure {
-	doLast {
-		try {
-			exec {
-				commandLine "optipng", "-v"
-			}
-			// OptiPNG is available, continue with the task
-			def pngPatterns = ["**/*.png"]
-
-			// Load cache with file hashes, to avoid re-optimizing files that are untouched
-			def cache = [:]
-			if (file(".optimizePngCache").exists()) {
-				cache = new JsonSlurper().parse(file(".optimizePngCache"))
-				println("Loaded " + cache.size() + " entries from cache.")
-			} else {
-				file(".optimizePngCache").createNewFile()
-			}
-
-			// Minimize any PNGs found
-			def originalSize = 0
-			def newSize = 0
-			def imagesMinimized = 0
-
-			for (dir in sourceSets.main.resources.srcDirs) {
-				fileTree(dir: dir, includes: pngPatterns).each {
-					// Skip files that are already optimized
-					if (cache.containsKey(it.path) && cache[it.path] == calculateMD5Hash(it)) {
-						return
-					} else {
-						imagesMinimized++
-						originalSize += it.length()
-						minimizePNGFile(it)
-						newSize += it.length()
-
-						// Update the cache with the new file hash
-						cache[it.path] = calculateMD5Hash(it)
-					}
-				}
-			}
-
-			if (imagesMinimized > 0) {
-				// Format the bytes saved to KB, and add commas
-				def bytesSaved = String.format("%,d", ((originalSize - newSize) / 1024).toLong())
-				println("Minimized " + imagesMinimized + " PNGs, saving " + bytesSaved + " KB.")
-
-				// Save the cache
-				file(".optimizePngCache").text = JsonOutput.toJson(cache)
-				println("Saved " + cache.size() + " entries to cache.")
-			} else {
-				println("No PNGs were optimized.")
-			}
-		} catch (Exception e) {
-			// OptiPNG is not available
-			println("An error occurred while attempting to optimize PNGs.")
-			println("OptiPNG may not be available. Please consider installing OptiPNG, and ensure it is added to your PATH.")
-			println("https://optipng.sourceforge.net/")
-		}
-	}
 }
