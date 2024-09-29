@@ -24,7 +24,7 @@ import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPluginHandler;
 
 public class PistonCrushingRecipeCategory implements IRecipeCategory<PistonCrushingRecipe> {
 
-	private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(IWCompatBridge.MOD_ID,
+	private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(IWCompatBridge.MOD_ID,
 			"textures/gui/jei/piston_crushing.png");
 	private final IDrawable background;
 	private final IDrawable icon;

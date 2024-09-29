@@ -7,6 +7,6 @@ public class TeslaSynthesizerBlockDataProvider implements IDataProvider<TeslaSyn
 
 	@Override
 	public void appendData(IDataWriter data, IServerAccessor<TeslaSynthesizerBlockEntity> accessor, IPluginConfig config) {
-		data.raw().merge(accessor.getTarget().serializeNBT());
+		data.raw().merge(accessor.getTarget().getUpdateTag(accessor.getWorld().registryAccess()));
 	}
 }

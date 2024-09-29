@@ -1,40 +1,29 @@
 package tech.anonymoushacker1279.iwcompatbridge.plugin.curios;
 
-import net.minecraft.world.entity.LivingEntity;
-import net.neoforged.bus.api.Event.Result;
-import tech.anonymoushacker1279.immersiveweapons.init.ItemRegistry;
+import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.common.util.TriState;
 import tech.anonymoushacker1279.immersiveweapons.item.AccessoryItem;
-import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
+import tech.anonymoushacker1279.iwcompatbridge.config.IWCBConfigs;
 import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotResult;
-import top.theillusivec4.curios.api.event.CurioEquipEvent;
-import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
-
-import java.util.List;
-import java.util.Optional;
+import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
 
 public class CuriosEventHandler {
 
-	public static void curioEquipEvent(CurioEquipEvent event) {
-		if (!CommonConfig.accessoryStacking) {
-			// Prevent stacking of the same types of accessories, for IW items
-			LivingEntity entity = event.getEntity();
-
-			Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(entity);
-			if (optional.isPresent()) {
-				ICuriosItemHandler itemHandler = optional.get();
-				List<SlotResult> curios = itemHandler.findCurios(itemStack -> {
-					if (ItemRegistry.ITEMS.getEntries().stream().anyMatch(item -> item.get() instanceof AccessoryItem)) {
-						return itemStack.getItem() == event.getStack().getItem();
-					}
-
-					return false;
-				});
-
-				if (!curios.isEmpty()) {
-					event.setResult(Result.DENY);
-				}
-			}
+	/**
+	 * Prevent multiple IW accessories of the same item from being equipped at once, if the config option is enabled.
+	 *
+	 * @param event the <code>CurioCanEquipEvent</code> instance
+	 */
+	public static void curioEquipEvent(CurioCanEquipEvent event) {
+		if (!IWCBConfigs.SERVER.accessoryStacking.getAsBoolean()) {
+			CuriosApi.getCuriosInventory(event.getEntity())
+					.ifPresent(iCuriosItemHandler -> iCuriosItemHandler.findCurios(event.getSlotContext().identifier())
+							.forEach(slotResult -> {
+								Item item = slotResult.stack().getItem();
+								if (item == event.getStack().getItem() && item instanceof AccessoryItem) {
+									event.setEquipResult(TriState.FALSE);
+								}
+							}));
 		}
 	}
 }

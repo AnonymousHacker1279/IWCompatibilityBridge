@@ -4,12 +4,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
-import tech.anonymoushacker1279.iwcompatbridge.config.ClientConfig;
-import tech.anonymoushacker1279.iwcompatbridge.config.CommonConfig;
 import tech.anonymoushacker1279.iwcompatbridge.init.IWCBItemRegistry;
-import tech.anonymoushacker1729.cobaltconfig.config.ConfigEntry;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -91,23 +87,8 @@ public class IWCBLanguageGenerator extends IWCBLanguageProvider {
 	}
 
 	private void addConfigDescriptions() {
-		// Config classes uses annotations on fields, loop through declared fields that have a ConfigEntry annotation and pull the field name
-		for (Field field : ClientConfig.class.getDeclaredFields()) {
-			if (field.isAnnotationPresent(ConfigEntry.class)) {
-				// Insert a space before each uppercase letter, then trim the result to remove leading spaces
-				String spacedFieldName = field.getName().replaceAll("(?<!^)(?=[A-Z])", " ").trim();
-				// Convert the spaced field name to a sentence
-				String description = capitalizeWords(spacedFieldName);
-				addConfigField(field.getName(), description);
-			}
-		}
-		for (Field field : CommonConfig.class.getDeclaredFields()) {
-			if (field.isAnnotationPresent(ConfigEntry.class)) {
-				String spacedFieldName = field.getName().replaceAll("(?<!^)(?=[A-Z])", " ").trim();
-				String description = capitalizeWords(spacedFieldName);
-				addConfigField(field.getName(), description);
-			}
-		}
+		add("iwcompatbridge.configuration.Curios", "Curios Settings");
+		add("iwcompatbridge.configuration.accessoryStacking", "Accessory Stacking");
 	}
 
 	private String capitalizeWords(String str) {

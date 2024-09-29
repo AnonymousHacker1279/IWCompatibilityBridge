@@ -7,6 +7,6 @@ public class StarForgeBlockDataProvider implements IDataProvider<StarForgeBlockE
 
 	@Override
 	public void appendData(IDataWriter data, IServerAccessor<StarForgeBlockEntity> accessor, IPluginConfig config) {
-		data.raw().merge(accessor.getTarget().getUpdateTag());
+		data.raw().merge(accessor.getTarget().getUpdateTag(accessor.getWorld().registryAccess()));
 	}
 }

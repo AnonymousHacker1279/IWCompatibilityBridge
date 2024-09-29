@@ -13,8 +13,6 @@ IWCB adds extra support for various mods. Those are:
 
 - Just Enough Items
 - What The Hell Is That?<sup>1</sup>
-- Lucent
-- Project MMO
 - Curios
 - Mekanism
 
@@ -33,15 +31,6 @@ WTHIT support consists of several elements. Those being:
 - Display health and damage stages of damageable blocks (such as wooden spikes or barbed wire)
 - Display cook/smelt time remaining of crafting blocks (such as the Tesla Synthesizer or Star Forge)
 - Hide Pitfall blocks as regular grass blocks
-
-### Lucent
-
-Lucent support consists of adding dynamic lighting to various aspects of the game.
-
-### Project MMO
-
-PMMO support consists of EXP-granting events for crafting objects with the Small Parts Table or Tesla Synthesizer. More
-events to come!
 
 ### Curios
 

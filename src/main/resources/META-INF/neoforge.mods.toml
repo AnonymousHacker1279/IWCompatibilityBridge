@@ -33,27 +33,20 @@ side = "BOTH"
 [[dependencies.iwcompatbridge]]
 modId = "immersiveweapons"
 type = "required"
-versionRange = "[1.20.4-1.29.0,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.iwcompatbridge]]
-modId = "cobaltconfig"
-type = "required"
-versionRange = "[1.20.4-1.0.0,)"
+versionRange = "[1.20.4-1.29.0,)" # TODO: bump version
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "curios"
 type = "optional"
-versionRange = "[7.0.0-beta.3+1.20.4,)"
+versionRange = "[9.0.11+1.21,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
-modId = "emi"
+modId = "jei"
 type = "optional"
-versionRange = "[1.1.6,)"
+versionRange = "[19.18.3.204,)"
 ordering = "NONE"
 side = "BOTH"
