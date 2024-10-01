@@ -43,7 +43,6 @@ public class IWCompatBridge {
 		// Register plugins
 		PluginHandler.registerPlugin(new JEIPlugin());
 		PluginHandler.registerPlugin(new WTHITPlugin());
-		// PluginHandler.registerPlugin(new LucentPlugin());
 		PluginHandler.registerPlugin(new CuriosPlugin());
 
 		if (ModList.get().isLoaded("curios")) {

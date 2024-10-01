@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -30,6 +31,13 @@ public class IWCBDeferredRegistryHandler {
 
 		IWCompatBridge.LOGGER.info("Initializing deferred registry for creative tabs");
 		CREATIVE_MODE_TABS.register(modEventBus);
+
+		if (ModList.get().isLoaded("mekanism")) {
+			IWCompatBridge.LOGGER.info("Mekanism detected: initializing related registry objects");
+
+			IWCompatBridge.LOGGER.info("Initializing deferred registry for Mekanism chemicals");
+			IWCBChemicalRegistry.CHEMICALS.register(modEventBus);
+		}
 	}
 
 	public static void setupCreativeTabs(BuildCreativeModeTabContentsEvent event) {

@@ -23,6 +23,7 @@ public class IWCBLanguageGenerator extends IWCBLanguageProvider {
 		addJEIItemInformation();
 		addWTHITTooltips();
 		addConfigDescriptions();
+		addMekanismChemicals();
 
 		add("itemGroup.iwcompatbridge.creative_tab", "IW Compatibility Bridge");
 		add("curios.identifier.spirit", "Spirit");
@@ -87,8 +88,13 @@ public class IWCBLanguageGenerator extends IWCBLanguageProvider {
 	}
 
 	private void addConfigDescriptions() {
-		add("iwcompatbridge.configuration.Curios", "Curios Settings");
-		add("iwcompatbridge.configuration.accessoryStacking", "Accessory Stacking");
+		addConfigField("Curios", "Curios Settings");
+		addConfigField("accessoryStacking", "Accessory Stacking");
+	}
+
+	private void addMekanismChemicals() {
+		addMekanismChemical("dirty_cobalt", "Dirty Cobalt Slurry");
+		addMekanismChemical("clean_cobalt", "Cobalt Slurry");
 	}
 
 	private String capitalizeWords(String str) {
