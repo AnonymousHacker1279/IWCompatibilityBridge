@@ -15,6 +15,7 @@ IWCB adds extra support for various mods. Those are:
 - What The Hell Is That?<sup>1</sup>
 - Curios
 - Mekanism
+- RyoamicLights
 
 <sup>1 - WTHIT is a Waila fork; the plugin *may* work with other forks.</sup>
 
@@ -40,6 +41,10 @@ need to sit in the inventory to work, and can instead be placed in the appropria
 ### Mekanism
 
 Mekanism support consists of ore processing recipes for cobalt materials.
+
+### RyoamicLights
+
+RyoamicLights support consists of adding dynamic lighting to various aspects of the game.
 
 ## Version Support
 

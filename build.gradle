@@ -166,6 +166,8 @@ dependencies {
 	// Include Mekanism
 	implementation "mekanism:Mekanism:${mekanism_version}"
 	runtimeOnly "mekanism:Mekanism:${mekanism_version}:generators"
+	// Include RyoamicLights
+	implementation "curse.maven:ryoamiclights-913587:${ryoamiclights_version}"
 }
 
 tasks.named('processResources', ProcessResources).configure {
