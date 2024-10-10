@@ -246,13 +246,13 @@ if (file("RELEASE_NOTES.md").exists()) {
 		setJavaVersions([JavaVersion.VERSION_21])
 
 		curseDepends {
-			required "immersive-weapons", "cobalt-config"
-			optional "jei", "wthit-forge", "curios", "lucent", "project-mmo"
+			required "immersive-weapons"
+			optional "jei", "wthit-forge", "adorned", "mekanism", "ryoamiclights"
 		}
 
 		modrinthDepends {
-			required "immersive-weapons", "cobaltconfig"
-			optional "jei", "wthit", "curios", "lucent", "project-mmo"
+			required "immersive-weapons"
+			optional "jei", "wthit", "mekanism", "ryoamiclights" // Adorned is not on Modrinth
 		}
 	}
 } else {
