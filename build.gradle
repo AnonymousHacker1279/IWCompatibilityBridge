@@ -51,12 +51,7 @@ repositories {
 		}
 	}
 	maven {
-		name "Modding Legacy Maven"
-		url "https://maven.moddinglegacy.com/artifactory/modding-legacy/"
-	}
-	maven {
-		name "TerraformersMC"
-		url "https://maven.terraformersmc.com/"
+		url = "https://api.modrinth.com/maven"
 	}
 }
 
@@ -166,8 +161,9 @@ dependencies {
 	// Include Mekanism
 	implementation "mekanism:Mekanism:${mekanism_version}"
 	runtimeOnly "mekanism:Mekanism:${mekanism_version}:generators"
-	// Include RyoamicLights
-	implementation "curse.maven:ryoamiclights-913587:${ryoamiclights_version}"
+	// Include RyoamicLights and its dependencies
+	implementation "maven.modrinth:ryoamiclights:${ryoamiclights_version}-neoforge"
+	runtimeOnly "maven.modrinth:obsidianui:${obsidianui_version}-neoforge"
 }
 
 tasks.named('processResources', ProcessResources).configure {

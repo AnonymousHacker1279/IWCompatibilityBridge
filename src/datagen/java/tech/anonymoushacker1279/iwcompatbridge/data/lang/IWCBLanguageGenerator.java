@@ -88,8 +88,17 @@ public class IWCBLanguageGenerator extends IWCBLanguageProvider {
 	}
 
 	private void addConfigDescriptions() {
+		addConfigField("title", "Immersive Weapons Compatibility Bridge Configuration");
 		addConfigField("Curios", "Curios Settings");
 		addConfigField("accessoryStacking", "Accessory Stacking");
+		addConfigField("RyoamicLights", "RyoamicLights Settings");
+		addConfigField("flareLightLevel", "Light level of flares");
+		addConfigField("fireflyLightLevel", "Light level of fireflies");
+		addConfigField("meteorLightLevel", "Light level of meteors");
+		addConfigField("starWolfLightLevel", "Light level of star wolves");
+		addConfigField("muzzleFlashLightLevel", "Light level of muzzle flashes");
+		addConfigField("mortarLightLevel", "Light level of mortars");
+		addConfigField("throwableLightLevel", "Light level of throwable items");
 	}
 
 	private void addMekanismChemicals() {

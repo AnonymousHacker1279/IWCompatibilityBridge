@@ -1,8 +1,6 @@
 {
 	"pack": {
-		"description": "Immersive Weapons resources",
-		"pack_format": 15,
-		"forge:resource_pack_format": 15,
-		"forge:data_pack_format": 15
+		"description": "Immersive Weapons Compatibility Bridge resources",
+		"pack_format": 48
 	}
 }
