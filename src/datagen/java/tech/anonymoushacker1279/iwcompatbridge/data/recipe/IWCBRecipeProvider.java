@@ -26,7 +26,7 @@ public abstract class IWCBRecipeProvider extends RecipeProvider {
 		IWCBRecipeProvider.output = output;
 	}
 
-	public static void createSmeltingRecipe(List<ItemLike> ingredients, ItemLike result, float experience, int cookTime, @Nullable String group) {
+	protected static void createSmeltingRecipe(List<ItemLike> ingredients, ItemLike result, float experience, int cookTime, @Nullable String group) {
 		for (ItemLike itemlike : ingredients) {
 			SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemlike), RecipeCategory.MISC, result, experience, cookTime)
 					.group(group)
@@ -35,13 +35,13 @@ public abstract class IWCBRecipeProvider extends RecipeProvider {
 		}
 	}
 
-	private static void createSmeltingRecipe(ItemLike ingredient, ItemLike result, float experience, int cookTime, String group) {
+	protected static void createSmeltingRecipe(ItemLike ingredient, ItemLike result, float experience, int cookTime, String group) {
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.MISC, result, experience, cookTime)
 				.group(group).unlockedBy(getHasName(ingredient), has(ingredient))
 				.save(output, ImmersiveWeapons.MOD_ID + ":" + getItemName(result) + "_from_smelting_" + getItemName(ingredient));
 	}
 
-	private static void createBlastingRecipe(List<ItemLike> ingredients, ItemLike result, float experience, int cookTime, @Nullable String group) {
+	protected static void createBlastingRecipe(List<ItemLike> ingredients, ItemLike result, float experience, int cookTime, @Nullable String group) {
 		for (ItemLike itemlike : ingredients) {
 			SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemlike), RecipeCategory.MISC, result, experience, cookTime)
 					.group(group)
@@ -50,7 +50,7 @@ public abstract class IWCBRecipeProvider extends RecipeProvider {
 		}
 	}
 
-	private static void createBlastingRecipe(ItemLike ingredient, ItemLike result, float experience, int cookTime, String group) {
+	protected static void createBlastingRecipe(ItemLike ingredient, ItemLike result, float experience, int cookTime, String group) {
 		SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), RecipeCategory.MISC, result, experience, cookTime)
 				.group(group).unlockedBy(getHasName(ingredient), has(ingredient))
 				.save(output, ImmersiveWeapons.MOD_ID + ":" + getItemName(result) + "_from_blasting_" + getItemName(ingredient));

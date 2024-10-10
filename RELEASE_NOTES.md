@@ -1,9 +1,6 @@
-This release ports to MC 1.20.4 and IW v1.29.0.
-
-As dependencies are still upgrading, the Project MMO and Mekanism plugins are unavailable.
+This release ports to MC 1.21.1 and IW v1.30.0.
 
 ### Feature Changes / Additions
 
-- Cook time for the Star Forge is visible via WTHIT
-- Add crafting support for the Star Forge to JEI, and add info pages for crafting blocks
-- Improve Lucent plugin mechanics
+- Lucent support has been dropped in favor of RyamicLights, due to lack of updates on the former
+- Cobalt now supports 5x ore processing in Mekanism

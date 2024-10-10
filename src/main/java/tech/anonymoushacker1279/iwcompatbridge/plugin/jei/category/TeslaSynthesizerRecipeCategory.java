@@ -28,11 +28,11 @@ import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPluginHandler;
 
 public class TeslaSynthesizerRecipeCategory implements IRecipeCategory<TeslaSynthesizerRecipe> {
 
-	private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(IWCompatBridge.MOD_ID,
+	private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(IWCompatBridge.MOD_ID,
 			"textures/gui/jei/tesla_synthesizer.png");
-	private static final ResourceLocation CONTAINER_TEXTURE = new ResourceLocation(ImmersiveWeapons.MOD_ID,
+	private static final ResourceLocation CONTAINER_TEXTURE = ResourceLocation.fromNamespaceAndPath(ImmersiveWeapons.MOD_ID,
 			"textures/gui/container/tesla_synthesizer.png");
-	private static final ResourceLocation RECIPE_GUI_VANILLA = new ResourceLocation(ModIds.JEI_ID,
+	private static final ResourceLocation RECIPE_GUI_VANILLA = ResourceLocation.fromNamespaceAndPath(ModIds.JEI_ID,
 			"textures/jei/gui/gui_vanilla.png");
 	private final IDrawable background;
 	private final IDrawable icon;

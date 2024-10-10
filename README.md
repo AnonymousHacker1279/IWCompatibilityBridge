@@ -13,10 +13,9 @@ IWCB adds extra support for various mods. Those are:
 
 - Just Enough Items
 - What The Hell Is That?<sup>1</sup>
-- Lucent
-- Project MMO
 - Curios
 - Mekanism
+- RyoamicLights
 
 <sup>1 - WTHIT is a Waila fork; the plugin *may* work with other forks.</sup>
 
@@ -34,15 +33,6 @@ WTHIT support consists of several elements. Those being:
 - Display cook/smelt time remaining of crafting blocks (such as the Tesla Synthesizer or Star Forge)
 - Hide Pitfall blocks as regular grass blocks
 
-### Lucent
-
-Lucent support consists of adding dynamic lighting to various aspects of the game.
-
-### Project MMO
-
-PMMO support consists of EXP-granting events for crafting objects with the Small Parts Table or Tesla Synthesizer. More
-events to come!
-
 ### Curios
 
 Curios support consists of slots for Immersive Weapons' accessory items. When Curios is loaded, items will no longer
@@ -51,6 +41,10 @@ need to sit in the inventory to work, and can instead be placed in the appropria
 ### Mekanism
 
 Mekanism support consists of ore processing recipes for cobalt materials.
+
+### RyoamicLights
+
+RyoamicLights support consists of adding dynamic lighting to various aspects of the game.
 
 ## Version Support
 

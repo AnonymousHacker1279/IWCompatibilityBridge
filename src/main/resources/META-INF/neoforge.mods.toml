@@ -1,0 +1,73 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "MIT"
+issueTrackerURL = "https://github.com/AnonymousHacker1279/IWCompatibilityBridge/issues"
+
+[[mods]]
+modId = "iwcompatbridge"
+version = "${mod_version}"
+displayName = "Immersive Weapons Compatibility Bridge"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/immersive-weapons-compatibility-bridge"
+updateJSONURL = "https://raw.githubusercontent.com/AnonymousHacker1279/IWCompatibilityBridge/master/update.json"
+logoFile = "logo.png"
+credits = "Written by AnonymousHacker1279"
+authors = "AnonymousHacker1279"
+description = '''
+The Immersive Weapons Compatibility Bridge adds compatibility to several mods.
+'''
+
+[[dependencies.iwcompatbridge]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neoforge_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.iwcompatbridge]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.iwcompatbridge]]
+modId = "immersiveweapons"
+type = "required"
+versionRange = "[1.21.1-1.30.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.iwcompatbridge]]
+modId = "curios"
+type = "optional"
+versionRange = "[9.0.11+1.21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.iwcompatbridge]]
+modId = "jei"
+type = "optional"
+versionRange = "[19.18.3.204,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.iwcompatbridge]]
+modId = "mekanism"
+type = "optional"
+versionRange = "[1.21.1-10.7.7.64,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.iwcompatbridge]]
+modId = "wthit"
+type = "optional"
+versionRange = "[12.4.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.iwcompatbridge]]
+modId = "ryoamiclights"
+type = "optional"
+versionRange = "[0.2.11+mc1.21.1,)"
+ordering = "NONE"
+side = "BOTH"

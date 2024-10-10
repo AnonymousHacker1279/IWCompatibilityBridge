@@ -7,6 +7,6 @@ public class DamageableBlockDataProvider implements IDataProvider<DamageableBloc
 
 	@Override
 	public void appendData(IDataWriter data, IServerAccessor<DamageableBlockEntity> accessor, IPluginConfig config) {
-		data.raw().merge(accessor.getTarget().getUpdateTag());
+		data.raw().merge(accessor.getTarget().getUpdateTag(accessor.getWorld().registryAccess()));
 	}
 }

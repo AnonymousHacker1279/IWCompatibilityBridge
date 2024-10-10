@@ -19,7 +19,7 @@ import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPluginHandler;
 
 public class AstralCrystalRecipeCategory implements IRecipeCategory<AstralCrystalRecipe> {
 
-	private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(IWCompatBridge.MOD_ID,
+	private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(IWCompatBridge.MOD_ID,
 			"textures/gui/jei/astral_crystal.png");
 	private final IDrawable background;
 	private final IDrawable icon;

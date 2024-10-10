@@ -18,7 +18,7 @@ import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPluginHandler;
 
 public class AmmunitionTableRecipeCategory implements IRecipeCategory<AmmunitionTableRecipe> {
 
-	private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(IWCompatBridge.MOD_ID,
+	private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(IWCompatBridge.MOD_ID,
 			"textures/gui/jei/ammunition_table.png");
 	private final IDrawable background;
 	private final IDrawable icon;

@@ -16,4 +16,5 @@ public class IWCBItemRegistry {
 	public static final Supplier<Item> COBALT_CLUMP = ITEMS.register("cobalt_clump", () -> new Item(new Item.Properties()));
 	public static final Supplier<Item> COBALT_DIRTY_DUST = ITEMS.register("cobalt_dirty_dust", () -> new Item(new Item.Properties()));
 	public static final Supplier<Item> COBALT_DUST = ITEMS.register("cobalt_dust", () -> new Item(new Item.Properties()));
+	public static final Supplier<Item> COBALT_CRYSTAL = ITEMS.register("cobalt_crystal", () -> new Item(new Item.Properties()));
 }

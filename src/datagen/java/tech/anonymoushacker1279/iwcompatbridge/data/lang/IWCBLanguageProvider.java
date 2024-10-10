@@ -27,6 +27,10 @@ public abstract class IWCBLanguageProvider extends LanguageProvider {
 	}
 
 	public void addConfigField(String name, String translation) {
-		add("iwcompatbridge.cobaltconfig." + name, translation);
+		add("iwcompatbridge.configuration." + name, translation);
+	}
+
+	public void addMekanismChemical(String name, String translation) {
+		add("chemical.iwcompatbridge." + name, translation);
 	}
 }

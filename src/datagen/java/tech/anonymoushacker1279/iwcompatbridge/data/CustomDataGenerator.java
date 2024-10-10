@@ -3,15 +3,16 @@ package tech.anonymoushacker1279.iwcompatbridge.data;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.common.Mod.EventBusSubscriber.Bus;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.iwcompatbridge.data.lang.IWCBLanguageGenerator;
 import tech.anonymoushacker1279.iwcompatbridge.data.model.IWCBItemModelGenerator;
+import tech.anonymoushacker1279.iwcompatbridge.data.recipe.mekanism.MekanismRecipeGenerator;
 
-@Mod.EventBusSubscriber(bus = Bus.MOD)
+@EventBusSubscriber(bus = Bus.MOD)
 public class CustomDataGenerator {
 
 	@SubscribeEvent
@@ -34,6 +35,6 @@ public class CustomDataGenerator {
 		generator.addProvider(event.includeClient(), new IWCBLanguageGenerator(output));
 
 		// Server data
-		// generator.addProvider(event.includeServer(), new MekanismRecipeGenerator(output));
+		generator.addProvider(event.includeServer(), new MekanismRecipeGenerator(output, event.getLookupProvider()));
 	}
 }

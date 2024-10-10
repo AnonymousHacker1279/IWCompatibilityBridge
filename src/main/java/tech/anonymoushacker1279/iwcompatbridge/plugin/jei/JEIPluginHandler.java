@@ -45,7 +45,7 @@ public class JEIPluginHandler implements IModPlugin {
 	 */
 	@Override
 	public ResourceLocation getPluginUid() {
-		return new ResourceLocation(IWCompatBridge.MOD_ID, "jei_plugin");
+		return ResourceLocation.fromNamespaceAndPath(IWCompatBridge.MOD_ID, "jei_plugin");
 	}
 
 	/**
