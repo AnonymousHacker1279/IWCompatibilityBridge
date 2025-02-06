@@ -1,8 +1,7 @@
 package tech.anonymoushacker1279.iwcompatbridge.plugin.curios;
 
-import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.util.TriState;
-import tech.anonymoushacker1279.immersiveweapons.item.AccessoryItem;
+import tech.anonymoushacker1279.immersiveweapons.item.accessory.Accessory;
 import tech.anonymoushacker1279.iwcompatbridge.config.IWCBConfigs;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
@@ -19,8 +18,7 @@ public class CuriosEventHandler {
 			CuriosApi.getCuriosInventory(event.getEntity())
 					.ifPresent(iCuriosItemHandler -> iCuriosItemHandler.findCurios(event.getSlotContext().identifier())
 							.forEach(slotResult -> {
-								Item item = slotResult.stack().getItem();
-								if (item == event.getStack().getItem() && item instanceof AccessoryItem) {
+								if (slotResult.stack().getItem() == event.getStack().getItem() && event.getStack().getItemHolder().getData(Accessory.ACCESSORY) != null) {
 									event.setEquipResult(TriState.FALSE);
 								}
 							}));
