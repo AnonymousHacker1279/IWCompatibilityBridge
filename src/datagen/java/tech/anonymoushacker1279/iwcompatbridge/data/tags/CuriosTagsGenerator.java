@@ -9,10 +9,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import tech.anonymoushacker1279.immersiveweapons.init.ItemRegistry;
-import tech.anonymoushacker1279.immersiveweapons.item.AccessoryItem;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class CuriosTagsGenerator extends IntrinsicHolderTagsProvider<Item> {
@@ -33,42 +31,59 @@ public class CuriosTagsGenerator extends IntrinsicHolderTagsProvider<Item> {
 
 	@Override
 	protected void addTags(Provider provider) {
-		List<AccessoryItem> accessories = ItemRegistry.ITEMS.getEntries()
-				.stream()
-				.filter(holder -> holder.get() instanceof AccessoryItem)
-				.map(holder -> (AccessoryItem) holder.get())
-				.toList();
+		tag(BELT).add(
+				ItemRegistry.SATCHEL.get(),
+				ItemRegistry.HOLY_MANTLE.get(),
+				ItemRegistry.VENSTRAL_JAR.get());
 
-		for (AccessoryItem accessory : accessories) {
-			switch (accessory.getSlot()) {
-				case HEAD:
-					tag(HEAD).add(accessory);
-					break;
-				case BODY:
-					tag(BODY).add(accessory);
-					break;
-				case NECKLACE:
-					tag(NECKLACE).add(accessory);
-					break;
-				case HAND:
-					tag(HANDS).add(accessory);
-					break;
-				case BRACELET:
-					tag(BRACELET).add(accessory);
-					break;
-				case RING:
-					tag(RING).add(accessory);
-					break;
-				case BELT:
-					tag(BELT).add(accessory);
-					break;
-				case CHARM:
-					tag(CHARM).add(accessory);
-					break;
-				case SPIRIT:
-					tag(SPIRIT).add(accessory);
-					break;
-			}
-		}
+		tag(BODY).add(
+				ItemRegistry.POWDER_HORN.get(),
+				ItemRegistry.BLOATED_HEART.get(),
+				ItemRegistry.NETHERITE_SHIELD.get(),
+				ItemRegistry.SUPER_BLANKET_CAPE.get());
+
+		tag(BRACELET).add(ItemRegistry.AGILITY_BRACELET.get());
+
+		tag(CHARM).add(
+				ItemRegistry.BERSERKERS_AMULET.get(),
+				ItemRegistry.BLADEMASTER_EMBLEM.get(),
+				ItemRegistry.DEPTH_CHARM.get(),
+				ItemRegistry.REINFORCED_DEPTH_CHARM.get(),
+				ItemRegistry.ANCIENT_SCROLL.get(),
+				ItemRegistry.MEDAL_OF_HONOR.get(),
+				ItemRegistry.MEDAL_OF_DISHONOR.get());
+
+		tag(HANDS).add(
+				ItemRegistry.MELEE_MASTERS_MOLTEN_GLOVE.get(),
+				ItemRegistry.IRON_FIST.get(),
+				ItemRegistry.GLOVE_OF_RAPID_SWINGING.get(),
+				ItemRegistry.HAND_OF_DOOM.get());
+
+		tag(HEAD).add(
+				ItemRegistry.GOGGLES.get(),
+				ItemRegistry.LAVA_GOGGLES.get(),
+				ItemRegistry.NIGHT_VISION_GOGGLES.get(),
+				ItemRegistry.BLOODY_CLOTH.get());
+
+		tag(NECKLACE).add(
+				ItemRegistry.DEADEYE_PENDANT.get(),
+				ItemRegistry.MEDAL_OF_ADEQUACY.get(),
+				ItemRegistry.INSOMNIA_AMULET.get());
+
+		tag(RING).add(
+				ItemRegistry.COPPER_RING.get(),
+				ItemRegistry.IRON_RING.get(),
+				ItemRegistry.COBALT_RING.get(),
+				ItemRegistry.GOLDEN_RING.get(),
+				ItemRegistry.AMETHYST_RING.get(),
+				ItemRegistry.EMERALD_RING.get(),
+				ItemRegistry.DIAMOND_RING.get(),
+				ItemRegistry.NETHERITE_RING.get(),
+				ItemRegistry.DEATH_GEM_RING.get());
+
+		tag(SPIRIT).add(
+				ItemRegistry.HANS_BLESSING.get(),
+				ItemRegistry.CELESTIAL_SPIRIT.get(),
+				ItemRegistry.VOID_BLESSING.get());
 	}
 }
