@@ -13,7 +13,9 @@ import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.immersiveweapons.init.ItemRegistry;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class IWCBDeferredRegistryHandler {
@@ -35,8 +37,8 @@ public class IWCBDeferredRegistryHandler {
 		if (ModList.get().isLoaded("mekanism")) {
 			IWCompatBridge.LOGGER.info("Mekanism detected: initializing related registry objects");
 
-			IWCompatBridge.LOGGER.info("Initializing deferred registry for Mekanism chemicals");
-			IWCBChemicalRegistry.CHEMICALS.register(modEventBus);
+			// IWCompatBridge.LOGGER.info("Initializing deferred registry for Mekanism chemicals");
+			// IWCBChemicalRegistry.CHEMICALS.register(modEventBus);
 		}
 	}
 

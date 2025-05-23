@@ -7,7 +7,6 @@ import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import tech.anonymoushacker1279.immersiveweapons.init.ItemRegistry;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
 
@@ -25,8 +24,8 @@ public class CuriosTagsGenerator extends IntrinsicHolderTagsProvider<Item> {
 	public static final TagKey<Item> RING = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "ring"));
 	public static final TagKey<Item> SPIRIT = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "spirit"));
 
-	public CuriosTagsGenerator(PackOutput output, CompletableFuture<Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
-		super(output, Registries.ITEM, lookupProvider, item -> item.builtInRegistryHolder().key(), IWCompatBridge.MOD_ID, existingFileHelper);
+	public CuriosTagsGenerator(PackOutput output, CompletableFuture<Provider> lookupProvider) {
+		super(output, Registries.ITEM, lookupProvider, item -> item.builtInRegistryHolder().key(), IWCompatBridge.MOD_ID);
 	}
 
 	@Override
