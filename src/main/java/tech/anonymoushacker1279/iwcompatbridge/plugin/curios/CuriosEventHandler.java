@@ -1,6 +1,6 @@
 package tech.anonymoushacker1279.iwcompatbridge.plugin.curios;
 
-import net.neoforged.neoforge.common.util.TriState;
+import net.minecraft.util.TriState;
 import tech.anonymoushacker1279.immersiveweapons.item.accessory.Accessory;
 import tech.anonymoushacker1279.iwcompatbridge.config.IWCBConfigs;
 import top.theillusivec4.curios.api.CuriosApi;

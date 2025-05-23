@@ -147,7 +147,7 @@ public class AccessoryBridge {
 			List<SlotResult> curios = itemHandler.findCurios(itemStack -> itemStack.getItemHolder().getData(Accessory.ACCESSORY) != null && itemStack.getItem() == stack.getItem());
 
 			// Check if the item has a cooldown
-			if (player.getCooldowns().isOnCooldown(stack.getItem())) {
+			if (player.getCooldowns().isOnCooldown(stack)) {
 				return false;
 			}
 
