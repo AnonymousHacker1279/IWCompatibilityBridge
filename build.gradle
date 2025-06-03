@@ -29,6 +29,10 @@ repositories {
 		name "Illusive Soulworks Maven"
 		url "https://maven.theillusivec4.top"
 	}
+	maven {
+		name "Jared's maven"
+		url "https://maven.blamejared.com/"
+	}
 }
 
 base {
@@ -138,9 +142,14 @@ dependencies {
 	compileOnly "mcp.mobius.waila:wthit-api:neo-${wthit_version}"
 	runtimeOnly "mcp.mobius.waila:wthit:neo-${wthit_version}"
 	runtimeOnly "lol.bai:badpackets:neo-${badpackets_version}"
+
 	// Include Curios
 	compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
 	runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+
+	// Include JEI
+	compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+	runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 }
 
 tasks.named("processResources", ProcessResources).configure {
@@ -231,12 +240,12 @@ if (file("RELEASE_NOTES.md").exists()) {
 
 		curseDepends {
 			required "immersive-weapons"
-			optional "jei", "wthit-forge", "curios", "mekanism"
+			optional "wthit-forge", "curios"
 		}
 
 		modrinthDepends {
 			required "immersive-weapons"
-			optional "jei", "wthit", "mekanism"
+			optional "wthit", "curios"
 		}
 	}
 } else {
