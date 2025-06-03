@@ -16,6 +16,7 @@ import tech.anonymoushacker1279.iwcompatbridge.config.IWCBConfigs;
 import tech.anonymoushacker1279.iwcompatbridge.init.IWCBDeferredRegistryHandler;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.curios.CuriosEventHandler;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.curios.CuriosPlugin;
+import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.wthit.WTHITPlugin;
 
 @Mod(IWCompatBridge.MOD_ID)
@@ -43,6 +44,7 @@ public class IWCompatBridge {
 		// Register plugins
 		PluginHandler.registerPlugin(new WTHITPlugin());
 		PluginHandler.registerPlugin(new CuriosPlugin());
+		PluginHandler.registerPlugin(new JEIPlugin());
 
 		if (ModList.get().isLoaded("curios")) {
 			NeoForge.EVENT_BUS.addListener(CuriosEventHandler::curioEquipEvent);
