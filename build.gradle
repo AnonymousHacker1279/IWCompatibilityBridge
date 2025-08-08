@@ -1,8 +1,8 @@
 plugins {
 	id 'java-library'
 	id 'maven-publish'
-	id 'net.neoforged.moddev' version '2.0.88'
-	id "com.hypherionmc.modutils.modpublisher" version "2.1.6"
+	id 'net.neoforged.moddev' version '2.0.107'
+	id "com.hypherionmc.modutils.modpublisher" version "2.1.7"
 	id 'idea'
 }
 
@@ -144,8 +144,8 @@ dependencies {
 	runtimeOnly "lol.bai:badpackets:neo-${badpackets_version}"
 
 	// Include Curios
-	compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
-	runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+	// compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
+	// runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
 	// Include JEI
 	compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
@@ -240,12 +240,12 @@ if (file("RELEASE_NOTES.md").exists()) {
 
 		curseDepends {
 			required "immersive-weapons"
-			optional "wthit-forge", "curios"
+			optional "wthit-forge", "curios", "jei"
 		}
 
 		modrinthDepends {
 			required "immersive-weapons"
-			optional "wthit", "curios"
+			optional "wthit", "curios", "jei"
 		}
 	}
 } else {
