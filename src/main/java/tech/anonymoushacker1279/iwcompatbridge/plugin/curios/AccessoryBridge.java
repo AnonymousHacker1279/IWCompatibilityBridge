@@ -6,22 +6,18 @@ import net.minecraft.world.item.ItemStack;
 import tech.anonymoushacker1279.immersiveweapons.event.game_effects.AccessoryManager;
 import tech.anonymoushacker1279.immersiveweapons.item.accessory.Accessory;
 import tech.anonymoushacker1279.immersiveweapons.item.accessory.AccessoryEffectType;
-import tech.anonymoushacker1279.immersiveweapons.item.accessory.scaling.AccessoryEffectScalingType;
 import tech.anonymoushacker1279.immersiveweapons.item.accessory.scaling.AttributeOperation;
 import tech.anonymoushacker1279.immersiveweapons.item.accessory.scaling.DynamicAttributeOperationInstance;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotResult;
-import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 /*
  * A class to handle Curios integration. Classes here are invoked by IW in the relevant areas, when IWCB is loaded
  * and the Curios plugin is registered.
  */
+// TODO: reimplement when Curios is updated
 @SuppressWarnings("unused")
 public class AccessoryBridge {
 
@@ -36,7 +32,7 @@ public class AccessoryBridge {
 	public static double collectEffects(AccessoryEffectType type, Player player) {
 		double value = 0;
 
-		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
+		/*Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
 		if (optional.isPresent()) {
 			ICuriosItemHandler itemHandler = optional.get();
 			List<SlotResult> curios = itemHandler.findCurios(itemStack -> itemStack.getItemHolder().getData(Accessory.ACCESSORY) != null);
@@ -51,7 +47,7 @@ public class AccessoryBridge {
 					}
 				}
 			}
-		}
+		}*/
 
 		return value;
 	}
@@ -66,7 +62,7 @@ public class AccessoryBridge {
 	public static List<AttributeOperation> collectStandardAttributes(Player player) {
 		List<AttributeOperation> attributes = new ArrayList<>(5);
 
-		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
+		/*Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
 		if (optional.isPresent()) {
 			ICuriosItemHandler itemHandler = optional.get();
 			List<SlotResult> curios = itemHandler.findCurios(itemStack -> itemStack.getItemHolder().getData(Accessory.ACCESSORY) != null);
@@ -77,7 +73,7 @@ public class AccessoryBridge {
 					attributes.addAll(accessory.attributeModifiers());
 				}
 			}
-		}
+		}*/
 
 		return attributes;
 	}
@@ -92,7 +88,7 @@ public class AccessoryBridge {
 	public static List<DynamicAttributeOperationInstance> collectDynamicAttributes(Player player) {
 		List<DynamicAttributeOperationInstance> dynamicAttributes = new ArrayList<>(5);
 
-		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
+		/*Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
 		if (optional.isPresent()) {
 			ICuriosItemHandler itemHandler = optional.get();
 			List<SlotResult> curios = itemHandler.findCurios(itemStack -> itemStack.getItemHolder().getData(Accessory.ACCESSORY) != null);
@@ -103,7 +99,7 @@ public class AccessoryBridge {
 					dynamicAttributes.addAll(accessory.dynamicAttributeModifiers());
 				}
 			}
-		}
+		}*/
 
 		return dynamicAttributes;
 	}
@@ -118,7 +114,7 @@ public class AccessoryBridge {
 	public static List<MobEffectInstance> collectMobEffects(Player player) {
 		List<MobEffectInstance> effectList = new ArrayList<>(5);
 
-		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
+		/*Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
 		if (optional.isPresent()) {
 			ICuriosItemHandler itemHandler = optional.get();
 			List<SlotResult> curios = itemHandler.findCurios(itemStack -> itemStack.getItemHolder().getData(Accessory.ACCESSORY) != null);
@@ -129,7 +125,7 @@ public class AccessoryBridge {
 					effectList.addAll(accessory.mobEffectInstances());
 				}
 			}
-		}
+		}*/
 
 		return effectList;
 	}
@@ -141,7 +137,7 @@ public class AccessoryBridge {
 	 * Because this checks for the first item, it will always be an active one.
 	 */
 	public static boolean isAccessoryActive(Player player, ItemStack stack) {
-		Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
+		/*Optional<ICuriosItemHandler> optional = CuriosApi.getCuriosInventory(player);
 		if (optional.isPresent()) {
 			ICuriosItemHandler itemHandler = optional.get();
 			List<SlotResult> curios = itemHandler.findCurios(itemStack -> itemStack.getItemHolder().getData(Accessory.ACCESSORY) != null && itemStack.getItem() == stack.getItem());
@@ -152,7 +148,7 @@ public class AccessoryBridge {
 			}
 
 			return !curios.isEmpty();
-		}
+		}*/
 
 		return false;
 	}

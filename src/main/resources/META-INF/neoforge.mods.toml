@@ -33,7 +33,7 @@ side = "BOTH"
 [[dependencies.iwcompatbridge]]
 modId = "immersiveweapons"
 type = "required"
-versionRange = "[1.21.5-1.32.1,)"
+versionRange = "[1.21.8-1.33.0,)"
 ordering = "NONE"
 side = "BOTH"
 
@@ -47,13 +47,13 @@ side = "BOTH"
 [[dependencies.iwcompatbridge]]
 modId = "wthit"
 type = "optional"
-versionRange = "[15.0.0,)"
+versionRange = "[16.0.0,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "jei"
 type = "optional"
-versionRange = "[21.3.1.19,)"
+versionRange = "[24.0.0.0,)"
 ordering = "NONE"
 side = "BOTH"

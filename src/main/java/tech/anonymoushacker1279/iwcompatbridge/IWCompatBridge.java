@@ -9,13 +9,10 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLConstructModEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
-import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 import tech.anonymoushacker1279.immersiveweapons.api.PluginHandler;
 import tech.anonymoushacker1279.iwcompatbridge.config.IWCBConfigs;
 import tech.anonymoushacker1279.iwcompatbridge.init.IWCBDeferredRegistryHandler;
-import tech.anonymoushacker1279.iwcompatbridge.plugin.curios.CuriosEventHandler;
-import tech.anonymoushacker1279.iwcompatbridge.plugin.curios.CuriosPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPlugin;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.wthit.WTHITPlugin;
 
@@ -43,11 +40,12 @@ public class IWCompatBridge {
 
 		// Register plugins
 		PluginHandler.registerPlugin(new WTHITPlugin());
-		PluginHandler.registerPlugin(new CuriosPlugin());
+		// PluginHandler.registerPlugin(new CuriosPlugin());
 		PluginHandler.registerPlugin(new JEIPlugin());
 
 		if (ModList.get().isLoaded("curios")) {
-			NeoForge.EVENT_BUS.addListener(CuriosEventHandler::curioEquipEvent);
+			// TODO: reimplement when Curious is updated
+			// NeoForge.EVENT_BUS.addListener(CuriosEventHandler::curioEquipEvent);
 		}
 	}
 
