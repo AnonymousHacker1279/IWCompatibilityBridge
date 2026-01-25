@@ -5,7 +5,7 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.types.IRecipeType;
 import mezz.jei.api.registration.*;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -41,11 +41,11 @@ public class JEIPluginHandler implements IModPlugin {
 	/**
 	 * Get the plugin UID.
 	 *
-	 * @return ResourceLocation
+	 * @return Identifier
 	 */
 	@Override
-	public ResourceLocation getPluginUid() {
-		return ResourceLocation.fromNamespaceAndPath(IWCompatBridge.MOD_ID, "jei_plugin");
+	public Identifier getPluginUid() {
+		return Identifier.fromNamespaceAndPath(IWCompatBridge.MOD_ID, "jei_plugin");
 	}
 
 	/**

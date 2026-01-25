@@ -2,12 +2,14 @@ package tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import tech.anonymoushacker1279.immersiveweapons.init.BlockRegistry;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.StarForgeRecipe;
@@ -16,7 +18,7 @@ import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPluginHandler;
 
 public class StarForgeRecipeCategory extends AbstractRecipeCategory<StarForgeRecipe> {
 
-	private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(IWCompatBridge.MOD_ID,
+	private static final Identifier GUI_TEXTURE = Identifier.fromNamespaceAndPath(IWCompatBridge.MOD_ID,
 			"textures/gui/jei/star_forge.png");
 	private final IDrawable background;
 
@@ -31,8 +33,8 @@ public class StarForgeRecipeCategory extends AbstractRecipeCategory<StarForgeRec
 	}
 
 	@Override
-	public IDrawable getBackground() {
-		return background;
+	public void draw(StarForgeRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+		background.draw(guiGraphics, 0, 0);
 	}
 
 	@Override

@@ -4,7 +4,7 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import tech.anonymoushacker1279.immersiveweapons.init.ItemRegistry;
@@ -14,15 +14,15 @@ import java.util.concurrent.CompletableFuture;
 
 public class CuriosTagsGenerator extends IntrinsicHolderTagsProvider<Item> {
 
-	public static final TagKey<Item> BELT = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "belt"));
-	public static final TagKey<Item> BODY = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "body"));
-	public static final TagKey<Item> BRACELET = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "bracelet"));
-	public static final TagKey<Item> CHARM = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "charm"));
-	public static final TagKey<Item> HANDS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "hands"));
-	public static final TagKey<Item> HEAD = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "head"));
-	public static final TagKey<Item> NECKLACE = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "necklace"));
-	public static final TagKey<Item> RING = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "ring"));
-	public static final TagKey<Item> SPIRIT = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "spirit"));
+	public static final TagKey<Item> BELT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("curios", "belt"));
+	public static final TagKey<Item> BODY = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("curios", "body"));
+	public static final TagKey<Item> BRACELET = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("curios", "bracelet"));
+	public static final TagKey<Item> CHARM = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("curios", "charm"));
+	public static final TagKey<Item> HANDS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("curios", "hands"));
+	public static final TagKey<Item> HEAD = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("curios", "head"));
+	public static final TagKey<Item> NECKLACE = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("curios", "necklace"));
+	public static final TagKey<Item> RING = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("curios", "ring"));
+	public static final TagKey<Item> SPIRIT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("curios", "spirit"));
 
 	public CuriosTagsGenerator(PackOutput output, CompletableFuture<Provider> lookupProvider) {
 		super(output, Registries.ITEM, lookupProvider, item -> item.builtInRegistryHolder().key(), IWCompatBridge.MOD_ID);
