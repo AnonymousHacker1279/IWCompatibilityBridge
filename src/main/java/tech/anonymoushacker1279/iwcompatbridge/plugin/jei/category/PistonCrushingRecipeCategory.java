@@ -12,7 +12,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Blocks;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.PistonCrushingRecipe;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
@@ -20,7 +20,7 @@ import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPluginHandler;
 
 public class PistonCrushingRecipeCategory extends AbstractRecipeCategory<PistonCrushingRecipe> {
 
-	private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(IWCompatBridge.MOD_ID,
+	private static final Identifier GUI_TEXTURE = Identifier.fromNamespaceAndPath(IWCompatBridge.MOD_ID,
 			"textures/gui/jei/piston_crushing.png");
 	private final IDrawable background;
 
@@ -43,21 +43,13 @@ public class PistonCrushingRecipeCategory extends AbstractRecipeCategory<PistonC
 	public void draw(PistonCrushingRecipe recipe, IRecipeSlotsView recipeSlotsView,
 	                 GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
+		background.draw(guiGraphics, 0, 0);
+
 		MutableComponent dropString = Component.translatable("gui.jei.category.piston_crushing.note", recipe.getMinCount(), recipe.getMaxCount());
 		Minecraft minecraft = Minecraft.getInstance();
 		Font fontRenderer = minecraft.font;
 		int width = fontRenderer.width(dropString);
 		guiGraphics.drawString(fontRenderer, dropString, background.getWidth() - width, 40, 0x808080, false);
-	}
-
-	/**
-	 * Get the background.
-	 *
-	 * @return IDrawable
-	 */
-	@Override
-	public IDrawable getBackground() {
-		return background;
 	}
 
 	@Override

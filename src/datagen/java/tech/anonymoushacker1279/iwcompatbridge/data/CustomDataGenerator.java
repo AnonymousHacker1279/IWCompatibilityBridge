@@ -5,7 +5,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import tech.anonymoushacker1279.immersiveweapons.ImmersiveWeapons;
 import tech.anonymoushacker1279.iwcompatbridge.data.lang.IWCBLanguageGenerator;
@@ -14,7 +13,7 @@ import tech.anonymoushacker1279.iwcompatbridge.data.tags.CuriosTagsGenerator;
 
 import java.util.concurrent.CompletableFuture;
 
-@EventBusSubscriber(bus = Bus.MOD)
+@EventBusSubscriber
 public class CustomDataGenerator {
 
 	@SubscribeEvent

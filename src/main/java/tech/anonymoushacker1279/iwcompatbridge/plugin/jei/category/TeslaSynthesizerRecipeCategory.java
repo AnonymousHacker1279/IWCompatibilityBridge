@@ -13,7 +13,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import tech.anonymoushacker1279.immersiveweapons.init.BlockRegistry;
 import tech.anonymoushacker1279.immersiveweapons.init.ItemRegistry;
@@ -23,7 +23,7 @@ import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.JEIPluginHandler;
 
 public class TeslaSynthesizerRecipeCategory extends AbstractRecipeCategory<TeslaSynthesizerRecipe> {
 
-	private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(IWCompatBridge.MOD_ID,
+	private static final Identifier GUI_TEXTURE = Identifier.fromNamespaceAndPath(IWCompatBridge.MOD_ID,
 			"textures/gui/jei/tesla_synthesizer.png");
 	private final IDrawable background;
 
@@ -44,6 +44,7 @@ public class TeslaSynthesizerRecipeCategory extends AbstractRecipeCategory<Tesla
 
 	@Override
 	public void draw(TeslaSynthesizerRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+		background.draw(guiGraphics, 0, 0);
 		drawText(recipe, guiGraphics);
 	}
 
@@ -68,16 +69,6 @@ public class TeslaSynthesizerRecipeCategory extends AbstractRecipeCategory<Tesla
 			guiGraphics.drawString(fontRenderer, timeString, background.getWidth() - timeStringWidth, 45, 0x808080, false);
 			guiGraphics.drawString(fontRenderer, noteString, background.getWidth() - noteStringWidth, 1, 0x4582b3, false);
 		}
-	}
-
-	/**
-	 * Get the background.
-	 *
-	 * @return IDrawable
-	 */
-	@Override
-	public IDrawable getBackground() {
-		return background;
 	}
 
 	@Override

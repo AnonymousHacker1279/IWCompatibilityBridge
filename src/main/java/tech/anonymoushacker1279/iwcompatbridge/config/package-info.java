@@ -1,6 +1,6 @@
 @ParametersAreNonnullByDefault
 @NullMarked
-package tech.anonymoushacker1279.iwcompatbridge.plugin.wthit.components;
+package tech.anonymoushacker1279.iwcompatbridge.config;
 
 import org.jspecify.annotations.NullMarked;
 
