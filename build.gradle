@@ -153,8 +153,8 @@ dependencies {
 	runtimeOnly "lol.bai:badpackets:neo-${badpackets_version}"
 
 	// Include Curios
-	// compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
-	// runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+	compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
+	runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
 	// Include JEI
 	compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
