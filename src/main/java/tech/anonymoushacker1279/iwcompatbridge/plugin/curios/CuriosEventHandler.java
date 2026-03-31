@@ -1,5 +1,11 @@
 package tech.anonymoushacker1279.iwcompatbridge.plugin.curios;
 
+import net.minecraft.util.TriState;
+import tech.anonymoushacker1279.immersiveweapons.item.accessory.AccessoryLoader;
+import tech.anonymoushacker1279.iwcompatbridge.config.IWCBConfigs;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
+
 public class CuriosEventHandler {
 
 	/**
@@ -7,15 +13,15 @@ public class CuriosEventHandler {
 	 *
 	 * @param event the <code>CurioCanEquipEvent</code> instance
 	 */
-	/*public static void curioEquipEvent(CurioCanEquipEvent event) {
+	public static void curioEquipEvent(CurioCanEquipEvent event) {
 		if (!IWCBConfigs.SERVER.accessoryStacking.getAsBoolean()) {
 			CuriosApi.getCuriosInventory(event.getEntity())
 					.ifPresent(iCuriosItemHandler -> iCuriosItemHandler.findCurios(event.getSlotContext().identifier())
 							.forEach(slotResult -> {
-								if (slotResult.stack().getItem() == event.getStack().getItem() && event.getStack().getItemHolder().getData(Accessory.ACCESSORY) != null) {
+								if (slotResult.stack().getItem() == event.getStack().getItem() && AccessoryLoader.ACCESSORIES.get(event.getStack().getItem()) != null) {
 									event.setEquipResult(TriState.FALSE);
 								}
 							}));
 		}
-	}*/
+	}
 }

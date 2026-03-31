@@ -33,27 +33,27 @@ side = "BOTH"
 [[dependencies.iwcompatbridge]]
 modId = "immersiveweapons"
 type = "required"
-versionRange = "[1.21.8-1.33.0,)"
+versionRange = "[1.21.11-1.36.0,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "curios"
 type = "optional"
-versionRange = "[11.0.0+1.21.5,)"
+versionRange = "[14.0.0+1.21.11,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "wthit"
 type = "optional"
-versionRange = "[16.0.0,)"
+versionRange = "[18.0.0,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "jei"
 type = "optional"
-versionRange = "[24.0.0.0,)"
+versionRange = "[27.0.0.0,)"
 ordering = "NONE"
 side = "BOTH"
