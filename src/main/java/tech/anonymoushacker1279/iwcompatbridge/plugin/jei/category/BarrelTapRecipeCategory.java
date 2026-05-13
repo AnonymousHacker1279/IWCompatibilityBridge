@@ -7,7 +7,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
@@ -22,11 +22,9 @@ public class BarrelTapRecipeCategory extends AbstractRecipeCategory<BarrelTapRec
 			"textures/gui/jei/barrel_tap_fermenting.png");
 	private final IDrawable background;
 
-	/**
-	 * Constructor for BarrelTapRecipeCategory.
-	 *
-	 * @param guiHelper a <code>IGuiHelper</code> instance
-	 */
+	/// Constructor for BarrelTapRecipeCategory.
+	///
+	/// @param guiHelper a `IGuiHelper` instance
 	public BarrelTapRecipeCategory(IGuiHelper guiHelper) {
 		super(JEIPluginHandler.BARREL_TAP,
 				Component.translatable("gui.jei.category.barrel_tap_fermenting"),
@@ -38,7 +36,7 @@ public class BarrelTapRecipeCategory extends AbstractRecipeCategory<BarrelTapRec
 	}
 
 	@Override
-	public void draw(BarrelTapRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+	public void draw(BarrelTapRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphicsExtractor guiGraphics, double mouseX, double mouseY) {
 		background.draw(guiGraphics, 0, 0);
 	}
 

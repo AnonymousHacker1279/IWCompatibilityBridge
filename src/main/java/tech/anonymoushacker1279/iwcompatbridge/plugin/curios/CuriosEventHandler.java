@@ -8,11 +8,9 @@ import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
 
 public class CuriosEventHandler {
 
-	/**
-	 * Prevent multiple IW accessories of the same item from being equipped at once, if the config option is enabled.
-	 *
-	 * @param event the <code>CurioCanEquipEvent</code> instance
-	 */
+	/// Prevent multiple IW accessories of the same item from being equipped at once, if the config option is enabled.
+	///
+	/// @param event the `CurioCanEquipEvent` instance
 	public static void curioEquipEvent(CurioCanEquipEvent event) {
 		if (!IWCBConfigs.SERVER.accessoryStacking.getAsBoolean()) {
 			CuriosApi.getCuriosInventory(event.getEntity())

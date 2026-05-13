@@ -7,7 +7,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -22,11 +22,9 @@ public class AstralCrystalRecipeCategory extends AbstractRecipeCategory<AstralCr
 			"textures/gui/jei/astral_crystal.png");
 	private final IDrawable background;
 
-	/**
-	 * Constructor for AstralCrystalRecipeCategory.
-	 *
-	 * @param guiHelper a <code>IGuiHelper</code> instance
-	 */
+	/// Constructor for AstralCrystalRecipeCategory.
+	///
+	/// @param guiHelper a `IGuiHelper` instance
 	public AstralCrystalRecipeCategory(IGuiHelper guiHelper) {
 		super(JEIPluginHandler.ASTRAL_CRYSTAL,
 				Component.translatable("gui.jei.category.astral_crystal"),
@@ -38,7 +36,7 @@ public class AstralCrystalRecipeCategory extends AbstractRecipeCategory<AstralCr
 	}
 
 	@Override
-	public void draw(AstralCrystalRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+	public void draw(AstralCrystalRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphicsExtractor guiGraphics, double mouseX, double mouseY) {
 		background.draw(guiGraphics, 0, 0);
 	}
 

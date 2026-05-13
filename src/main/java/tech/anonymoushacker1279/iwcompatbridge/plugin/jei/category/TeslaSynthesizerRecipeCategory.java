@@ -10,7 +10,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.Identifier;
@@ -27,11 +27,9 @@ public class TeslaSynthesizerRecipeCategory extends AbstractRecipeCategory<Tesla
 			"textures/gui/jei/tesla_synthesizer.png");
 	private final IDrawable background;
 
-	/**
-	 * Constructor for TeslaSynthesizerRecipeCategory.
-	 *
-	 * @param guiHelper a <code>IGuiHelper</code> instance
-	 */
+	/// Constructor for TeslaSynthesizerRecipeCategory.
+	///
+	/// @param guiHelper a `IGuiHelper` instance
 	public TeslaSynthesizerRecipeCategory(IGuiHelper guiHelper) {
 		super(JEIPluginHandler.TESLA_SYNTHESIZER,
 				Component.translatable("gui.jei.category.tesla_synthesizer"),
@@ -43,7 +41,7 @@ public class TeslaSynthesizerRecipeCategory extends AbstractRecipeCategory<Tesla
 	}
 
 	@Override
-	public void draw(TeslaSynthesizerRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+	public void draw(TeslaSynthesizerRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphicsExtractor guiGraphics, double mouseX, double mouseY) {
 		background.draw(guiGraphics, 0, 0);
 		drawText(recipe, guiGraphics);
 	}
@@ -56,7 +54,7 @@ public class TeslaSynthesizerRecipeCategory extends AbstractRecipeCategory<Tesla
 				.setPosition(52, 20);
 	}
 
-	protected void drawText(TeslaSynthesizerRecipe recipe, GuiGraphics guiGraphics) {
+	protected void drawText(TeslaSynthesizerRecipe recipe, GuiGraphicsExtractor guiGraphics) {
 		int cookTime = recipe.getCookTime();
 		if (cookTime > 0) {
 			int cookTimeSeconds = cookTime / 20;
@@ -66,8 +64,8 @@ public class TeslaSynthesizerRecipeCategory extends AbstractRecipeCategory<Tesla
 			Font fontRenderer = minecraft.font;
 			int timeStringWidth = fontRenderer.width(timeString);
 			int noteStringWidth = fontRenderer.width(noteString);
-			guiGraphics.drawString(fontRenderer, timeString, background.getWidth() - timeStringWidth, 45, 0x808080, false);
-			guiGraphics.drawString(fontRenderer, noteString, background.getWidth() - noteStringWidth, 1, 0x4582b3, false);
+			guiGraphics.text(fontRenderer, timeString, background.getWidth() - timeStringWidth, 45, 0x808080, false);
+			guiGraphics.text(fontRenderer, noteString, background.getWidth() - noteStringWidth, 1, 0x4582b3, false);
 		}
 	}
 

@@ -9,7 +9,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.Identifier;
@@ -24,11 +24,9 @@ public class PistonCrushingRecipeCategory extends AbstractRecipeCategory<PistonC
 			"textures/gui/jei/piston_crushing.png");
 	private final IDrawable background;
 
-	/**
-	 * Constructor for PistonCrushingRecipeCategory.
-	 *
-	 * @param guiHelper a <code>IGuiHelper</code> instance
-	 */
+	/// Constructor for PistonCrushingRecipeCategory.
+	///
+	/// @param guiHelper a `IGuiHelper` instance
 	public PistonCrushingRecipeCategory(IGuiHelper guiHelper) {
 		super(JEIPluginHandler.PISTON_CRUSHING,
 				Component.translatable("gui.jei.category.piston_crushing"),
@@ -41,7 +39,7 @@ public class PistonCrushingRecipeCategory extends AbstractRecipeCategory<PistonC
 
 	@Override
 	public void draw(PistonCrushingRecipe recipe, IRecipeSlotsView recipeSlotsView,
-	                 GuiGraphics guiGraphics, double mouseX, double mouseY) {
+	                 GuiGraphicsExtractor guiGraphics, double mouseX, double mouseY) {
 
 		background.draw(guiGraphics, 0, 0);
 
@@ -49,7 +47,7 @@ public class PistonCrushingRecipeCategory extends AbstractRecipeCategory<PistonC
 		Minecraft minecraft = Minecraft.getInstance();
 		Font fontRenderer = minecraft.font;
 		int width = fontRenderer.width(dropString);
-		guiGraphics.drawString(fontRenderer, dropString, background.getWidth() - width, 40, 0x808080, false);
+		guiGraphics.text(fontRenderer, dropString, background.getWidth() - width, 40, 0x808080, false);
 	}
 
 	@Override

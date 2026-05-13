@@ -38,21 +38,17 @@ public class JEIPluginHandler implements IModPlugin {
 	public static final IRecipeType<StarForgeRecipe> STAR_FORGE =
 			IRecipeType.create(ImmersiveWeapons.MOD_ID, "star_forge", StarForgeRecipe.class);
 
-	/**
-	 * Get the plugin UID.
-	 *
-	 * @return Identifier
-	 */
+	/// Get the plugin UID.
+	///
+	/// @return Identifier
 	@Override
 	public Identifier getPluginUid() {
 		return Identifier.fromNamespaceAndPath(IWCompatBridge.MOD_ID, "jei_plugin");
 	}
 
-	/**
-	 * Register recipe catalysts.
-	 *
-	 * @param registration an <code>IRecipeCatalystRegistration</code> instance
-	 */
+	/// Register recipe catalysts.
+	///
+	/// @param registration an `IRecipeCatalystRegistration` instance
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 		registration.addCraftingStation(TESLA_SYNTHESIZER, new ItemStack(BlockRegistry.TESLA_SYNTHESIZER.get()));
@@ -63,11 +59,9 @@ public class JEIPluginHandler implements IModPlugin {
 		registration.addCraftingStation(STAR_FORGE, new ItemStack(BlockRegistry.STAR_FORGE_CONTROLLER.get()));
 	}
 
-	/**
-	 * Register recipes.
-	 *
-	 * @param registration an <code>IRecipeRegistration</code> instance
-	 */
+	/// Register recipes.
+	///
+	/// @param registration an `IRecipeRegistration` instance
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
 		RecipeManager recipeManager = getRecipeManager();
@@ -132,11 +126,9 @@ public class JEIPluginHandler implements IModPlugin {
 		registration.addItemStackInfo(BlockRegistry.STAR_FORGE_CONTROLLER.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.star_forge.info"));
 	}
 
-	/**
-	 * Register recipe categories.
-	 *
-	 * @param registration an <code>IRecipeCategoryRegistration</code> instance
-	 */
+	/// Register recipe categories.
+	///
+	/// @param registration an `IRecipeCategoryRegistration` instance
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registration) {
 		registration.addRecipeCategories(new TeslaSynthesizerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
@@ -148,11 +140,9 @@ public class JEIPluginHandler implements IModPlugin {
 
 	}
 
-	/**
-	 * Register recipe transfer handlers.
-	 *
-	 * @param registration an <code>IRecipeTransferRegistration</code> instance
-	 */
+	/// Register recipe transfer handlers.
+	///
+	/// @param registration an `IRecipeTransferRegistration` instance
 	@Override
 	public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
 		registration.addRecipeTransferHandler(TeslaSynthesizerMenu.class,
