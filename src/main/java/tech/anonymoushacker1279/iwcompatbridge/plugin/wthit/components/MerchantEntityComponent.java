@@ -1,6 +1,9 @@
 package tech.anonymoushacker1279.iwcompatbridge.plugin.wthit.components;
 
-import mcp.mobius.waila.api.*;
+import mcp.mobius.waila.api.IEntityAccessor;
+import mcp.mobius.waila.api.IEntityComponentProvider;
+import mcp.mobius.waila.api.IPluginConfig;
+import mcp.mobius.waila.api.ITooltip;
 import net.minecraft.network.chat.Component;
 import tech.anonymoushacker1279.immersiveweapons.entity.npc.AbstractMerchantEntity;
 
