@@ -1,1 +1,1 @@
-This release ports to MC 26.1.2 and IW v1.37.0.
+This is a bugfix release, fixing a crash when Curios is not installed.

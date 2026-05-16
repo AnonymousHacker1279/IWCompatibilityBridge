@@ -48,6 +48,11 @@ public class IWCompatBridge {
 
 		if (ModList.get().isLoaded("curios")) {
 			NeoForge.EVENT_BUS.addListener(CuriosEventHandler::curioEquipEvent);
+			NeoForge.EVENT_BUS.addListener(CuriosEventHandler::collectEffects);
+			NeoForge.EVENT_BUS.addListener(CuriosEventHandler::collectStandardAttributes);
+			NeoForge.EVENT_BUS.addListener(CuriosEventHandler::collectDynamicAttributes);
+			NeoForge.EVENT_BUS.addListener(CuriosEventHandler::collectMobEffects);
+			NeoForge.EVENT_BUS.addListener(CuriosEventHandler::accessoryActive);
 		}
 	}
 
