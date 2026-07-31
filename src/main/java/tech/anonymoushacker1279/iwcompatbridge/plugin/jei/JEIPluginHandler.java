@@ -17,7 +17,6 @@ import tech.anonymoushacker1279.immersiveweapons.init.*;
 import tech.anonymoushacker1279.immersiveweapons.item.crafting.*;
 import tech.anonymoushacker1279.immersiveweapons.menu.AmmunitionTableMenu;
 import tech.anonymoushacker1279.immersiveweapons.menu.StarForgeMenu;
-import tech.anonymoushacker1279.immersiveweapons.menu.TeslaSynthesizerMenu;
 import tech.anonymoushacker1279.iwcompatbridge.IWCompatBridge;
 import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category.*;
 
@@ -25,8 +24,6 @@ import tech.anonymoushacker1279.iwcompatbridge.plugin.jei.category.*;
 @SuppressWarnings("unused")
 public class JEIPluginHandler implements IModPlugin {
 
-	public static final IRecipeType<TeslaSynthesizerRecipe> TESLA_SYNTHESIZER =
-			IRecipeType.create(ImmersiveWeapons.MOD_ID, "tesla_synthesizer", TeslaSynthesizerRecipe.class);
 	public static final IRecipeType<AstralCrystalRecipe> ASTRAL_CRYSTAL =
 			IRecipeType.create(ImmersiveWeapons.MOD_ID, "astral_crystal", AstralCrystalRecipe.class);
 	public static final IRecipeType<BarrelTapRecipe> BARREL_TAP =
@@ -51,7 +48,6 @@ public class JEIPluginHandler implements IModPlugin {
 	/// @param registration an `IRecipeCatalystRegistration` instance
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-		registration.addCraftingStation(TESLA_SYNTHESIZER, new ItemStack(BlockRegistry.TESLA_SYNTHESIZER.get()));
 		registration.addCraftingStation(ASTRAL_CRYSTAL, new ItemStack(BlockRegistry.ASTRAL_CRYSTAL.get()));
 		registration.addCraftingStation(BARREL_TAP, new ItemStack(BlockRegistry.BARREL_TAP.get()));
 		registration.addCraftingStation(PISTON_CRUSHING, new ItemStack(Blocks.PISTON));
@@ -69,14 +65,6 @@ public class JEIPluginHandler implements IModPlugin {
 		if (recipeManager == null) {
 			return;
 		}
-
-		registration.addRecipes(TESLA_SYNTHESIZER, recipeManager
-				.getRecipes()
-				.stream()
-				.filter(holder -> holder.value().getType() == RecipeTypeRegistry.TESLA_SYNTHESIZER_RECIPE_TYPE.get())
-				.map(RecipeHolder::value)
-				.map(recipe -> (TeslaSynthesizerRecipe) recipe)
-				.toList());
 
 		registration.addRecipes(ASTRAL_CRYSTAL, recipeManager
 				.getRecipes()
@@ -118,7 +106,6 @@ public class JEIPluginHandler implements IModPlugin {
 				.map(recipe -> (StarForgeRecipe) recipe)
 				.toList());
 
-		registration.addItemStackInfo(BlockRegistry.TESLA_SYNTHESIZER.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.tesla_synthesizer.info"));
 		registration.addItemStackInfo(BlockRegistry.ASTRAL_CRYSTAL.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.astral_crystal.info"));
 		registration.addItemStackInfo(BlockRegistry.BARREL_TAP.get().asItem().getDefaultInstance(), Component.translatable("gui.jei.item.barrel_tap.info"));
 		registration.addItemStackInfo(Blocks.PISTON.asItem().getDefaultInstance(), Component.translatable("gui.jei.item.piston_crushing.info"));
@@ -131,7 +118,6 @@ public class JEIPluginHandler implements IModPlugin {
 	/// @param registration an `IRecipeCategoryRegistration` instance
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registration) {
-		registration.addRecipeCategories(new TeslaSynthesizerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new AstralCrystalRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new BarrelTapRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new PistonCrushingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
@@ -145,9 +131,6 @@ public class JEIPluginHandler implements IModPlugin {
 	/// @param registration an `IRecipeTransferRegistration` instance
 	@Override
 	public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-		registration.addRecipeTransferHandler(TeslaSynthesizerMenu.class,
-				MenuTypeRegistry.TESLA_SYNTHESIZER_MENU.get(), TESLA_SYNTHESIZER,
-				0, 3, 4, 36);
 		registration.addRecipeTransferHandler(AmmunitionTableMenu.class,
 				MenuTypeRegistry.AMMUNITION_TABLE_MENU.get(), AMMUNITION_TABLE,
 				0, 6, 7, 36);
