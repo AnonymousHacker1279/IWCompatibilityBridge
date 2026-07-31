@@ -1,1 +1,1 @@
-This is a bugfix release, fixing a crash when Curios is not installed.
+This release ports to IW v1.38.0.
