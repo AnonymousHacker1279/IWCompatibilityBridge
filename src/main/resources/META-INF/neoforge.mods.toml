@@ -9,7 +9,8 @@ version = "${mod_version}"
 displayName = "Immersive Weapons Compatibility Bridge"
 displayURL = "https://www.curseforge.com/minecraft/mc-mods/immersive-weapons-compatibility-bridge"
 updateJSONURL = "https://raw.githubusercontent.com/AnonymousHacker1279/IWCompatibilityBridge/master/update.json"
-logoFile = "logo.png"
+bannerFile = "banner.png"
+iconFile = "icon.png"
 credits = "Written by AnonymousHacker1279"
 authors = "AnonymousHacker1279"
 description = '''
@@ -33,27 +34,27 @@ side = "BOTH"
 [[dependencies.iwcompatbridge]]
 modId = "immersiveweapons"
 type = "required"
-versionRange = "[1.21.11-1.36.0,)"
+versionRange = "[26.2-1.39.0,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "curios"
 type = "optional"
-versionRange = "[14.0.0+1.21.11,)"
+versionRange = "[16.0.0+26.2,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "wthit"
 type = "optional"
-versionRange = "[18.0.0,)"
+versionRange = "[20.0.0,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.iwcompatbridge]]
 modId = "jei"
 type = "optional"
-versionRange = "[27.0.0.0,)"
+versionRange = "[30.16.0.0,)"
 ordering = "NONE"
 side = "BOTH"

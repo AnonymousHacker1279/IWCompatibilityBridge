@@ -1,1 +1,1 @@
-This release ports to IW v1.38.0.
+This release ports to MC 26.2 and IW v1.39.0.
